@@ -18,6 +18,7 @@
   --backdrop-color-loader: rgba(255, 255, 255, 0.4);
 }
 
+
 * {
   margin: 0;
   padding: 0;
@@ -26,15 +27,31 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   font-style: normal;
+  font-size: 16px;
+  line-height: 1.25;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* Scrollbar pseudo-elements */
+
+body::-webkit-scrollbar{
+  width: 8px;
+  border-radius: 8px;
 }
+body::-webkit-scrollbar-track {
+  background: var(--light-blue);
+
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  width: 10px;
+  background-color:var(--blue);
+}
+
+/* Reset styles */
 
 h1,
 h2,
@@ -42,6 +59,11 @@ h3,
 h4,
 p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
 }
 
 ul,
@@ -54,8 +76,115 @@ li {
   list-style-type: none;
 }
 
+/* Elements styles */
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+input {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+button {
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+address {
+  font-style: normal;
+}
+
+.main{
+  min-height: 100vh;
+  width: 100%;
+}
+
+.signMain{
+  min-height: 100vh;
+    background-repeat: no-repeat;
+      background-size: 100%;
+}
+
+.list {
+  list-style: none;
+}
+
+.container {
+  max-width: 428px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.section{
+    min-height: 100vh;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.signSection{
+  min-height: 100vh;
+    background-position: center top 400px;
+    background-repeat: no-repeat;
+    background-size: 280px;
+    height: 100vh;
+}
+
+/**
+  |============================
+  | Tablet version styles
+  |============================
+*/
+
+@media screen and (min-width: 768px) {
+  .signSection{
+      background-position: center top -65px;
+      background-size: 100%;
+  }
+
+  .signMain{
+      background-image: none;
+  }
+
+  .section{
+  }
+
+  .container {
+    max-width: 768px;
+      padding: 0 32px;
+  }
+}
+
+/**
+  |============================
+  | Desktop version styles
+  |============================
+*/
+
+@media only screen and (min-width: 1440px) {
+  .signSection{
+background-position: top 80px right 105%;
+background-size: 60%;
+
+  }
+
+ .signMain {
+   }
+
+
+.section {
+}
+
+  .main {
+  }
+
+.container {
+  max-width: 1440px;
+    padding: 0 20px;
+}
 }

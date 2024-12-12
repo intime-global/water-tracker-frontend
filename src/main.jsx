@@ -7,15 +7,14 @@ import { perStore, persistor } from './redux/store.js';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Provider perStore={perStore}>
+    <Provider store={perStore}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="water-tracker-frontend">
-        <App />
+          <App />
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import css from './WaterConsumptionTracker.css';
+import css from './WaterConsumptionTracker.module.css';
 import sprite from '../../icons/sprite.svg';
 
 const WaterConsumptionTracker = () => {
@@ -24,13 +24,13 @@ const WaterConsumptionTracker = () => {
         </li>
         <li>
           <svg className={css.benefitsIcon}>
-            <use href={`${sprite} + #icon-presentation-chart`}></use>
+            <use href={`${sprite}#icon-presentation-chart`}></use>
           </svg>
           <p className={css.benefitsText}>View statistics</p>
         </li>
         <li>
           <svg className={css.benefitsIcon}>
-            <use href={`${sprite} + '#icon-mainpage-settings`}></use>
+            <use href={`${sprite}#icon-mainpage-settings`}></use>
           </svg>
           <p className={css.benefitsText}>Personal rate setting</p>
         </li>

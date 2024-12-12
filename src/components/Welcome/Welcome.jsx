@@ -1,6 +1,6 @@
 import WaterConsumptionTracker from '../WaterСonsumptionTracker/WaterConsumptionTracker';
 import WhyDrinkWater from '../WhyDrinkWater/WhyDrinkWater';
-import css from './Welcome.css';
+import css from './Welcome.module.css';
 
 const Welcome = () => {
   return (

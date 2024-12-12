@@ -1,4 +1,4 @@
-import css from './WhyDrinkWater.css';
+import css from './WhyDrinkWater.module.css';
 import sprite from '../../icons/sprite.svg';
 
 const WhyDrinkWater = () => {
@@ -10,43 +10,49 @@ const WhyDrinkWater = () => {
           <svg className={css.benefitsIcon}>
             <use href={`${sprite}#icon-Ellipse-7`}></use>
           </svg>
-          <p>Supply of nutrients to all organs</p>
+          <p className={css.listText}>Supply of nutrients to all organs</p>
         </li>
         <li>
           <svg className={css.benefitsIcon}>
             <use href={`${sprite}#icon-Ellipse-7`}></use>
           </svg>
-          <p>Providing oxygen to the lungs</p>
+          <p className={css.listText}>Providing oxygen to the lungs</p>
         </li>
         <li>
           <svg className={css.benefitsIcon}>
             <use href={`${sprite}#icon-Ellipse-7`}></use>
           </svg>
-          <p>Maintaining the work of the heart</p>
+          <p className={css.listText}>Maintaining the work of the heart</p>
         </li>
         <li>
           <svg className={css.benefitsIcon}>
             <use href={`${sprite}#icon-Ellipse-7`}></use>
           </svg>
-          <p>Release of processed substances</p>
+          <p className={css.listText}>Release of processed substances</p>
         </li>
         <li>
           <svg className={css.benefitsIcon}>
             <use href={`${sprite}#icon-Ellipse-7`}></use>
           </svg>
-          <p>Ensuring the stability of the internal environment</p>
+          <p className={css.listText}>
+            Ensuring the stability of the internal environment
+          </p>
         </li>
         <li>
           <svg className={css.benefitsIcon}>
             <use href={`${sprite}#icon-Ellipse-7`}></use>
           </svg>
-          <p>Maintaining within the normal temperature</p>
+          <p className={css.listText}>
+            Maintaining within the normal temperature
+          </p>
         </li>
         <li>
           <svg className={css.benefitsIcon}>
             <use href={`${sprite}#icon-Ellipse-7`}></use>
           </svg>
-          <p>Maintaining an immune system capable of resisting disease</p>
+          <p className={css.listText}>
+            Maintaining an immune system capable of resisting disease
+          </p>
         </li>
       </ul>
     </div>

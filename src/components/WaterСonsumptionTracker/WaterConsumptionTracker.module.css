@@ -12,7 +12,7 @@
     font-size: 24px;
     line-height: 30px;
     color: #2f2f2f;
-    padding-bottom: 25px;
+    padding-bottom: 24px;
   }
 
   .title3 {
@@ -20,17 +20,20 @@
     font-size: 18px;
     line-height: 19.98px;
     color: #2f2f2f;
+    padding-bottom: 12px;
   }
 
   .benefitsList {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 16px;
     padding-bottom: 24px;
   }
 
   .benefitsList li {
     display: flex;
+    align-items: center;
     gap: 8px;
   }
 
@@ -107,9 +110,6 @@
   }
 }
 @media screen and (min-width: 1440px) {
-  /* .trackerBenefits {
-  } */
-
   .btnTryTracker {
     width: 384px;
   }

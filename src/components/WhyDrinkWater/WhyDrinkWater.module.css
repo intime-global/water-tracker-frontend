@@ -2,8 +2,8 @@
   .reasons {
     border-radius: 10px;
     padding: 24px 16px;
-    width: 280px;
-    height: 416px;
+    /* width: 280px;
+    height: 416px; */
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
     background: #ecf2ff;
   }
@@ -22,23 +22,27 @@
     gap: 16px;
   }
 
-  .listReasons li p {
+  .listText {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
     color: #2f2f2f;
   }
 
-  .listReasons li svg {
+  .benefitsIcon {
     width: 8px;
     height: 8px;
     border-radius: 100%;
     fill: #407bff;
     cursor: pointer;
-    /* padding-right: 8px; */
   }
 
-  /* .listReasons li svg:hover {
+  .listReasons li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  /* .benefitsIcon {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
   }?????? */
 }
@@ -46,9 +50,12 @@
 @media screen and (min-width: 768px) {
   .reasons {
     padding: 32px 24px;
-    width: 494px;
-    height: 332px;
+    /* width: 494px;
+    height: 332px; */
   }
 }
 @media screen and (min-width: 1440px) {
+  .reasons {
+    margin-top: 34px;
+  }
 }

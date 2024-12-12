@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={perStore}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="water-tracker-frontend">
+        <BrowserRouter>
           <App />
         </BrowserRouter>
       </PersistGate>

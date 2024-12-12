@@ -159,12 +159,12 @@ import {
                 {error && error}
               </div>
             </div>
-            <ul className={css.list_waters}>
+            <ul className={css.listWaters}>
           {data.waterRecords?.length > 0 ? (
             data.waterRecords.map(({ id, consumedWater, date }) => {
               const dataS = new Date(date);
               return (
-                <li className={css.list_item} key={id}>
+                <li className={css.listItem} key={id}>
                   <div className={css.waterItemblok}>
                     <svg className={css.iconGlas} width="26" height="26">
                       <use href={Icons + '#glas'}></use>
@@ -181,7 +181,7 @@ import {
                   </div>
                   <div className={css.itemButtonblok}>
                     <button
-                      className={css.editButton}
+                      className={css.edit_button}
                       type="button"
                       data-iditems={id}
                       onClick={editHandleChange}
@@ -191,12 +191,12 @@ import {
                       </svg>
                     </button>
                     <button
-                      className={css.delButton}
+                      className={css.deleteButton}
                       type="button"
                       data-iditems={id}
                       onClick={delHandleChange}
                     >
-                      <svg className={css.iconDel} width="16" height="13">
+                      <svg className={css.icon_delete} width="16" height="13">
                         <use href={Icons + '#delete'}></use>
                       </svg>
                     </button>
@@ -257,7 +257,7 @@ import {
                   const dataS = new Date(date);
                   if (id === idItem)
                     return (
-                      <div className={css.list_item} key={id}>
+                      <div className={css.listItem} key={id}>
                         <div className={css.waterItemblokEdit}>
                           <svg className={css.iconGlas} width="26" height="26">
                             <use href={Icons + '#glas'}></use>
@@ -331,7 +331,7 @@ import {
           </Modal>
         )}
         <button className={css.button} onClick={() => handleClick()}>
-          <div className={css.buttonblok}>
+          <div className={css.button_blok}>
             <svg className={css.iconPlus} width="10" height="10">
               <use href={Icons + '#plus'}></use>
             </svg>

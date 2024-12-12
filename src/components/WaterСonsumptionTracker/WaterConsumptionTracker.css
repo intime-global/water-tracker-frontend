@@ -2,35 +2,41 @@
   .title1 {
     font-weight: 700;
     font-size: 28px;
-    line-height: 114%;
+    line-height: 31.92px;
     color: #2f2f2f;
+    padding-bottom: 16px;
   }
 
   .title2 {
     font-weight: 400;
     font-size: 24px;
-    line-height: 125%;
+    line-height: 30px;
     color: #2f2f2f;
+    padding-bottom: 25px;
   }
 
   .title3 {
     font-weight: 500;
     font-size: 18px;
-    line-height: 111%;
+    line-height: 19.98px;
     color: #2f2f2f;
+  }
+
+  .benefitsList {
+    padding-bottom: 24px;
   }
 
   .benefitsText {
     font-weight: 400;
     font-size: 16px;
-    line-height: 125%;
+    line-height: 20px;
     color: #2f2f2f;
   }
 
   .btnTryTracker {
     font-weight: 500;
     font-size: 16px;
-    line-height: 125%;
+    line-height: 20px;
     text-align: center;
     color: #fff;
     border-radius: 10px;
@@ -44,17 +50,21 @@
 @media screen and (min-width: 768px) {
   .title1 {
     font-size: 36px;
-    line-height: 117%;
+    line-height: 42.12px;
   }
 
   .title2 {
     font-size: 26px;
-    line-height: 123%;
+    line-height: 31.98px;
+  }
+
+  .title3 {
+    padding-bottom: 12px;
   }
 
   .btnTryTracker {
     font-size: 18px;
-    line-height: 133%;
+    line-height: 23.94px;
     padding: 10px 30px;
     width: 336px;
     height: 44px;

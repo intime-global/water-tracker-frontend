@@ -1,17 +1,13 @@
 import WaterConsumptionTracker from '../WaterСonsumptionTracker/WaterConsumptionTracker';
 import WhyDrinkWater from '../WhyDrinkWater/WhyDrinkWater';
 
-const WelcomePage = () => {
+const Welcome = () => {
   return (
-    <div>
-      <div>
-        <WaterConsumptionTracker />
-      </div>
-      <div>
-        <WhyDrinkWater />
-      </div>
-    </div>
+    <>
+      <WaterConsumptionTracker />
+      <WhyDrinkWater />
+    </>
   );
 };
 
-export default WelcomePage;
+export default Welcome;

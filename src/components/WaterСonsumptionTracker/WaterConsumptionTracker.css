@@ -23,7 +23,15 @@
   }
 
   .benefitsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     padding-bottom: 24px;
+  }
+
+  .benefitsList li {
+    display: flex;
+    gap: 8px;
   }
 
   .benefitsText {
@@ -33,7 +41,16 @@
     color: #2f2f2f;
   }
 
+  .benefitsIcon {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2px;
+    fill: none;
+    stroke: #407bff;
+  }
+
   .btnTryTracker {
+    /* width: 100%; */
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
@@ -45,7 +62,16 @@
     height: 36px;
     box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
     background: #407bff;
+    cursor: pointer;
   }
+
+  .btnTryTracker:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
+
+  /* .btnTryTracker:active {
+    shadow ????
+  } */
 }
 @media screen and (min-width: 768px) {
   .title1 {
@@ -62,6 +88,11 @@
     padding-bottom: 12px;
   }
 
+  .benefitsList {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .btnTryTracker {
     font-size: 18px;
     line-height: 23.94px;
@@ -69,9 +100,22 @@
     width: 336px;
     height: 44px;
   }
+
+  .benefitsIcon {
+    width: 40px;
+    height: 40px;
+  }
 }
 @media screen and (min-width: 1440px) {
+  /* .trackerBenefits {
+  } */
+
   .btnTryTracker {
     width: 384px;
+  }
+
+  .benefitsList {
+    flex-direction: column;
+    justify-content: center;
   }
 }

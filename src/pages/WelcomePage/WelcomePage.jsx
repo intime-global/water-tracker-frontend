@@ -2,9 +2,9 @@ import Welcome from '../../components/Welcome/Welcome';
 
 const WelcomePage = () => {
   return (
-    <div>
+    <>
       <Welcome />
-    </div>
+    </>
   );
 };
 

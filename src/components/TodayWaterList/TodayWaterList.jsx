@@ -6,17 +6,19 @@ import {
     deleteWaterTodayThunk,
     editWaterTodayThunk,
   } from '../../redux/Water/waterThunk.js';
-  import {
+import {
     waterListSelector,
     waterErrorSelector,
     waterIsLoadingSelector,
   } from '../../redux/Water/waterSelector.js';
 
-  import css from './TodayWaterList.module.css';
-  import Modal from 'components/Modal/Modal';
-  import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
-  import Icons from '../../icons/icons.svg';
-  import { getWaterMonthThunk } from '../../redux/Month/monthThunk.js';
+import css from './TodayWaterList.module.css';
+import ModalContainer from 'components/ModalContainer/ModalContainer.jsx';
+import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
+import Icons from '../../icons/sprite.svg';
+import { Svg } from 'components/Icons/icons.jsx';
+import { getWaterMonthThunk } from '../../redux/Month/monthThunk.js';
+import { format } from 'date-fns';
 
   const TodayList = () => {
     const dispatch = useDispatch();
@@ -167,7 +169,7 @@ import {
                 <li className={css.listItem} key={id}>
                   <div className={css.waterItemblok}>
                     <svg className={css.iconGlas} width="26" height="26">
-                      <use href={Icons + '#glas'}></use>
+                      <use href={Icons + '#icon-water-glass'}></use>
                     </svg>
                     <div className={css.contentItemblok}>
                       <p className={css.waterItem}>{consumedWater} ml</p>{' '}
@@ -187,7 +189,7 @@ import {
                       onClick={editHandleChange}
                     >
                       <svg className={css.iconEdit} width="16" height="16">
-                        <use href={Icons + '#edit'}></use>
+                        <use href={Icons + '#icon-edit'}></use>
                       </svg>
                     </button>
                     <button
@@ -197,7 +199,7 @@ import {
                       onClick={delHandleChange}
                     >
                       <svg className={css.icon_delete} width="16" height="13">
-                        <use href={Icons + '#delete'}></use>
+                        <use href={Icons + '#icon-delete'}></use>
                       </svg>
                     </button>
                   </div>
@@ -211,44 +213,36 @@ import {
           )}
         </ul>
         {showModalDel && (
-          <Modal active={setShowModalDel} onClose={onClose}>
+          <ModalContainer active={setShowModalDel} onClose={onClose}>
             <div className={css.containerDel}>
               <div className={css.firstblock}>
                 <h2 className={css.title}>Delete entry</h2>
                 <button className={css.exit} type="button" onClick={closeModal}>
-                  <Svg id={'#close'} width={24} height={24} />
+                  <Svg id={'#icon-close'} width={24} height={24} />
                 </button>
               </div>
-              <p className={css.textDel}>
-                Are you sure you want to delete the entry?
-              </p>
+              <p className={css.textDel}>Are you sure you want to delete the entry?</p>
               <div className={css.containerBtnDel}>
                 <button
                   className={css.btnCancellDel}
                   type="button"
-                  onClick={onClose}
-                >
-                  Cancel
-                </button>
+                  onClick={onClose}>Cancel</button>
                 <button
                   className={css.btnDeletelDel}
                   type="button"
-                  onClick={deleteHandleChange}
-                >
-                  Delete
-                </button>
+                  onClick={deleteHandleChange}>Delete</button>
               </div>
             </div>
-          </Modal>
+          </ModalContainer>
         )}
 
         {showModalEdit && (
-          <Modal active={showModalEdit} onClose={onClose}>
+          <ModalContainer active={showModalEdit} onClose={onClose}>
             <div className={css.container}>
               <div className={css.firstblock}>
                 <h2 className={css.title}>Edit the entered amount of water</h2>
                 <button className={css.exit} type="button" onClick={closeModal}>
-                  <Svg id={'#close'} width={24} height={24} />
+                  <Svg id={'#icon-close'} width={24} height={24} />
                 </button>
               </div>
 
@@ -260,7 +254,7 @@ import {
                       <div className={css.listItem} key={id}>
                         <div className={css.waterItemblokEdit}>
                           <svg className={css.iconGlas} width="26" height="26">
-                            <use href={Icons + '#glas'}></use>
+                            <use href={Icons + '#icon-water-glass'}></use>
                           </svg>
                           <div className={css.contentItemblokEdit}>
                             <p className={css.waterItem}>{consumedWater} ml</p>{' '}
@@ -287,11 +281,11 @@ import {
                     onClick={decreaseDose}
                     disabled={amount === 0}
                   >
-                    <Svg id={'#minus'} width={10} height={14} />
+                    <Svg id={'#icon-minus'} width={10} height={14} />
                   </button>
                   <span className={css.span}>{amount}ml</span>
                   <button className={css.btn} onClick={increaseDose}>
-                    <Svg id={'#plus'} width={14} height={14} />
+                    <Svg id={'#icon-plus'} width={14} height={14} />
                   </button>
                 </div>
               </div>
@@ -322,35 +316,28 @@ import {
                 </div>
                 <div className={css.fifthblock}>
                   <p className={css.amn}>{amount}ml</p>
-                  <button className={css.save} type="submit">
-                    Save
-                  </button>
+                  <button className={css.save} type="submit">Save</button>
                 </div>
               </form>
             </div>
-          </Modal>
+          </ModalContainer>
         )}
         <button className={css.button} onClick={() => handleClick()}>
           <div className={css.button_blok}>
             <svg className={css.iconPlus} width="10" height="10">
-              <use href={Icons + '#plus'}></use>
+              <use href={Icons + '#icon-plus'}></use>
             </svg>
             <p className={css.buttonText}>Add Water</p>
           </div>
         </button>
 
         {showModal ? (
-          <Modal active={showModal} onClose={closeModal}>
+          <ModalContainer active={showModal} onClose={closeModal}>
             <AddWaterModal closeModal={closeModal} />
-          </Modal>
+          </ModalContainer>
         ) : null}
       </div>
-    </>
   );
 };
 
 export default TodayList;
-
-
-
-

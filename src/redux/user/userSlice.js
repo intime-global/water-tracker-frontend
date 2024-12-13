@@ -9,7 +9,7 @@ import {
   getUserThunk,
   editUserInfoThunk,
   editUserAvatarThunk,
-  editWaterRateThunk,
+  editUserWaterRateThunk,
 } from './userOperations';
 
 export const userSlice = createSlice({
@@ -28,7 +28,7 @@ export const userSlice = createSlice({
       .addCase(getUserThunk.fulfilled, handleUserInfo)
       .addCase(editUserInfoThunk.fulfilled, handleEditUser)
       .addCase(editUserAvatarThunk.fulfilled, handleUpdateAvatar)
-      .addCase(editWaterRateThunk.fulfilled, handleWaterRate);
+      .addCase(editUserWaterRateThunk.fulfilled, handleWaterRate);
   },
 });
 

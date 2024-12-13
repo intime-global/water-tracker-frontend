@@ -1,4 +1,4 @@
-import { initialState } from './authSlice';
+import { initialState } from './userSlice';
 
 export const handleUserInfo = (state, { payload }) => {
   state.user = payload;

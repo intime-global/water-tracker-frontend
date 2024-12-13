@@ -14,7 +14,7 @@ import {
 
 import css from './TodayWaterList.module.css';
 import ModalContainer from 'components/ModalContainer/ModalContainer.jsx';
-import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
+import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal.jsx';
 import Icons from '../../icons/sprite.svg';
 import { Svg } from 'components/Icons/icons.jsx';
 import { getWaterMonthThunk } from '../../redux/Month/monthThunk.js';
@@ -118,6 +118,7 @@ import { format } from 'date-fns';
         currentDate.setMinutes(minutes);
 
         const isoDate = currentDate.toISOString();
+        console.log(isoDate);
         setShowModalEdit(false);
         document.body.style.overflow = '';
         if(amount ===0){
@@ -177,7 +178,6 @@ import { format } from 'date-fns';
                         {dataS.getHours() < 10 && `0`}
                         {dataS.getHours()}:{dataS.getMinutes() < 10 && `0`}
                         {dataS.getMinutes()}{' '}
-                        {dataS.getHours() < 12 ? `AM` : `PM`}
                       </p>
                     </div>
                   </div>
@@ -263,7 +263,6 @@ import { format } from 'date-fns';
                               {dataS.getHours()}:
                               {dataS.getMinutes() < 10 && `0`}
                               {dataS.getMinutes()}{' '}
-                              {dataS.getHours() < 12 ? `AM` : `PM`}
                             </p>
                           </div>
                         </div>

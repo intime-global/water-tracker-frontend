@@ -77,41 +77,27 @@ export const AddWaterModal = ({ closeModal }) => {
         }
       };
       return (
-        <div>
-          <div>
+        <>
             <h2>Add water</h2>
             <button type="button" onClick={closeModal}>
               <Svg id={'#icon-close'} width={24} height={24} />
           </button>
-
-          </div>
-
           <p>Choose a value:</p>
-            <div>
               <p>Amount of water:</p>
-              <div>
               <button onClick={decreaseDose} disabled={amount === 0}>
                 <Svg id={'#icon-minus'} width={10} height={14} />
                 </button>
-                <span className={css.span}>{amount}ml</span>
-              <button className={css.btn} onClick={increaseDose}>
+                <span>{amount}ml</span>
+              <button onClick={increaseDose}>
                 <Svg id={'#icon-plus'} width={14} height={14 }/>
                 </button>
-              </div>
-
-          </div>
 
           <form onSubmit={handleSubmit}>
-            <div>
               <p>Recording time:</p>
-              <div>
                 <select value={date} onChange={handleTime}>
                   {timeOptions()}
                 </select>
-              </div>
-            </div>
 
-            <div>
               <label>
                 Enter the value of the water used:
               </label>
@@ -121,15 +107,12 @@ export const AddWaterModal = ({ closeModal }) => {
                 onChange={handleInputWaterDoseChange}
                 onBlur={handleInputWaterDoseBlur}
               />
-            </div>
 
-            <div>
               <p>{amount}ml</p>
               <button type="submit">
                 Save
               </button>
-            </div>
           </form>
-        </div>
+        </>
       );
     };

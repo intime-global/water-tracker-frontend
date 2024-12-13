@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Svg } from 'components/Icons/icons.jsx';
+import { format } from 'date-fns';
 
 export const AddWaterModal = ({ closeModal }) => {
     const dispatch = useDispatch();
@@ -62,8 +63,7 @@ export const AddWaterModal = ({ closeModal }) => {
         const currentDate = new Date();
         currentDate.setHours(hours);
         currentDate.setMinutes(minutes);
-        const isoDate = currentDate.toISOString();
-        console.log(isoDate);
+        const isoDate = format(new Date(), 'yyyy-MM-dd hh:MM:ss');
        if(amount===0){
         closeModal();
         return;

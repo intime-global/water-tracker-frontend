@@ -1,0 +1,164 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover, contain;
+  background-image: url('/images/HomePage/mob/bubble_mob_1x.png');
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.content {
+  background-color: rgb(187, 193, 196);
+  z-index: 1;
+}
+
+.dailyNorma {
+  width: 164px;
+  height: 76px;
+  background-color: rgb(156, 105, 204);
+  padding-bottom: 8px;
+}
+
+.bottleSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+.bottle {
+  width: 280px;
+  height: 208px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url('../../images/HomePage/mob/bottle_home_mob_1x.png');
+}
+.statisticsSection {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  background: var(--secondary-color-2);
+  padding: 24px 8px;
+}
+
+.todayWaterList {
+  padding-bottom: 24px;
+}
+
+@media screen and (min-resolution: 192dpi) {
+  .background {
+    background-image: url('../../images/HomePage/mob/bubble_mob_2x.png');
+  }
+
+  .bottle {
+    background-image: url('../../images/HomePage/mob/bottle_home_mob_2x.png');
+  }
+}
+
+@media screen and (min-resolution: 288dpi) {
+  .background {
+    background-image: url('../../images/HomePage/mob/bubble_mob_3x.png');
+  }
+
+  .bottle {
+    background-image: url('../../images/HomePage/mob/bottle_home_mob_3x.png');
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .background {
+    background-image: url('../../images/HomePage/tab/bubble_tab_1x.png');
+    padding-bottom: 44px;
+  }
+
+  .bottle {
+    background-image: url('../../images/HomePage/tab/botle_home_tab_1x.png');
+    width: 518px;
+    height: 386px;
+  }
+
+  .statisticsSection {
+    padding: 32px 24px;
+  }
+
+  .dailyNorma {
+    position: fixed;
+    left: 93px;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+  .background {
+    background-image: url('../../images/HomePage/tab/bubble_tab_2x.png');
+  }
+
+  .bottle {
+    background-image: url('../../images/HomePage/tab/botle_home_tab_2x.png');
+  }
+}
+
+@media screen and (min-resolution: 288dpi) {
+  .background {
+    background-image: url('../../images/HomePage/tab/bubble_tab_3x.png');
+  }
+  .bottle {
+    background-image: url('../../images/HomePage/tab/botle_home_tab_3x.png');
+  }
+}
+
+/* Desk */
+@media screen and (min-width: 1440px) {
+  .content {
+    flex-direction: row;
+  }
+
+  .background {
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .bottle {
+    position: relative;
+    top: 30px;
+    z-index: 1;
+    left: 73.3px;
+    width: 739px;
+    height: 548px;
+    background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png');
+  }
+  .statisticsSection {
+    padding: 32px 24px;
+  }
+
+  .dailyNorma {
+    position: absolute;
+    z-index: 10;
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .background {
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_2x.png');
+  }
+
+  .bottle {
+    background-image: url('../../images/HomePage/desk/bottle_home_desk_2x.png');
+  }
+}
+
+@media screen and (min-resolution: 288dpi) {
+  .background {
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png');
+  }
+  .bottle {
+    background-image: url('../../images/HomePage/desk/bottle_home_desk_3x.png');
+  }
+}

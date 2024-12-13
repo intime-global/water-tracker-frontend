@@ -4,15 +4,15 @@
     padding: 24px 16px;
     /* width: 280px;
     height: 416px; */
-    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
-    background: #ecf2ff;
+    box-shadow: 0 4px 14px 0 var(--shadow-color);
+    background: var(--primary-color-white);
   }
 
   .title3 {
     font-weight: 500;
     font-size: 18px;
     line-height: 19.98px;
-    color: #2f2f2f;
+    color: var(--primary-color-black);
     padding-bottom: 12px;
   }
 
@@ -26,14 +26,14 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    color: #2f2f2f;
+    color: var(--primary-color-black);
   }
 
   .benefitsIcon {
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    fill: #407bff;
+    fill: var(--primary-color-blue);
     cursor: pointer;
   }
 
@@ -43,7 +43,7 @@
     gap: 8px;
   }
   /* .benefitsIcon {
-    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+    box-shadow: 0 4px 14px 0 var(--shadow-color-hover);
   }?????? */
 }
 

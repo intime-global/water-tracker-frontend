@@ -15,9 +15,9 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-// const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-// const SigninPage = lazy(() => import('./pages/SigninPage/SigninPage'));
-// const SignupPage = lazy(() => import('./pages/SignupPage/SignupPage'));
+const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
+const SigninPage = lazy(() => import('./pages/SignInPage/SignInPage'));
+const SignupPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 
 function App() {
   // const dispatch = useDispatch();
@@ -37,7 +37,7 @@ function App() {
       <SharedLayout>
         <Suspense fallback={<Loader />}>
           <Routes>
-            {/* <Route
+            <Route
               index
               element={
                 <RestrictedRoute
@@ -45,25 +45,25 @@ function App() {
                   component={<WelcomePage />}
                 />
               }
-            /> */}
-            {/* <Route
+            />
+            <Route
               path="/signup"
               element={
                 <RestrictedRoute
                   component={<SignupPage />}
-                  redirectTo="/signup"
+                  redirectTo="/signin"
                 />
               }
-            /> */}
-            {/* <Route
+            />
+            <Route
               path="/signin"
               element={
                 <RestrictedRoute
                   component={<SigninPage />}
-                  redirectTo="/signin"
+                  redirectTo="/home"
                 />
               }
-            /> */}
+            />
             {/* <Route
               path="/home"
               element={

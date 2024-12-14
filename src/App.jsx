@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 // import { refreshUser } from '../../redux/auth/operations';
 // import { selectIsRefreshing } from '../../redux/auth/selectors';
@@ -11,6 +12,7 @@ import Loader from './components/Loader/Loader';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 // const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -31,6 +33,7 @@ function App() {
 
   return (
     <div>
+      <ToastContainer limit={3} />
       <SharedLayout>
         <Suspense fallback={<Loader />}>
           <Routes>

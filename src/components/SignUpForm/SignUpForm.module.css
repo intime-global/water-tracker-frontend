@@ -1,0 +1,126 @@
+.containerForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 280px;
+  margin-top: 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: var(--primary-color-black);
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-color-black);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.text {
+  margin-bottom: 8px;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  fill: var(--primary-color-white);
+  stroke: var(--primary-color-blue);
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  border: solid 1px var(--secondary-color-blue-2);
+  border-radius: 6px;
+  padding-left: 16px;
+  color: var(--primary-color-blue);
+  box-sizing: border-box;
+}
+
+.inputError {
+  border: 1px solid var(--secondary-color-red);
+}
+
+input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--secondary-color-blue-3);
+}
+
+.input:focus-within {
+  border: solid 1px var(--secondary-color-blue-2);
+  outline: none;
+}
+
+.button {
+  margin-bottom: 16px;
+  width: 100%;
+  height: 36px;
+  display: block;
+  background-color: var(--primary-color-blue);
+  border-radius: 10px;
+  color: var(--primary-color-white);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--secondary-color-blue-3);
+}
+
+.link {
+  color: var(--primary-color-blue);
+  width: 56px;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--secondary-color-orange);
+}
+
+.error {
+  color: var(--secondary-color-red);
+}
+
+@media screen and (min-width: 768px) {
+  .containerForm {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 336px;
+    margin-top: 50px;
+  }
+
+  .button {
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .containerForm {
+    display: block;
+    margin-right: 216px;
+    width: 384px;
+    height: 404px;
+    margin-top: 148px;
+  }
+}

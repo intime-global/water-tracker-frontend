@@ -1,14 +1,14 @@
 .container {
   border-radius: 10px;
   box-shadow: 0 4px 4px 0 rgba(64, 123, 255, 0.3);
-  background-color: var(--primery-color-white);
+  background-color: var(--primary-color-white);
 }
 
 .subtitle {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.2;
-  color: var(--primery-color-blue);
+  color: var(--primary-color-blue);
   margin: 0;
 }
 
@@ -16,7 +16,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.2;
-  color: var(--primery-color-black);
+  color: var(--primary-color-black);
   margin-bottom: 16px 0;
 }
 
@@ -24,7 +24,7 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 1.3;
-  color: var(--primery-color-blue);
+  color: var(--primary-color-blue);
 }
 
 @media screen and (min-width: 320px) {

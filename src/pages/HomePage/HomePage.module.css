@@ -1,3 +1,5 @@
+/* Загальний фон */
+
 .background {
   width: 100vw;
   height: 100vh;
@@ -6,7 +8,8 @@
   align-items: center;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover, contain;
+  background-size: cover;
+  /* , contain */
   background-image: url('/images/HomePage/mob/bubble_mob_1x.png');
   padding-top: 24px;
   padding-bottom: 40px;

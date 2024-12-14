@@ -10,13 +10,13 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import authSlice from './authSlice';
+import authSlice from './auth/slice.js';
 import { userReducer } from './user/userSlice.js';
 
 const authPersistConfig = {
-  key: 'authSlice',
+  key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken', 'refreshToken'],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authSlice);

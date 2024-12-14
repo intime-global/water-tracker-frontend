@@ -63,7 +63,7 @@ export const AddWaterModal = ({ closeModal }) => {
         const currentDate = new Date();
         currentDate.setHours(hours);
         currentDate.setMinutes(minutes);
-        const isoDate = format(new Date(), 'yyyy-MM-dd hh:MM:ss');
+        const isoDate = format(currentDate, 'yyyy-MM-dd HH:mm:SS');
        if(amount===0){
         closeModal();
         return;

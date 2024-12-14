@@ -117,7 +117,7 @@ const TodayList = () => {
     currentDate.setHours(hours);
     currentDate.setMinutes(minutes);
 
-    const isoDate = format(currentDate, 'yyyy-MM-ddТHH:mm:ss');
+    const isoDate = format(currentDate, "yyyy-MM-dd'T'HH:mm:ss");
     setShowModalEdit(false);
     document.body.style.overflow = '';
     if (amount === 0) {

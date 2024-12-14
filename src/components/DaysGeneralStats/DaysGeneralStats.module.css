@@ -1,0 +1,53 @@
+.container {
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 0 rgba(64, 123, 255, 0.3);
+  background-color: var(--primary-color-white);
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--primary-color-blue);
+  margin: 0;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--primary-color-black);
+  margin-bottom: 16px 0;
+}
+
+.text span {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--primary-color-blue);
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    padding: 24px 13px;
+    width: 280px;
+    height: 188px;
+  }
+  .subtitle {
+    margin-bottom: 16px 0;
+  }
+  .text {
+    margin-bottom: 18px 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 24px 16px;
+    width: 292px;
+    height: 188px;
+  }
+  .text {
+    margin-bottom: 16px 0;
+  }
+}

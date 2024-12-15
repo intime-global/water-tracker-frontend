@@ -163,7 +163,7 @@ export default function SugnUpForm() {
           </Form>
         )}
       </Formik>
-      <Link className={css.link} to="/login">
+      <Link className={css.link} to="/signin">
         Sign in
       </Link>
       {/* <ToastContainer /> */}

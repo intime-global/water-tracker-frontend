@@ -1,11 +1,18 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
 .form {
-  width: 384px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: start;
   align-items: start;
   margin-bottom: 16px;
+  margin-top: 24px;
 }
 
 .title {
@@ -76,10 +83,18 @@
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--primary-color-blue);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 133%;
+  font-size: 16px;
+  line-height: 125%;
   text-align: center;
   color: var(--primary-color-white);
+}
+.button:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  cursor: pointer;
+}
+.button:active {
+  box-shadow: none;
+  cursor: pointer;
 }
 
 .link {
@@ -93,7 +108,25 @@
   position: absolute;
   top: 44px;
   right: 16px;
-  /* transform: translateY(-50%); */
   stroke: var(--primary-color-blue);
   fill: none;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 336px;
+    margin-top: 40px;
+  }
+  .button {
+    font-size: 18px;
+    line-height: 133%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .form {
+    width: 384px;
+    margin-right: 198px;
+    margin-top: 162px;
+  }
 }

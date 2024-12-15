@@ -3,8 +3,8 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
-import { refresh } from './redux/auth/operations';
-import { selectIsRefreshing } from './redux/auth/selectors';
+// import { refresh } from './redux/auth/operations';
+// import { selectIsRefreshing } from './redux/auth/selectors';
 
 import RestrictedRoute from './components/UserMenu/RestrictedRoute';
 import PrivateRoute from './components/UserMenu/PrivateRoute';
@@ -20,16 +20,16 @@ const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 // const SignupPage = lazy(() => import('./pages/SignupPage/SignupPage'));
 
 function App() {
-  const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
+  // const dispatch = useDispatch();
+  // const isRefreshing = useSelector(selectIsRefreshing);
 
-  useEffect(() => {
-    dispatch(refresh());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refresh());
+  // }, [dispatch]);
 
-  if (isRefreshing) {
-    return <Loader />;
-  }
+  // if (isRefreshing) {
+  //   return <Loader />;
+  // }
 
   return (
     <div>
@@ -51,16 +51,16 @@ function App() {
               element={
                 <RestrictedRoute
                   component={<SignupPage />}
-                  redirectTo="/signup"
+                  redirectTo="/signin"
                 />
               }
-            /> */}
-            {/* <Route
+            />
+            <Route
               path="/signin"
               element={
                 <RestrictedRoute
                   component={<SigninPage />}
-                  redirectTo="/signin"
+                  redirectTo="/home"
                 />
               }
             /> */}

@@ -3,8 +3,8 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
-// import { refreshUser } from '../../redux/auth/operations';
-// import { selectIsRefreshing } from '../../redux/auth/selectors';
+import { refresh } from './redux/auth/operations';
+import { selectIsRefreshing } from './redux/auth/selectors';
 
 import RestrictedRoute from './components/UserMenu/RestrictedRoute';
 import PrivateRoute from './components/UserMenu/PrivateRoute';
@@ -14,22 +14,22 @@ import SharedLayout from './components/SharedLayout/SharedLayout';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-// const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-// const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 // const SigninPage = lazy(() => import('./pages/SigninPage/SigninPage'));
 // const SignupPage = lazy(() => import('./pages/SignupPage/SignupPage'));
 
 function App() {
-  // const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
 
-  // if (isRefreshing) {
-  //   return <Loader />;
-  // }
+  if (isRefreshing) {
+    return <Loader />;
+  }
 
   return (
     <div>
@@ -37,7 +37,7 @@ function App() {
       <SharedLayout>
         <Suspense fallback={<Loader />}>
           <Routes>
-            {/* <Route
+            <Route
               index
               element={
                 <RestrictedRoute
@@ -45,7 +45,7 @@ function App() {
                   component={<WelcomePage />}
                 />
               }
-            /> */}
+            />
             {/* <Route
               path="/signup"
               element={
@@ -64,12 +64,12 @@ function App() {
                 />
               }
             /> */}
-            {/* <Route
+            <Route
               path="/home"
               element={
                 <PrivateRoute redirectTo="/signin" component={<HomePage />} />
               }
-            /> */}
+            />
           </Routes>
         </Suspense>
       </SharedLayout>

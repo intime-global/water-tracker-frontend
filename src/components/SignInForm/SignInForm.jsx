@@ -1,6 +1,6 @@
 import { Form, Field, Formik, ErrorMessage } from 'formik';
 // import { useDispatch } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useId } from 'react';
 import clsx from 'clsx';
@@ -42,7 +42,7 @@ const SignInForm = () => {
   };
 
   return (
-    <>
+    <div className={css.formContainer}>
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
@@ -109,11 +109,11 @@ const SignInForm = () => {
           </Form>
         )}
       </Formik>
-      {/* <Link to="/signup" className={css.link}>
+      <Link to="/signup" className={css.link}>
         Sign up
-      </Link> */}
+      </Link>
       {loading && <Loader />}
-    </>
+    </div>
   );
 };
 

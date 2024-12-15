@@ -10,7 +10,7 @@ import {
  * User is still not active, he needs to confirm his email
  */
 export const register = createAsyncThunk(
-  'auth/register',
+  'user/register',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post('/auth/register', credentials);
@@ -26,7 +26,7 @@ export const register = createAsyncThunk(
  * User is now active and can log in with his password
  */
 export const confirmEmail = createAsyncThunk(
-  'auth/confirm-email',
+  'user/confirm-email',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post(
@@ -45,7 +45,7 @@ export const confirmEmail = createAsyncThunk(
  * User gets his accessToken and is allowed to user private part of application
  */
 export const login = createAsyncThunk(
-  'auth/login',
+  'user/login',
   async (userInfo, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post('/auth/login', userInfo);
@@ -61,7 +61,7 @@ export const login = createAsyncThunk(
  * Google auth: get OAuth URL
  */
 export const getOauthUrl = createAsyncThunk(
-  'auth/get-oauth-url',
+  'user/get-oauth-url',
   async (_, thunkAPI) => {
     try {
       const { data } = await axiosInstance.get('/auth/get-oauth-url');
@@ -76,7 +76,7 @@ export const getOauthUrl = createAsyncThunk(
  * Google auth: confirm user and get authToken
  */
 export const confirmOauth = createAsyncThunk(
-  'auth/confirm-oauth',
+  'user/confirm-oauth',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post(
@@ -96,7 +96,7 @@ export const confirmOauth = createAsyncThunk(
  * User gets new accessToken
  */
 export const refresh = createAsyncThunk(
-  'auth/refresh',
+  'user/refresh',
   async (_, thunkAPI) => {
     const reduxState = thunkAPI.getState();
     setAuthHeader(reduxState.auth.accessToken);
@@ -115,7 +115,7 @@ export const refresh = createAsyncThunk(
  * Logout
  * Send request to clear session data on backend and clean up Auth Header
  */
-export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logout = createAsyncThunk('user/logout', async (_, thunkAPI) => {
   try {
     await axiosInstance.post('/auth/logout');
     clearAuthHeader();
@@ -129,7 +129,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
  * User gets link to the Password Reset page with reset token
  */
 export const sendResetPasswordEmail = createAsyncThunk(
-  'auth/send-reset-email',
+  'user/send-reset-email',
   async (email, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post(
@@ -148,7 +148,7 @@ export const sendResetPasswordEmail = createAsyncThunk(
  * User changes his password from Reset Password Email
  */
 export const resetPassword = createAsyncThunk(
-  'auth/reset-pwd',
+  'user/reset-pwd',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axiosInstance.post('/auth/reset-pwd', credentials);

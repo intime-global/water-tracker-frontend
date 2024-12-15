@@ -16,17 +16,18 @@
     "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
-    "formik": "^2.4.6",
     "date-fns": "^4.1.0",
+    "formik": "^2.4.6",
     "modern-normalize": "^3.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-loader-spinner": "^6.1.6",
-    "react-router-dom": "^7.0.2",
-    "yup": "^1.5.0",
     "react-redux": "^9.2.0",
+    "react-router-dom": "^7.0.2",
     "react-toastify": "^10.0.6",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "vite-plugin-svgr": "^4.3.0",
+    "yup": "^1.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

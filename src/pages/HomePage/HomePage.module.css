@@ -1,15 +1,8 @@
 .background {
   position: relative;
-  /* width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  /* , contain */
-  /* z-index: 0;  */
   background-image: url('/images/HomePage/mob/bubble_mob_1x.png');
   padding-top: 24px;
   padding-bottom: 40px;
@@ -19,29 +12,20 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  min-width: 280px;
 }
 
 .dailyNorma {
   width: 164px;
   height: 76px;
-  background-color: rgb(
-    163,
-    128,
-    196
-  ); /* для розміщення додала на деякий час */
   padding-bottom: 8px;
 }
 
 .bottleSection {
-  /* position: relative; Батьківський для абсолютного */
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 100%;
-  display: flex;
-  flex-direction: column; */
   gap: 16px;
   padding-bottom: 40px;
 }
@@ -51,9 +35,7 @@
   height: 208px;
   background-repeat: no-repeat;
   position: relative;
-  z-index: 1; /* Бутылка позаду */
-  /* background-position: center; */
-  border: 1px solid black; /* для розміщення додала на деякий час */
+  z-index: 1;
   background-size: contain;
   background-image: url('../../images/HomePage/mob/bottle_home_mob_1x.png');
 }
@@ -61,12 +43,12 @@
 .statisticsSection {
   display: flex;
   flex-direction: column;
+  width: 280px;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 4px 14px 0 var(--shadow-color);
   background: var(--secondary-color-2);
   padding: 24px 8px;
-  width: 280px;
 }
 
 .todayWaterList {
@@ -113,7 +95,7 @@
   }
 
   .dailyNorma {
-    position: absolute; /* Поверх бутилки */
+    position: absolute;
     z-index: 10;
   }
 }
@@ -150,7 +132,6 @@
   }
 
   .bottleSection {
-    /* justify-content: center; */
     z-index: 2;
     margin-right: -41.67px;
   }

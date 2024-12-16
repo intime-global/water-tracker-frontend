@@ -1,11 +1,8 @@
-.background {
+/* .background {
   width: 100%;
   height: 100%;
   min-height: 100vh;
-
   position: relative;
-  /* overflow-x: hidden;
-  overflow: visible; */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -104,7 +101,7 @@
   .welcome {
     background-image: url('../../images/WelcomePage/desk/backgr_welcome_desk_3x.png');
   }
-}
+} */
 
 .layoutContainer {
   width: 100%;

@@ -1,0 +1,206 @@
+.flexContainer {
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  margin-bottom: 12px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: var(--primary-color-black);
+}
+
+.radioGroup {
+  text-align: left;
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary-color-black);
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.radio {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.customRadio {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--primary-color-blue);
+  border-radius: 50%;
+  background-color: transparent;
+  margin-right: 8px;
+}
+
+.customRadio::before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary-color-blue);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 200ms ease-in;
+}
+
+.radio:checked + .customRadio::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.inputWrap .subtitle {
+  margin-bottom: 8px;
+}
+
+.input {
+  border: 1px solid var(--secondary-color-blue-2);
+  background-color: transparent;
+  border-radius: 6px;
+  padding: 12px 32px 10px 12px;
+  width: 256px;
+  outline: none;
+
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary-color-blue);
+}
+
+.input::placeholder {
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--secondary-color-blue-3);
+}
+
+.input:invalid {
+  border-color: var(--secondary-color-red);
+  color: var(--secondary-color-red);
+}
+
+.icon {
+  stroke: var(--primary-color-blue);
+  fill: transparent;
+  transition: stroke 250ms ease;
+}
+
+.passwordVisibility {
+  border: none;
+  background: none;
+  position: absolute;
+  top: 58%;
+  right: 4%;
+}
+
+.error {
+  color: var(--secondary-color-red);
+  line-height: 1.29;
+  font-size: 14px;
+  position: absolute;
+  top: 100%;
+}
+
+.commonError {
+  color: var(--secondary-color-red);
+  line-height: 1.11;
+  font-size: 13px;
+  position: absolute;
+  bottom: 2%;
+  left: 5%;
+}
+
+.submit {
+  border-radius: 10px;
+  border: none;
+  padding: 8px 30px;
+  width: 256px;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: var(--primary-color-blue);
+  outline: none;
+
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary-color-white);
+  transition: box-shadow 250ms ease;
+}
+
+.submit:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+}
+
+.submit:active {
+  box-shadow: none;
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    width: 392px;
+  }
+
+  .passwordVisibility {
+    right: 42%;
+  }
+
+  .btnWrap {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .submit {
+    width: 160px;
+    padding: 10px 30px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .commonError {
+    font-size: 14px;
+    left: auto;
+    bottom: 5%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .flexContainer {
+    display: flex;
+    gap: 24px;
+  }
+
+  .radioGroup {
+    margin-bottom: 68px;
+  }
+
+  .resetMargin {
+    margin-bottom: 0;
+  }
+
+  .passwordVisibility {
+    right: 2%;
+  }
+
+  .commonError {
+    bottom: 8%;
+  }
+}

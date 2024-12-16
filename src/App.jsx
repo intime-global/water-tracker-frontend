@@ -37,6 +37,7 @@ function App() {
       <SharedLayout>
         <Suspense fallback={<Loader />}>
           <Routes>
+            <Route path="/welcome" element={<WelcomePage />} />
             <Route
               index
               element={
@@ -67,6 +68,7 @@ function App() {
                 <PrivateRoute redirectTo="/signin" component={<HomePage />} />
               }
             />
+            {/* <Route path="*" element={<NotFoundPage />} /> */}
           </Routes>
         </Suspense>
       </SharedLayout>

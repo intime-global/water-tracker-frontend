@@ -1,0 +1,147 @@
+.modal {
+    background: white;
+    border-radius: 10px;
+    padding: 32px 24px;
+    width: 592px;
+    height: 712px;
+    position: relative;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.23077;
+    color: #2f2f2f;
+}
+
+.closeButton {
+    color: #407bff;
+    border: none;
+    background-color: white;
+    width: 24px;
+    height: 24px;
+}
+
+.normaList {
+    display: flex;
+    margin-bottom: 12px;
+    gap: 24px;
+}
+
+.normaItem {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #2f2f2f;
+}
+
+.normaSpan {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33333;
+    color: #407bff;
+}
+
+
+.explanation {
+    border: 1px solid #d7e3ff;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #8f8f8f;
+    margin-bottom: 24px;
+}
+
+.explanationSpan {
+    color: #407bff;
+}
+
+.subheading {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.11111;
+    color: #2f2f2f;
+    margin-bottom: 16px;
+}
+
+.fieldset {
+    width: 206px;
+    height: 20px;
+    border: none;
+    margin-bottom: 16px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #2f2f2f;
+    margin-top: 16px;
+}
+
+.input {
+    margin-top: 8px;
+    border: 1px solid #d7e3ff;
+    border-radius: 6px;
+    padding: 12px 10px;
+    width: 544px;
+    height: 44px;
+    color: #407bff;
+}
+
+.result {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #2f2f2f;
+}
+
+.waterAmount {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33333;
+    color: #407bff;
+}
+
+.saveButton {
+    border-radius: 10px;
+    padding: 10px 30px;
+    width: 160px;
+    height: 44px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+    background: #407bff;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.33333;
+    text-align: center;
+    color: #fff;
+    margin-top: 34px;
+    justify-self: end;
+}

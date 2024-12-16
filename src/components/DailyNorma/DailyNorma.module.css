@@ -1,0 +1,38 @@
+.container {
+border: 1px solid var(--secondary-color-blue-2);
+    border-radius: 10px;
+    padding: 8px 20px;
+    width: 164px;
+    height: 76px;
+    padding: 20px 8px;
+    box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
+        background: var(--primery-color-white);
+}
+
+.title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 133%;
+        margin-bottom: 12px;
+}
+
+.norma {
+    font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+        color: var(--primery-color-blue);
+        margin-left: 12px;
+        width: 94px;
+            height: 24px;
+}
+
+.button{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: #8baeff;
+    &:hover{
+text-decoration: underline;
+    }
+}

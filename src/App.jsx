@@ -10,6 +10,7 @@ import RestrictedRoute from './components/UserMenu/RestrictedRoute';
 import PrivateRoute from './components/UserMenu/PrivateRoute';
 import Loader from './components/Loader/Loader';
 import SharedLayout from './components/SharedLayout/SharedLayout';
+import PasswordResetPage from './pages/EmailResetPage/PasswordResetPage';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -65,6 +66,12 @@ function App() {
               path="/home"
               element={
                 <PrivateRoute redirectTo="/signin" component={<HomePage />} />
+              }
+            />
+            <Route
+              path="/reset-pwd"
+              element={
+                <RestrictedRoute redirectTo="/home" component={<PasswordResetPage />} />
               }
             />
           </Routes>

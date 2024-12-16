@@ -1,6 +1,6 @@
 // import DailyNorma from '../../components/WaterRatioPanel/WaterRatioPanel';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
-import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
+// import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 // import MonthStatsTable from '../../components/Calendar/Month/Month';
 import AuthContainer from '../../components/AuthContainer/AuthContainer';
 

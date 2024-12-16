@@ -5,19 +5,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteWaterTodayThunk,
   editWaterTodayThunk,
-} from '../../redux/Water/waterThunk.js';
+} from '../../redux/water/waterThunk.js';
 import {
   waterListSelector,
   waterErrorSelector,
   waterIsLoadingSelector,
-} from '../../redux/Water/waterSelector.js';
+} from '../../redux/water/waterSelector.js';
 
 import css from './TodayWaterList.module.css';
-import ModalContainer from 'components/ModalContainer/ModalContainer.jsx';
-import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal.jsx';
+import ModalContainer from '../ModalContainer/ModalContainer.jsx';
+import { AddWaterModal } from '../AddWaterModal/AddWaterModal.jsx';
 import Icons from '../../icons/sprite.svg';
-import { Svg } from 'components/Icons/icons.jsx';
-import { getWaterMonthThunk } from '../../redux/Month/monthThunk.js';
+import { Svg } from '../Icons/icons.jsx';
+import { getWaterMonthThunk } from '../../redux/month/monthThunk.js';
 import { format } from 'date-fns';
 
 const TodayList = () => {
@@ -210,7 +210,7 @@ const TodayList = () => {
         )}
       </ul>
       {showModalDel && (
-        <ModalContainer active={setShowModalDel} onClose={onClose}>
+        <ModalContainer onClose={onClose}>
           <div className={css.containerDel}>
             <div className={css.firstblock}>
               <h2 className={css.title}>Delete entry</h2>
@@ -242,7 +242,7 @@ const TodayList = () => {
       )}
 
       {showModalEdit && (
-        <ModalContainer active={showModalEdit} onClose={onClose}>
+        <ModalContainer onClose={onClose}>
           <div className={css.container}>
             <div className={css.firstblock}>
               <h2 className={css.title}>Edit the entered amount of water</h2>
@@ -337,7 +337,7 @@ const TodayList = () => {
       </button>
 
       {showModal ? (
-        <ModalContainer active={showModal} onClose={closeModal}>
+        <ModalContainer onClose={closeModal}>
           <AddWaterModal closeModal={closeModal} />
         </ModalContainer>
       ) : null}

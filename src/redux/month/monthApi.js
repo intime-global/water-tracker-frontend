@@ -1,8 +1,8 @@
-import axios from 'axios';
+import { axiosInstance } from '../../services/axios.config.js';
 
-const api = axios.create({
-  baseURL: 'https://intime-water-tracker.onrender.com/api',
-});
+[...]
+
+const response = await axiosInstance.patch('/user/', data);
 
 export const getWaterMonth = async (token, date) => {
   const { data } = await api.get(`/water/month?date=${date}`, {

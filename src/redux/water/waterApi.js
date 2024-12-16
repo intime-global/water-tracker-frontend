@@ -1,11 +1,11 @@
-import axios from 'axios';
+import { axiosInstance } from '../../services/axios.config.js';
 
-const api = axios.create({
-    baseURL: 'https://intime-water-tracker.onrender.com/api',
-  });
+[...]
+
+const response = await axiosInstance.patch('/user/', data);
 
 export const deleteWater = async (token, id) => {
-    const { data } = await api.delete(`/Water/${id}`,  {
+    const { data } = await api.delete(`/water/${id}`,  {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -14,7 +14,7 @@ export const deleteWater = async (token, id) => {
   };
 
   export const editWater = async (token, body) => {
-    const { data } = await api.patch(`/Water/${body.id}`, {
+    const { data } = await api.patch(`/water/${body.id}`, {
       amount: body.amount,
       date: body.date
     },{

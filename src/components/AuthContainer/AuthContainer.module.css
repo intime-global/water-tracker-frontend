@@ -1,0 +1,63 @@
+.background {
+  /* width: 100%; */
+  /* height: 100%; */
+  /* min-height: 100vh; */
+  position: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../../images/HomePage/mob/bubble_mob_1x.png');
+  box-sizing: border-box;
+}
+
+@media screen and (min-resolution: 192dpi) {
+  .background {
+    background-image: url('../../images/HomePage/mob/bubble_mob_2x.png');
+  }
+}
+
+@media screen and (min-resolution: 288dpi) {
+  .background {
+    background-image: url('../../images/HomePage/mob/bubble_mob_3x.png');
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    background-position: cover;
+    background-size: cover;
+    background-image: url('../../images/HomePage/tab/bubble_tab_1x.png');
+  }
+}
+
+@media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+  .background {
+    background-image: url('../../images/HomePage/tab/bubble_tab_2x.png');
+  }
+}
+
+@media screen and (min-resolution: 288dpi) {
+  .background {
+    background-image: url('../../images/HomePage/tab/bubble_tab_3x.png');
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .background {
+    background-position: center bottom;
+    background-size: cover;
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .background {
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_2x.png');
+  }
+}
+
+@media screen and (min-resolution: 288dpi) {
+  .background {
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png');
+  }
+}

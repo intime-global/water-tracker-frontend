@@ -1,0 +1,50 @@
+.subtitle {
+  margin-bottom: 12px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: var(--primary-color-black);
+}
+
+.photoSetting {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.photoWrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.defaultUser {
+  fill: transparent;
+  stroke: var(--secondary-color-blue-3);
+  display: flex;
+}
+
+.uploadBtn {
+  background-color: transparent;
+  color: var(--primary-color-blue);
+  border: none;
+  display: flex;
+  gap: 8px;
+
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+.uploadIcon {
+  fill: transparent;
+  stroke: var(--primary-color-blue);
+}

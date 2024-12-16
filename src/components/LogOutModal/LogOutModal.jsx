@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
-import { logout } from "../../redux/user/operations.js";
-import ModalContainer from "../ModalContainer/ModalContainer.jsx";
-import sprite from "../../icons/sprite.svg";
-import css from "./LogOutModal.module.css";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/user/operations.js';
+import ModalContainer from '../ModalContainer/ModalContainer.jsx';
+import sprite from '../../icons/sprite.svg';
+import css from './LogOutModal.module.css';
 
-export default function LogOutModal({ isOpen = true, onClose }) {
+export default function LogOutModal({ isOpen, onClose }) {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {

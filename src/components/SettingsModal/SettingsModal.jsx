@@ -1,10 +1,10 @@
-import ModalContainer from "../ModalContainer/ModalContainer.jsx";
-import SettingsForm from "../SettingsForm/SettingsForm.jsx";
-import UserPhoto from "../UserPhoto/UserPhoto";
-import sprite from "../../icons/sprite.svg";
-import css from "./SettingsModal.module.css";
+import ModalContainer from '../ModalContainer/ModalContainer.jsx';
+import SettingsForm from '../SettingsForm/SettingsForm.jsx';
+import UserPhoto from '../UserPhoto/UserPhoto';
+import sprite from '../../icons/sprite.svg';
+import css from './SettingsModal.module.css';
 
-export default function SettingsModal({ isOpen = true, onClose }) {
+export default function SettingsModal({ isOpen, onClose }) {
   return (
     <>
       {isOpen && (

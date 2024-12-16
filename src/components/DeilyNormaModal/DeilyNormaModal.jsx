@@ -1,27 +1,17 @@
-import { useEffect} from "react";
-import Modal from "react-modal";
-import Icons from "../../icons/sprite.svg"
-import "../../index.css";
-import css from "./DailyNormaModal.module.css";
+// import { useEffect} from "react";
+import Icons from '../../icons/sprite.svg';
+import ModalContainer from '../ModalContainer/ModalContainer';
+import '../../index.css';
+import css from './DailyNormaModal.module.css';
 
-export default function DailyNormaModal (  {onCloseModal, modalIsOpen}) {
-
+export default function DailyNormaModal({ onCloseModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-
-    useEffect (()=> {},[])
-
   return (
     <>
-      <button onClick={modalIsOpen}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={onCloseModal}
-        style={css.modal}
-        overlayClassName={css.overlay}
-      >
+      <ModalContainer>
         <div className={css.modal}>
           <div className={css.head}>
             <h1 className={css.title}>My daily water norm</h1>
@@ -43,9 +33,11 @@ export default function DailyNormaModal (  {onCloseModal, modalIsOpen}) {
 
           <p className={css.explanation}>
             <span className={css.explanationSpan}>*</span>
-            <strong> V</strong> is the volume of the water norm in liters per day,
+            <strong> V</strong> is the volume of the water norm in liters per
+            day,
             <strong> M</strong> is your body weight,
-            <strong> T</strong> is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these,
+            <strong> T</strong> is the time of active sports, or another type of
+            activity commensurate in terms of loads (in the absence of these,
             you must set 0).
           </p>
 
@@ -111,7 +103,7 @@ export default function DailyNormaModal (  {onCloseModal, modalIsOpen}) {
             </button>
           </form>
         </div>
-      </Modal>
+      </ModalContainer>
     </>
   );
-};
+}

@@ -13,6 +13,7 @@ export default function DailyNorma() {
     <div className={css.container}>
       <h2 className={css.title}>My daily norma</h2>
       <div className={css.norma}>
+        <p>Lorem, ipsum.</p> /с бека будет норма воды/
         <button type="button" onClick={openModal} className={css.button}>
           Edit
         </button>

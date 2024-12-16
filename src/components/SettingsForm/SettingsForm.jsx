@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { editUserInfoThunk } from "../../redux/user/operations.js";
 import { selectIsLoading, selectUser } from "../../redux/user/selectors.js";
-import { notifySuccess } from "../services/notifications.js";
+import { notifySuccess } from "../../services/notifications.js";
 import sprite from "../../icons/sprite.svg";
 import css from "./SettingForm.module.css";
 

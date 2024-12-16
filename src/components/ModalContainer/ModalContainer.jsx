@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import clsx from 'clsx';
 import css from './ModalContainer.module.css';
-const ModalContainer = ({ onClose, children }) => {
+
+const ModalContainer = ({ onClose, isTransparent = false, children }) => {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     document.documentElement.style.overflow = 'hidden';
@@ -23,8 +25,11 @@ const ModalContainer = ({ onClose, children }) => {
     }
   };
 
+  const classes = (transparent) =>
+    clsx(css.overlay, transparent ? css.transparent : css.black);
+
   return (
-    <div className={css.overlay} onClick={handleBackdropClick}>
+    <div className={classes(isTransparent)} onClick={handleBackdropClick}>
       {children}
     </div>
   );

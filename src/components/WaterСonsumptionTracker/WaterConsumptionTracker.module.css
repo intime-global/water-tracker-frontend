@@ -1,0 +1,121 @@
+.title1 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 31.92px;
+  color: var(--primary-color-black);
+  padding-bottom: 16px;
+}
+
+.title2 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  color: var(--primary-color-black);
+  padding-bottom: 24px;
+}
+
+.title3 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 19.98px;
+  color: var(--primary-color-black);
+  padding-bottom: 12px;
+}
+
+.benefitsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.benefitsList li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.benefitsText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--primary-color-black);
+}
+
+.benefitsIcon {
+  width: 32px;
+  height: 32px;
+  stroke-width: 2px;
+  fill: none;
+  stroke: var(--primary-color-blue);
+}
+
+.btnTryTracker {
+  /* width: 100%; */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--primary-color-white);
+  border-radius: 10px;
+  padding: 8px 30px;
+  width: 280px;
+  height: 36px;
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
+
+  background: var(--primary-color-blue);
+  cursor: pointer;
+}
+
+.btnTryTracker:hover {
+  box-shadow: 0 4px 14px 0 var(--shadow-color-hover);
+}
+
+/* .btnTryTracker:active {
+    shadow ????
+  } */
+
+@media screen and (min-width: 768px) {
+  .title1 {
+    font-size: 36px;
+    line-height: 42.12px;
+  }
+
+  .title2 {
+    font-size: 26px;
+    line-height: 31.98px;
+  }
+
+  .title3 {
+    padding-bottom: 12px;
+  }
+
+  .benefitsList {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .btnTryTracker {
+    font-size: 18px;
+    line-height: 23.94px;
+    padding: 10px 30px;
+    width: 336px;
+    height: 44px;
+  }
+
+  .benefitsIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .btnTryTracker {
+    width: 384px;
+  }
+
+  .benefitsList {
+    flex-direction: column;
+    justify-content: center;
+  }
+}

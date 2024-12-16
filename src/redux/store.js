@@ -8,26 +8,29 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-  } from 'redux-persist';
-  import storage from 'redux-persist/lib/storage';
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import userSlice from './user/slice.js';
 
-  const authPersistConfig = {
-    key: "authSlice",
-    storage,
-    whitelist: ["token"],
-  };
+const userPersistConfig = {
+  key: 'user',
+  storage,
+  whitelist: ['accessToken'],
+};
 
-  export const perStore = configureStore({
-    reducer: {
+const persistedUserReducer = persistReducer(userPersistConfig, userSlice);
+
+export const perStore = configureStore({
+  reducer: {
+    user: persistedUserReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-      middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-          serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-          },
-        }),
+    }),
 });
-
 
 export default perStore;
 export const persistor = persistStore(perStore);

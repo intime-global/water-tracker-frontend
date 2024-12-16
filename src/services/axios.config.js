@@ -1,5 +1,13 @@
 import axios from 'axios';
 
+export const setAuthHeader = (token) => {
+  axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const clearAuthHeader = () => {
+  axiosInstance.defaults.headers.common.Authorization = '';
+};
+
 // https://medium.com/@velja/token-refresh-with-axios-interceptors-for-a-seamless-authentication-experience-854b06064bde
 // https://vite.dev/guide/env-and-mode
 export const axiosInstance = axios.create({
@@ -7,7 +15,6 @@ export const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true,
 });
 
 axiosInstance.interceptors.response.use(
@@ -27,16 +34,15 @@ axiosInstance.interceptors.response.use(
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', newRefreshToken);
         // Update the authorization header with the new access token.
-        axiosInstance.defaults.headers.common[
-          'Authorization'
-        ] = `Bearer ${accessToken}`;
+        setAuthHeader(accessToken);
         return axiosInstance(originalRequest); // Retry the original request with the new access token.
       } catch (refreshError) {
         // Handle refresh token errors by clearing stored tokens and redirecting to the login page.
         console.error('Token refresh failed:', refreshError);
+        clearAuthHeader;
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
-        window.location.href = '/login';
+        window.location.href = '/signin';
         return Promise.reject(refreshError);
       }
     }

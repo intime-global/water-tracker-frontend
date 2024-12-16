@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -43,7 +43,6 @@ const TodayList = () => {
 
   const onClose = () => {
     setShowModalDel(false);
-    setShowModalEdit(false);
     document.body.style.overflow = '';
   };
 

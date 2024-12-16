@@ -1,11 +1,9 @@
 import { axiosInstance } from '../../services/axios.config.js';
 
-[...]
-
 const response = await axiosInstance.patch('/user/', data);
 
 export const deleteWater = async (token, id) => {
-    const { data } = await api.delete(`/water/${id}`,  {
+    const { data } = await axiosInstance.delete(`/water/${id}`,  {
       headers: {
         Authorization: `Bearer ${token}`,
       },

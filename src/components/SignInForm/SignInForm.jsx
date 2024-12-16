@@ -1,5 +1,5 @@
 import { Form, Field, Formik, ErrorMessage } from 'formik';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useId } from 'react';
@@ -9,7 +9,9 @@ import css from './SignInForm.module.css';
 import sprite from '../../icons/sprite.svg';
 
 import Loader from '../Loader/Loader.jsx';
-// import { login } from '../../redux/auth/operations';
+import { login } from '../../redux/user/operations';
+import { selectAuthError } from '../../redux/user/selectors.js';
+import { notifyError } from '../../services/notifications.js';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -25,14 +27,15 @@ const SigninSchema = Yup.object().shape({
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const emailFieldId = useId();
   const pwdFieldId = useId();
+  const isError = useSelector(selectAuthError);
 
   const handleSubmit = (values, actions) => {
     if (values.email === '' || values.password === '') return;
     setLoading(true);
-    //   dispatch(login(values));
+    dispatch(login(values));
     setLoading(false);
     actions.resetForm();
   };
@@ -43,6 +46,7 @@ const SignInForm = () => {
 
   return (
     <div className={css.formContainer}>
+      {isError && notifyError(isError)}
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}

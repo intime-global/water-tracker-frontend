@@ -26,8 +26,8 @@ const initialState = {
   user: {
     name: '',
     email: '',
-    waterRate: 0,
-    gender: '',
+    waterRate: 2000,
+    gender: 'female',
     photo: '',
   },
   accessToken: null,

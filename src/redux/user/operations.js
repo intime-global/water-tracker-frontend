@@ -1,9 +1,17 @@
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   axiosInstance,
   setAuthHeader,
   clearAuthHeader,
 } from '../../services/axios.config.js';
+
+const authAPI = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_SERVER_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 /**
  * Registration
@@ -13,9 +21,11 @@ export const register = createAsyncThunk(
   'user/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post('/auth/register', credentials);
+      const { data } = await authAPI.post('/auth/register', credentials);
       return data;
     } catch (error) {
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -29,12 +39,11 @@ export const confirmEmail = createAsyncThunk(
   'user/confirm-email',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post(
-        '/auth/confirm-email',
-        credentials,
-      );
+      const { data } = await authAPI.post('/auth/confirm-email', credentials);
       return data;
     } catch (error) {
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -48,10 +57,12 @@ export const login = createAsyncThunk(
   'user/login',
   async (userInfo, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post('/auth/login', userInfo);
+      const { data } = await authAPI.post('/auth/login', userInfo);
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -64,9 +75,11 @@ export const getOauthUrl = createAsyncThunk(
   'user/get-oauth-url',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.get('/auth/get-oauth-url');
+      const { data } = await authAPI.get('/auth/get-oauth-url');
       return data;
     } catch (error) {
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -79,13 +92,12 @@ export const confirmOauth = createAsyncThunk(
   'user/confirm-oauth',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post(
-        '/auth/confirm-oauth',
-        credentials,
-      );
+      const { data } = await authAPI.post('/auth/confirm-oauth', credentials);
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -100,7 +112,7 @@ export const refresh = createAsyncThunk(
   async (_, thunkAPI) => {
     const reduxState = thunkAPI.getState();
     setAuthHeader(reduxState.auth.accessToken);
-    const { data } = await axiosInstance.get('/auth/refresh');
+    const { data } = await authAPI.get('/auth/refresh');
     return data;
   },
   {
@@ -117,9 +129,11 @@ export const refresh = createAsyncThunk(
  */
 export const logout = createAsyncThunk('user/logout', async (_, thunkAPI) => {
   try {
-    await axiosInstance.post('/auth/logout');
+    await authAPI.post('/auth/logout');
     clearAuthHeader();
   } catch (error) {
+    if (error.response?.data?.data?.message)
+      return thunkAPI.rejectWithValue(error.response.data.data.message);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -132,12 +146,11 @@ export const sendResetPasswordEmail = createAsyncThunk(
   'user/send-reset-email',
   async (email, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post(
-        '/auth/send-reset-email',
-        email,
-      );
+      const { data } = await authAPI.post('/auth/send-reset-email', email);
       return data;
     } catch (error) {
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -151,9 +164,11 @@ export const resetPassword = createAsyncThunk(
   'user/reset-pwd',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.post('/auth/reset-pwd', credentials);
+      const { data } = await authAPI.post('/auth/reset-pwd', credentials);
       return data;
     } catch (error) {
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -171,7 +186,9 @@ export const getUserThunk = createAsyncThunk(
       const response = await axiosInstance.get('/user/');
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -187,7 +204,9 @@ export const editUserInfoThunk = createAsyncThunk(
       const response = await axiosInstance.patch('/user/', data);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -210,7 +229,9 @@ export const editUserAvatarThunk = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -226,7 +247,9 @@ export const editUserWaterRateThunk = createAsyncThunk(
       const response = await axiosInstance.patch('/waterRate/', data);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      if (error.response?.data?.data?.message)
+        return thunkAPI.rejectWithValue(error.response.data.data.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );

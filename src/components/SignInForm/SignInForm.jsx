@@ -9,6 +9,8 @@ import css from './SignInForm.module.css';
 import sprite from '../../icons/sprite.svg';
 
 import Loader from '../Loader/Loader.jsx';
+import ModalContainer from '../ModalContainer/ModalContainer';
+import ForgotPasswordForm from '../ForgotPasswordFrom/FosrgotPasswordForm.jsx'
 import { login } from '../../redux/user/operations';
 import { selectAuthError } from '../../redux/user/selectors.js';
 import { notifyError } from '../../services/notifications.js';
@@ -25,6 +27,7 @@ const SigninSchema = Yup.object().shape({
     .required('Password required'),
 });
 const SignInForm = () => {
+  const [showModal, setShowModal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -38,6 +41,11 @@ const SignInForm = () => {
     dispatch(login(values));
     setLoading(false);
     actions.resetForm();
+  };
+
+  const handleForgotPasswordSubmit = (email) => {
+    console.log('Reset password email sent to:', email);
+    setShowModal(false);
   };
 
   const togglePasswordVisibility = () => {
@@ -116,7 +124,15 @@ const SignInForm = () => {
       <Link to="/signup" className={css.link}>
         Sign up
       </Link>
+      <span className={css.forgotPwd} onClick={() => setShowModal(true)}>
+        Forgot password
+      </span>
       {loading && <Loader />}
+      {showModal && (
+        <ModalContainer onClose={() => setShowModal(false)}>
+          <ForgotPasswordForm onSubmit={handleForgotPasswordSubmit} />
+        </ModalContainer>
+      )}
     </div>
   );
 };

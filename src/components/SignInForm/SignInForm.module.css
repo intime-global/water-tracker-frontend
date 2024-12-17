@@ -37,7 +37,7 @@
 }
 
 .input {
-  border: 1px solid #ff9d43;
+  border: solid 1px var(--secondary-color-blue-2);
   border-radius: 6px;
   padding: 12px 10px;
   width: 100%;
@@ -102,6 +102,23 @@
   font-size: 16px;
   line-height: 125%;
   color: var(--primary-color-blue);
+  margin-bottom: 8px;
+}
+
+.link:hover{
+  color: var(--secondary-color-orange);
+}
+
+.forgotPwd{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--primary-color-blue);
+  cursor: pointer;
+}
+
+.forgotPwd:hover{
+  color: var(--secondary-color-orange);
 }
 
 .icon {

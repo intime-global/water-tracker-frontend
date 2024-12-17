@@ -1,36 +1,44 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-// import { register } from '../../redux/auth/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { register } from '../../redux/user/operations';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import css from './SignUpForm.module.css';
 import sprite from '../../icons/sprite.svg';
-// import { ToastContainer, toast } from 'react-toastify';
-// import Loader from '../Loader/Loader';
+import { selectAuthError } from '../../redux/user/selectors.js';
+import { notifyError, notifySuccess } from '../../services/notifications.js';
+import Loader from '../Loader/Loader';
+
+const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const validationSchema = Yup.object({
   email: Yup.string()
     .email('Invalid email, please write a valid email')
-    .matches(
-      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      'Email is not valid',
-    )
+    .matches(emailRegEx, 'Enter a valid email address')
     .required('Email is required'),
   password: Yup.string()
-    .min(6, 'Password must be at least 6 characters.')
+    .min(8, 'Password must be at least 8 characters.')
     .matches(/^[^\s]*$/, 'Password should not contain spaces.')
+    .max(64, 'The password must be no longer than 64 characters')
     .required('Password is required'),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .oneOf([Yup.ref('password'), 'confirmPassword'], 'Passwords must match')
     .required('Confirm password is required'),
 });
 
 export default function SugnUpForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const isError = useSelector(selectAuthError);
+
+  useEffect(() => {
+    if (isError) {
+      notifyError(isError);
+    }
+  }, [isError]);
 
   const toggleShowPassword = () => {
     setShowPassword((prevState) => !prevState);
@@ -40,35 +48,33 @@ export default function SugnUpForm() {
     setShowConfirmPassword((prevState) => !prevState);
   };
 
-  // const handleSubmit = async (values, actions) => {
-  //   setIsLoading(true);
-  //   try {
-  //    dispatch(register(values));
-  //     toast.success(
-  //       `Your account has been created.`,
-  //     );
-  //     actions.resetForm();
-  //   } catch (error) {
-  //     if (error === 'Request failed with status code 409') {
-  //       toast.error('This email is already in use.');
-  //     } else {
-  //       toast.error('An error occurred. Please try again later.');
-  //     }
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const handleSubmit = (values, actions) => {
+    setIsLoading(true);
+    try {
+      dispatch(register(values));
+      notifySuccess(`Your account has been created.`);
+      actions.resetForm();
+    } catch (error) {
+      if (error === 'Request failed with status code 409') {
+        notifyError('This email is already in use.');
+      } else {
+        notifyError('An error occurred. Please try again later.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={css.containerForm}>
-      <h1 className={css.title}>Sign up</h1>
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
         validationSchema={validationSchema}
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
           <Form className={css.form} autoComplete="off">
+            <h2 className={css.title}>Sign up</h2>
             <label className={css.label}>
               <p className={css.text}>Enter your email</p>
               <Field
@@ -135,6 +141,7 @@ export default function SugnUpForm() {
                       : css.input
                   }
                 />
+
                 <svg
                   className={css.icon}
                   onClick={(e) => {
@@ -157,8 +164,7 @@ export default function SugnUpForm() {
             </label>
 
             <button type="submit" className={css.button}>
-              {/* {isLoading ? <Loader /> : 'Sign up'} */}
-              Sign up
+              {isLoading ? <Loader /> : 'Sign up'}
             </button>
           </Form>
         )}
@@ -166,7 +172,6 @@ export default function SugnUpForm() {
       <Link className={css.link} to="/signin">
         Sign in
       </Link>
-      {/* <ToastContainer /> */}
     </div>
   );
 }

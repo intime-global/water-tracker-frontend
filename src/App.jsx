@@ -38,6 +38,7 @@ function App() {
       <SharedLayout>
         <Suspense fallback={<Loader />}>
           <Routes>
+            <Route path="/welcome" element={<WelcomePage />} />
             <Route
               index
               element={

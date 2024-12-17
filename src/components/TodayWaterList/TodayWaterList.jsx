@@ -22,7 +22,7 @@ import { TodayListModal } from '../TodayListModal/TodayListModal.jsx'
 
 
 const TodayList = () => {
-  const { howManyWater } = useSelector(selectTodayWater);
+  const { waterPortions } = useSelector(selectTodayWater);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setisEditing] = useState(false);
@@ -56,9 +56,9 @@ const TodayList = () => {
 
     <div className={css.todayContainer}>
         <h2 className={css.todayTitle}>Today</h2>
-{howManyWater?.length > 0 &&
+{waterPortions?.length > 0 &&
       <ul className={css.listWaters}>
-      {howManyWater.slice().sort((a,b)} => {return getConvertedTime(a.time).getTime() - getConvertedTime(b.time).getTime()}).map((item) => {
+      {waterPortions.slice().sort((a,b)} => {return getConvertedTime(a.time).getTime() - getConvertedTime(b.time).getTime()}).map((item) => {
         return (
           <li className={css.listItem} key={id}>
             <div className={css.listItemTools}>

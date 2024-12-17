@@ -134,7 +134,7 @@
     width: 160px;
     height: 44px;
     border: none;
-    box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
     background: #407bff;
     font-weight: 500;
     font-size: 18px;

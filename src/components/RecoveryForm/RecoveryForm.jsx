@@ -1,13 +1,27 @@
 import { Formik, Form, Field} from 'formik';
+import { useState } from 'react';
 import * as yup from 'yup';
 
 const SignUpForm = ({ submitFunc, token }) => {
   const registerSchema = yup.object({
-    password: yup.string().min(8).max(64).required(),
+    password: yup.string()
+      .min(8, 'Password must be at least 8 characters length')
+      .max(64).matches(/^[^\s]*$/, 'Password should not contain spaces.')
+      .required('Password is required'),
     repeatPassword: yup
       .string()
       .when([yup.ref('password'), null], 'Passwords must match'),
   });
+   const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
+  const toggleShowRepeatPassword = () => {
+    setShowRepeatPassword((prevState) => !prevState);
+  }
 
   const initialValues = {
     password: '',

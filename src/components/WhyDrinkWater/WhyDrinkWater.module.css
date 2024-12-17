@@ -5,7 +5,7 @@
     /* width: 280px;
     height: 416px; */
     box-shadow: 0 4px 14px 0 var(--shadow-color);
-    background: var(--primary-color-white);
+    background: var(--secondary-color-blue-1);
   }
 
   .title3 {
@@ -49,7 +49,9 @@
 
 @media screen and (min-width: 768px) {
   .reasons {
+    width: 494px;
     padding: 32px 24px;
+
     /* width: 494px;
     height: 332px; */
   }

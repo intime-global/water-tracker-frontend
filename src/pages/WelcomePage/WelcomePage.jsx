@@ -6,7 +6,7 @@ const WelcomePage = () => {
   return (
     <AuthContainer>
       <div className={css.welcome}>
-        <Welcome />;
+        <Welcome />
       </div>
     </AuthContainer>
   );

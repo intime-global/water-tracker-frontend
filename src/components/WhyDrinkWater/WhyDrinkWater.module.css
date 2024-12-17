@@ -4,6 +4,7 @@
     padding: 24px 16px;
     /* width: 280px;
     height: 416px; */
+    color: var(--primary-color-black);
     box-shadow: 0 4px 14px 0 var(--shadow-color);
     background: var(--secondary-color-blue-1);
   }
@@ -12,7 +13,6 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 19.98px;
-    color: var(--primary-color-black);
     padding-bottom: 12px;
   }
 
@@ -26,7 +26,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    color: var(--primary-color-black);
   }
 
   .benefitsIcon {
@@ -35,6 +34,7 @@
     border-radius: 100%;
     fill: var(--primary-color-blue);
     cursor: pointer;
+    flex-shrink: 0; /* Не допускаємо зміну розмірів іконок */
   }
 
   .listReasons li {
@@ -42,18 +42,12 @@
     align-items: center;
     gap: 8px;
   }
-  /* .benefitsIcon {
-    box-shadow: 0 4px 14px 0 var(--shadow-color-hover);
-  }?????? */
 }
 
 @media screen and (min-width: 768px) {
   .reasons {
     width: 494px;
     padding: 32px 24px;
-
-    /* width: 494px;
-    height: 332px; */
   }
 }
 @media screen and (min-width: 1440px) {

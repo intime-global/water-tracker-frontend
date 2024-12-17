@@ -1,12 +1,16 @@
 .containerWelcome {
+  width: 280px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: left;
   gap: 40px;
   margin-top: 24px;
 }
 
 @media screen and (min-width: 768px) {
   .containerWelcome {
+    width: 704px;
     gap: 60px;
     margin-top: 40px;
     align-items: stretch;
@@ -15,6 +19,7 @@
 
 @media screen and (min-width: 1440px) {
   .containerWelcome {
+    width: 1014px;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;

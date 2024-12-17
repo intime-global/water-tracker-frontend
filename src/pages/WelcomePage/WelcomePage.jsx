@@ -1,11 +1,14 @@
 import Welcome from '../../components/Welcome/Welcome';
 import css from './WelcomePage.module.css';
+import AuthContainer from '../../components/AuthContainer/AuthContainer';
 
 const WelcomePage = () => {
   return (
-    <div className={css.background}>
-      <Welcome className={css.content} />
-    </div>
+    <AuthContainer>
+      <div className={css.welcome}>
+        <Welcome />
+      </div>
+    </AuthContainer>
   );
 };
 

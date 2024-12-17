@@ -26,6 +26,8 @@ export function popupDelete({ isOpen, onClose, selectedItemId }) {
                     </svg>
         </button>
 </div>
+);
+}
 
 
 //<ModalSubtitle>{t('deleteEntryModal.question')}</ModalSubtitle>

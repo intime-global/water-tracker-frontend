@@ -13,7 +13,7 @@
 .todayTitle {
   font-weight: 500;
   font-size: 24px;
-  line-height: 1.25;
+  line-height: 1.2;
   color: var(--primary-color-black);
   margin-bottom: 16px;
 }
@@ -24,8 +24,6 @@
 }
 
 .listWaters {
-  display: flex;
-  flex-direction: column;
   max-height:180px;
   overflow: auto;
   margin-bottom: 12px;
@@ -48,8 +46,11 @@
 
 .listItem {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  column-gap:38px;
+  padding: 12px 10px 12px 4px;
+  border-bottom: 1px solid var(--secondary-color-blue-2);
 }
 
 .today_container {
@@ -87,22 +88,34 @@
 
 .edit_button {
   border: none;
-  background-color: inherit;
+    background-color: transparent;
+    padding: 0;
+    transition: all 150ms linear;
+    border-bottom: 1px solid transparent;
 }
 
 .iconEdit {
   fill: none;
   stroke: var(--secondary-color-blue-3);
+  width: 16px;
+  height: 16px;
 }
 
 .icon_delete {
-  fill: none;
+  fill: transparent;
   stroke: var(--secondary-color-red);
+  width: 16px;
+  height: 16px;
 }
 
 .deleteButton {
   border: none;
-  background-color: inherit;
+  background-color: transparent;
+  padding: 0;
+}
+
+.deleteButton:hover {
+  border-bottom: 1px solid var(--secondary-second);
 }
 
 .button {
@@ -111,12 +124,29 @@
 }
 
 .button_blok {
+  width: 115px;
+  padding: 0;
+  font-weight: 500;
+  border:none;
+  background-color:transparent;
+  color: var(--primary-color-blue);
   display: flex;
+  column-gap:6px;
   align-items: center;
+  transition: all 150ms linear;
 }
+
+.button_blok:hover {
+  color: var(--secondary-color-orange);}
+
+.span{
+      font-size: 24px;
+  }
 
 .iconPlus {
   margin-right: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 .buttonText {
@@ -167,13 +197,23 @@
   }
 }
 
+  .listItem {
+    padding: 12px 10px 12px 4px;
+  }
+
+  .button_blok {
+    width: 135px;
+    font-size: 18px;
+  }
+
 /**
   |============================
   | Desktop version styles
   |============================
 */
 
-@media only screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
+
   .todayContainer {
     width: 544px;
     margin-bottom: 45px;

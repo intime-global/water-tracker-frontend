@@ -18,7 +18,7 @@ import { Svg } from '../Icons/icons.jsx';
 //import { getWaterMonthThunk } from '../../redux/month/monthThunk.js';
 import { getConvertedTime } from './hooksTodayWater.js'
 import { popupDelete } from './popupDelete.js'
-import { TodayListModal } from ''../TodayListModal/TodayListModaljsx'
+import { TodayListModal } from '../TodayListModal/TodayListModal.jsx'
 
 
 const TodayList = () => {
@@ -67,7 +67,7 @@ const TodayList = () => {
                     type="button"
                     onClick={()=>openModalToEdit(item)}
                   >
-                <svg className={css.iconEdit} width="16" height="16">
+                <svg className={css.iconEdit}>
                       <use href={Icons + '#icon-edit'}></use>
                     </svg>
                   </button>
@@ -76,7 +76,7 @@ const TodayList = () => {
                     type="button"
                     onClick={()=>openModalToDelete(item)}
                   >
-                <svg className={css.icon_delete} width="16" height="13">
+                <svg className={css.icon_delete}>
                       <use href={Icons + '#icon-delete'}></use>
                     </svg>
                   </button>
@@ -85,14 +85,12 @@ const TodayList = () => {
         )
       </ul>
           <button className={css.button} type="button" onClick={openModalToAdd}>
-          <div className={css.buttonblok}>
-            <svg className={css.iconPlus} width="10" height="10">
-              <use href={Icons + '#icon-plus'}></use>
-            </svg>
+          <div className={css.button_blok}>
+          <span>+</span>
             <p className={css.buttonText}>Add Water</p>
           </div>
         </button>
-        {showModalDel && (
+        {isDelete && (
           <ModalContainer onClose={onClose}>
             <div className={css.containerDel}>
               <div className={css.firstblock}>
@@ -128,4 +126,4 @@ const TodayList = () => {
           <popupDelete isOpen={isModalOpen} onClose={closeModal} selectedItemId={selectedItem?.id}/>
           : <TodayListModal isOpen={isModalOpen} onClose={closeModal} isEditing={isEditing} selectedItemId={selectedItem?.id} amountWater={selectedItem?.amount} date={selectedItem?.time}/>}
         </div>
-      )
+      );

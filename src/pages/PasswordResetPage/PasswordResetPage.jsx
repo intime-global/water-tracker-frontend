@@ -1,4 +1,4 @@
-import css from './PasswordResetPage.css';
+import css from './PasswordResetPage.module.css';
 import RecoveryForm from '../../components/RecoveryForm/RecoveryForm';
 
 export default function PasswordResetPage () {

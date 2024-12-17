@@ -11,6 +11,7 @@ const authAPI = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
 /**
@@ -105,20 +106,45 @@ export const confirmOauth = createAsyncThunk(
 
 /**
  * Refresh
- * User gets new accessToken
+ * Refresh state with initial info about user
  */
 export const refresh = createAsyncThunk(
   'user/refresh',
   async (_, thunkAPI) => {
-    const reduxState = thunkAPI.getState();
-    setAuthHeader(reduxState.auth.accessToken);
-    const { data } = await authAPI.get('/auth/refresh');
-    return data;
+    try {
+      const { data } = await axiosInstance.get('/user');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   },
   {
     condition: (_, thunkAPI) => {
       const reduxState = thunkAPI.getState();
-      return reduxState.auth.accessToken !== null;
+      return reduxState.user.accessToken !== null;
+    },
+  },
+);
+
+/**
+ * Refresh Session
+ * User gets new accessToken
+ */
+export const refreshSession = createAsyncThunk(
+  'user/refresh-session',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await authAPI.post('/auth/refresh');
+      setAuthHeader(data.data.accessToken);
+      return data.data.accessToken;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+  {
+    condition: (_, thunkAPI) => {
+      const reduxState = thunkAPI.getState();
+      return reduxState.user.accessToken !== null;
     },
   },
 );

@@ -6,6 +6,7 @@ import {
   login,
   logout,
   refresh,
+  refreshSession,
   register,
   resetPassword,
   sendResetPasswordEmail,
@@ -47,7 +48,18 @@ const userSlice = createSlice({
       .addCase(refresh.pending, (state) => {
         state.isRefreshing = true;
       })
-      .addCase(refresh.fulfilled, handleLogin)
+      .addCase(refreshSession.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refresh.fulfilled, (state) => {
+        state.isRefreshing = false;
+      })
+      .addCase(refreshSession.fulfilled, handleLogin)
+      .addCase(refreshSession.rejected, (state, action) => {
+        state.accessToken = null;
+        state.isError = action.payload;
+        state.isRefreshing = false;
+      })
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
@@ -105,6 +117,7 @@ const userSlice = createSlice({
         (state, action) => {
           state.isLoading = false;
           state.isError = action.payload;
+          state.isRefreshing = false;
         },
       );
   },

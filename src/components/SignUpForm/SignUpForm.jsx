@@ -7,8 +7,8 @@ import * as Yup from 'yup';
 import css from './SignUpForm.module.css';
 import sprite from '../../icons/sprite.svg';
 import { selectAuthError } from '../../redux/user/selectors.js';
-import { notifyError, notifySuccess } from '../../services/notifications.js';
-import Loader from '../Loader/Loader';
+import { notifyError} from '../../services/notifications.js';
+// import Loader from '../Loader/Loader';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -31,7 +31,7 @@ export default function SugnUpForm() {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const isError = useSelector(selectAuthError);
 
   useEffect(() => {
@@ -48,29 +48,31 @@ export default function SugnUpForm() {
     setShowConfirmPassword((prevState) => !prevState);
   };
 
-  const handleSubmit = (values, actions) => {
-    setIsLoading(true);
-    try {
-      dispatch(register(values));
-      notifySuccess(`Your account has been created.`);
-      actions.resetForm();
-    } catch (error) {
-      if (error === 'Request failed with status code 409') {
-        notifyError('This email is already in use.');
-      } else {
-        notifyError('An error occurred. Please try again later.');
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const handleSubmit = (values, actions) => {
+  //   setIsLoading(true);
+  //   try {
+  //     dispatch(register(values));
+  //     notifySuccess(`Your account has been created.`);
+  //     actions.resetForm();
+  //   } catch (error) {
+  //     if (error === 'Request failed with status code 409') {
+  //       notifyError('This email is already in use.');
+  //     } else {
+  //       notifyError('An error occurred. Please try again later.');
+  //     }
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <div className={css.containerForm}>
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
         validationSchema={validationSchema}
-        onSubmit={handleSubmit}
+        onSubmit={({email, password})=>{
+          dispatch(register({email, password}))
+        }}
       >
         {({ errors, touched }) => (
           <Form className={css.form} autoComplete="off">
@@ -164,7 +166,8 @@ export default function SugnUpForm() {
             </label>
 
             <button type="submit" className={css.button}>
-              {isLoading ? <Loader /> : 'Sign up'}
+              {/* {isLoading ? <Loader /> : 'Sign up'} */}
+              Sign up
             </button>
           </Form>
         )}

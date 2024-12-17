@@ -1,0 +1,53 @@
+import Icons from '../../icons/sprite.svg';
+
+export function popupDelete({ isOpen, onClose, selectedItemId }) {
+  const { t } = useTranslation();
+
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector(selectIsLoading);
+
+  const handleDelete = async () => {
+    const today = format(new Date(), 'dd/MM/yyyy');
+    await dispatch(
+      waterApi.deleteWaterThunk({
+        id: selectedItemId,
+      })
+    );
+    await dispatch(waterApi.getTodayWaterThunk({ date: today }));
+    Notify.success('The portion is removed');
+    onClose();
+  };
+  return (
+<div className={css.popup}>
+<button  type="button" onClick={onClose}>
+                <svg className={css.iconEdit} width="16" height="16">
+                      <use href={Icons + '#icon-close'}></use>
+                    </svg>
+        </button>
+</div>
+
+
+//<ModalSubtitle>{t('deleteEntryModal.question')}</ModalSubtitle>
+//<PopupFooter>
+//<PopupBtnClose onClick={onClose} type="button">
+//{t('deleteEntryModal.buttonCancel')}
+//</PopupBtnClose>
+//<PopupBtnRemove
+//disabled={isLoading}
+//onClick={handleDelete}
+//type="button"
+//>
+//{isLoading ? (
+//<LoaderWrap>
+//<Loader />
+//</LoaderWrap>
+//) : (
+//t('deleteEntryModal.buttonDelete')
+//)}
+//</PopupBtnRemove>
+//</PopupFooter>
+//</Popup>
+//</ModalOverlay>
+//);
+//}

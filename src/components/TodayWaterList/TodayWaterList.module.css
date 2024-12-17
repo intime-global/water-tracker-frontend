@@ -18,11 +18,15 @@
   margin-bottom: 16px;
 }
 
+.listItemTools {
+  display: flex;
+  column-gap:20px;
+}
+
 .listWaters {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  height: 188px;
+  max-height:180px;
   overflow: auto;
   margin-bottom: 12px;
 }
@@ -132,6 +136,10 @@
   .todayContainer {
     width: 656px;
     margin-bottom: 45px;
+  }
+
+  .listWaters {
+    max-height:170px;
   }
 
   .waterItemblok {

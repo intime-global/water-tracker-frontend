@@ -13,6 +13,7 @@ import SharedLayout from './components/SharedLayout/SharedLayout';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 
 const HomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -68,7 +69,7 @@ function App() {
                 <PrivateRoute redirectTo="/signin" component={<HomePage />} />
               }
             />
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </SharedLayout>

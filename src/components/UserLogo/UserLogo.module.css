@@ -1,0 +1,75 @@
+.userLogoButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    cursor: var(--cursor-h);
+    padding: 0;
+    border-radius: 50%;
+    min-width: 40px;
+    min-height: 40px;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+}
+
+.userLogoButton:hover {
+    border: 1px solid var(--secondary-orange);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.userInitial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--primary-color-white);
+    background-color: var(--primary-color-blue);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.point {
+    display: flex;
+    align-items: center;
+}
+
+.logobox {
+    display: flex;
+    align-items: center;
+}
+
+.logobox:hover {
+    fill: var(--secondary-orange);
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+    fill: var(--primary-color-blue);
+    cursor: var(--cursor-h);
+}
+
+.icon:hover {
+    fill: var(--secondary-orange);
+}
+
+.user {
+    margin-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+

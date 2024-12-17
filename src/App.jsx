@@ -10,7 +10,7 @@ import RestrictedRoute from './components/UserMenu/RestrictedRoute';
 import PrivateRoute from './components/UserMenu/PrivateRoute';
 import Loader from './components/Loader/Loader';
 import SharedLayout from './components/SharedLayout/SharedLayout';
-import PasswordResetPage from './pages/EmailResetPage/PasswordResetPage';
+import PasswordResetPage from './pages/PasswordResetPage/PasswordResetPage.jsx';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';

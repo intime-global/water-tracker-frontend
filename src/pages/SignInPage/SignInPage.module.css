@@ -1,6 +1,45 @@
+.pageContainer {
+  max-width: 320px;
+  padding: 0px;
+}
+
+.pageFlexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .pageContainer {
+    max-width: 768px;
+    padding: 0 20px;
+  }
+ .pageFlexContainer {
+   display: flex;
+  flex-direction: row;
+ }
+}
+
+@media screen and (min-width: 1280px) {
+  .pageContainer {
+    max-width: 1280px;
+  }
+
+  .pageFlexContainer {
+    display: flex;
+    flex-direction: row;
+    flex-direction: row-reverse;
+    gap: 10px
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .pageContainer {
-    display: flex;
-    justify-content: flex-end;
-  }
+      max-width: 1440px;
+    }
+.pageFlexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-direction: row-reverse;
+  gap: 10px
+}
 }

@@ -2,10 +2,11 @@ import { useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import {
-  deleteWaterTodayThunk,
-  editWaterTodayThunk,
-} from '../../redux/water/waterThunk.js';
+//import {
+//deleteWaterTodayThunk,
+//editWaterTodayThunk,
+//} from '../../redux/water/waterThunk.js';
+
 import {
   selectTodayWater,
 } from '../../redux/water/waterSelector.js';
@@ -13,8 +14,7 @@ import {
 import css from './TodayWaterList.module.css';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
 import { AddWaterModal } from '../AddWaterModal/AddWaterModal.jsx';
-import Icons from '../../icons/sprite.svg';
-import { Svg } from '../Icons/icons.jsx';
+import sprite from '../../icons/sprite.svg'
 //import { getWaterMonthThunk } from '../../redux/month/monthThunk.js';
 import { getConvertedTime } from './hooksTodayWater.js'
 import { popupDelete } from './popupDelete.js'
@@ -56,7 +56,7 @@ const TodayList = () => {
 
     <div className={css.todayContainer}>
         <h2 className={css.todayTitle}>Today</h2>
-//howManyWater?.length > 0 &&//
+{howManyWater?.length > 0 &&
       <ul className={css.listWaters}>
       {howManyWater.slice().sort((a,b)} => {return getConvertedTime(a.time).getTime() - getConvertedTime(b.time).getTime()}).map((item) => {
         return (
@@ -68,7 +68,7 @@ const TodayList = () => {
                     onClick={()=>openModalToEdit(item)}
                   >
                 <svg className={css.iconEdit}>
-                      <use href={Icons + '#icon-edit'}></use>
+                      <use href={`${sprite} #icon-edit`}></use>
                     </svg>
                   </button>
               <button
@@ -77,7 +77,7 @@ const TodayList = () => {
                     onClick={()=>openModalToDelete(item)}
                   >
                 <svg className={css.icon_delete}>
-                      <use href={Icons + '#icon-delete'}></use>
+                      <use href={`${sprite}#icon-delete`}></use>
                     </svg>
                   </button>
             </div>
@@ -96,7 +96,9 @@ const TodayList = () => {
               <div className={css.firstblock}>
                 <h2 className={css.title}>Delete entry</h2>
                 <button className={css.exit} type="button" onClick={closeModal}>
-                  <Svg id={'#icon-close'} width={24} height={24} />
+                <svg className={css.iconClose}>
+                      <use href={`${sprite} #icon-close`}></use>
+                    </svg>
                 </button>
               </div>
               <p className={css.textDel}>
@@ -127,3 +129,4 @@ const TodayList = () => {
           : <TodayListModal isOpen={isModalOpen} onClose={closeModal} isEditing={isEditing} selectedItemId={selectedItem?.id} amountWater={selectedItem?.amount} date={selectedItem?.time}/>}
         </div>
       );
+    }

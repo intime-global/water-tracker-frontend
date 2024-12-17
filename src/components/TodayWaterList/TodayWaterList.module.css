@@ -101,6 +101,13 @@
   height: 16px;
 }
 
+.iconClose
+{
+  fill: transparent;
+  width: 24px;
+  height: 24px;
+}
+
 .icon_delete {
   fill: transparent;
   stroke: var(--secondary-color-red);

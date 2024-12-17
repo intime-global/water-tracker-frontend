@@ -1,6 +1,6 @@
+import UserUploadPhoto from '../UserUploadPhoto/UserUploadPhoto.jsx';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
 import SettingsForm from '../SettingsForm/SettingsForm.jsx';
-import UserPhoto from '../UserPhoto/UserPhoto';
 import sprite from '../../icons/sprite.svg';
 import css from './SettingsModal.module.css';
 
@@ -23,7 +23,7 @@ export default function SettingsModal({ isOpen, onClose }) {
                 </svg>
               </button>
             </div>
-            <UserPhoto />
+            <UserUploadPhoto />
             <SettingsForm onClose={onClose} />
           </div>
         </ModalContainer>

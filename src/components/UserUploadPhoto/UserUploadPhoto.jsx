@@ -1,27 +1,27 @@
-import { useDispatch, useSelector } from "react-redux";
-import { editUserAvatarThunk } from "../../redux/user/operations.js";
-import { selectUser } from "../../redux/user/selectors.js";
-import sprite from "../../icons/sprite.svg";
-import css from "./UserPhoto.module.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { editUserAvatarThunk } from '../../redux/user/operations.js';
+import { selectUser } from '../../redux/user/selectors.js';
+import sprite from '../../icons/sprite.svg';
+import css from './UserUploadPhoto.module.css';
 
-export default function UserPhoto() {
+export default function UserUploadPhoto() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    document.getElementById("photoInput").click();
+    document.getElementById('photoInput').click();
   };
 
   const handleUploadPhoto = (evt) => {
     const file = evt.target.files[0];
+
     if (file) {
-      const imageURL = URL.createObjectURL(file);
-      dispatch(editUserAvatarThunk(imageURL));
+      dispatch(editUserAvatarThunk(file));
     }
   };
   return (
     <>
-      <h3 className={css.subtitle} style={{ marginBottom: "8px" }}>
+      <h3 className={css.subtitle} style={{ marginBottom: '8px' }}>
         Your photo
       </h3>
       <div className={css.photoSetting}>
@@ -45,7 +45,7 @@ export default function UserPhoto() {
             type="file"
             id="photoInput"
             accept="image/*"
-            style={{ display: "none" }}
+            style={{ display: 'none' }}
             onChange={handleUploadPhoto}
           />
         </div>

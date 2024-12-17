@@ -1,0 +1,20 @@
+.item_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.water_amount {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33333;
+    color: var(--primary-color-blue);
+}
+
+.water_time {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 2;
+    color: var(--primary-color-black);
+}
+

@@ -136,7 +136,7 @@ export const refreshSession = createAsyncThunk(
     try {
       const { data } = await authAPI.post('/auth/refresh');
       setAuthHeader(data.data.accessToken);
-      return data.data.accessToken;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

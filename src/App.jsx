@@ -14,6 +14,7 @@ import PasswordResetPage from './pages/EmailResetPage/PasswordResetPage';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 
 const HomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -75,6 +76,7 @@ function App() {
                 <RestrictedRoute redirectTo="/home" component={<PasswordResetPage />} />
               }
             />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </SharedLayout>

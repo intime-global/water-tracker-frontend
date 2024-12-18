@@ -6,7 +6,7 @@ export const addWaterThunk = createAsyncThunk(
   'water/addWater',
   async (data, thunkApi) => {
     try {
-      const response = await axiosInstance.post('/water/', data);
+      const response = await axiosInstance.post('/water', data);
       if (!response.ok) {
         throw new Error('Failed to add water');
       }
@@ -58,7 +58,7 @@ export const getWaterTodayThunk = createAsyncThunk(
   'water/getWaterToday',
   async (_, thunkApi) => {
     try {
-      const response = await axiosInstance.get('/waterToday/');
+      const response = await axiosInstance.get('/water/today');
       if (!response.ok) {
         throw new Error('Failed to get today water');
       }
@@ -74,7 +74,7 @@ export const getWaterMonthThunk = createAsyncThunk(
   'water/getWaterMonth',
   async (data, thunkApi) => {
     try {
-      const response = await axiosInstance.get('/waterMonth/', {
+      const response = await axiosInstance.get('/water/month', {
         params: data,
       });
       if (!response.ok) {

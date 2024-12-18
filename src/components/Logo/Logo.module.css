@@ -1,15 +1,8 @@
 .logoLink {
-    background-color: transparent;
-    border: none;
-    cursor: var(--cursor-h);
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .logoIcon {
-    width: 102px;
-    height: 48px;
+  width: 102px;
+  height: 48px;
 }

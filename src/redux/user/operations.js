@@ -112,7 +112,7 @@ export const refresh = createAsyncThunk(
   'user/refresh',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axiosInstance.get('/user');
+      const { data } = await axiosInstance.get('/users');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -209,7 +209,7 @@ export const getUserThunk = createAsyncThunk(
   'user/getUser',
   async (_, thunkAPI) => {
     try {
-      const response = await axiosInstance.get('/user/');
+      const response = await axiosInstance.get('/users/');
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)
@@ -227,7 +227,7 @@ export const editUserInfoThunk = createAsyncThunk(
   'user/editUserInfo',
   async (data, thunkAPI) => {
     try {
-      const response = await axiosInstance.patch('/user/', data);
+      const response = await axiosInstance.patch('/users/', data);
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)
@@ -247,7 +247,7 @@ export const editUserAvatarThunk = createAsyncThunk(
   async (photo, thunkAPI) => {
     try {
       const response = await axiosInstance.patch(
-        '/user/avatar',
+        '/users/avatar',
         {
           avatarURL: photo,
         },

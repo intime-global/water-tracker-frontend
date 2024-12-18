@@ -1,10 +1,10 @@
 export const handleUserInfo = (state, { payload }) => {
-  state.user = payload.data.user;
+  state.user = payload.data;
   state.isLoading = false;
 };
 
 export const handleLogin = (state, { payload }) => {
-  state.user = payload.data.user;
+  state.user = payload.data.data;
   state.accessToken = payload.data.accessToken;
   state.isLoading = false;
   state.isRefreshing = false;

@@ -22,7 +22,7 @@ const registerSchema = yup.object({
 });
 
 
-const SignUpForm = () => {
+const RecoveryForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate;
   const [searchParams] = useSearchParams();
@@ -71,7 +71,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div>
+      <div className={css.formContainer}>
         <Formik
           initialValues={initialValues}
           validationSchema={registerSchema}
@@ -160,4 +160,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default RecoveryForm;

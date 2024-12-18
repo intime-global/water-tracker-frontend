@@ -4,9 +4,11 @@ import css from './Welcome.module.css';
 
 const Welcome = () => {
   return (
-    <div className={css.containerWelcome}>
-      <WaterConsumptionTracker />
-      <WhyDrinkWater />
+    <div className={css.container}>
+      <div className={css.containerWelcome}>
+        <WaterConsumptionTracker />
+        <WhyDrinkWater />
+      </div>
     </div>
   );
 };

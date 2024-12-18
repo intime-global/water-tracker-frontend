@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import css from './SignUpForm.module.css';
 import sprite from '../../icons/sprite.svg';
+import { selectIsLoading } from '../../redux/user/selectors.js';
 import { selectAuthError } from '../../redux/user/selectors.js';
-import { notifyError} from '../../services/notifications.js';
-// import Loader from '../Loader/Loader';
+import { notifyError } from '../../services/notifications.js';
+import Loader from '../Loader/Loader';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -27,11 +28,11 @@ const validationSchema = Yup.object({
     .required('Confirm password is required'),
 });
 
-export default function SugnUpForm() {
+export default function SignUpForm() {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectAuthError);
 
   useEffect(() => {
@@ -48,31 +49,17 @@ export default function SugnUpForm() {
     setShowConfirmPassword((prevState) => !prevState);
   };
 
-  // const handleSubmit = (values, actions) => {
-  //   setIsLoading(true);
-  //   try {
-  //     dispatch(register(values));
-  //     notifySuccess(`Your account has been created.`);
-  //     actions.resetForm();
-  //   } catch (error) {
-  //     if (error === 'Request failed with status code 409') {
-  //       notifyError('This email is already in use.');
-  //     } else {
-  //       notifyError('An error occurred. Please try again later.');
-  //     }
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const handleSubmit = ({ email, password }, actions) => {
+    dispatch(register({ email, password }));
+    actions.resetForm();
+  };
 
   return (
     <div className={css.containerForm}>
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
         validationSchema={validationSchema}
-        onSubmit={({email, password})=>{
-          dispatch(register({email, password}))
-        }}
+        onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
           <Form className={css.form} autoComplete="off">
@@ -166,8 +153,7 @@ export default function SugnUpForm() {
             </label>
 
             <button type="submit" className={css.button}>
-              {/* {isLoading ? <Loader /> : 'Sign up'} */}
-              Sign up
+              {isLoading ? <Loader /> : 'Sign up'}
             </button>
           </Form>
         )}

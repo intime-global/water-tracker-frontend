@@ -1,45 +1,46 @@
 .modal {
-    position: absolute;
-    top: 13px;
-    left: -85px;
-    box-shadow: 0 4px 8px 0 var(--shadow-color);
-    border-radius: 10px;
-    padding: 16px;
-    z-index: 1000;
-    font-weight: 400;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-items: center;
+  position: absolute;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
+  border-radius: 10px;
+  padding: 16px;
+  z-index: 1000;
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
 }
 
 .settings,
 .logout {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .settingsBtn,
 .logoutBtn {
-    background: none;
-    border: none;
-    color: var(--primary-color-blue);
-    cursor: var(--cursor-h);
-    font-size: 1rem;
-    text-decoration: none;
-    padding: 0;
-    margin-left: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--primary-color-blue);
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0;
+  margin-left: 0.5rem;
 }
 
 .settingsBtn:hover,
 .logoutBtn:hover {
-    color: var(--secondary-orange);
-    background: none;
+  color: var(--secondary-orange);
+  background: none;
 }
 
 .settings svg,
 .logout svg {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-white);
+  stroke: var(--primary-color-blue);
 }

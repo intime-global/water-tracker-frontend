@@ -42,7 +42,6 @@
 
 @media screen and (min-width: 1440px) {
   .welcome {
-    /* min-height: calc(100vh - 65px); */
     background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png'),
       url('../../images/WelcomePage/desk/backgr_welcome_desk_1x.png');
     background-position: center, center bottom;

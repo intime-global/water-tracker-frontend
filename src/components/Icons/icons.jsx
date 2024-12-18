@@ -1,6 +1,6 @@
 import Icons from '../../icons/sprite.svg'
 
-export const Svg = ({id, width, height}) => {
+export const Icon = ({id, width, height}) => {
 
   return (
     <svg width={width} height={height}>

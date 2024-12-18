@@ -107,7 +107,7 @@ export const TodayList = () => {
                   onClick={closeModal}
                   aria-label="Close"
                 >
-                <Icon id={'#icon-close'} width={24} height={24} />
+                  <Icon id={'#icon-close'} width={24} height={24} />
                 </button>
               </div>
               <p className={css.textDel}>

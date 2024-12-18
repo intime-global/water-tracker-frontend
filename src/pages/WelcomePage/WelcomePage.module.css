@@ -1,6 +1,6 @@
 .welcome {
   overflow: hidden;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -22,6 +22,7 @@
 
 @media screen and (min-width: 768px) {
   .welcome {
+    min-height: calc(100vh - 70px);
     background-image: url('../../images/WelcomePage/tabl/backgr_welcome_tabl_1x.png');
     background-position: 10% 97%;
   }
@@ -41,6 +42,7 @@
 
 @media screen and (min-width: 1440px) {
   .welcome {
+    /* min-height: calc(100vh - 65px); */
     background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png'),
       url('../../images/WelcomePage/desk/backgr_welcome_desk_1x.png');
     background-position: center, center bottom;

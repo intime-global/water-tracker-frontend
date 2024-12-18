@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import UserLogoModal from '../UserLogoModal/UserLogoModal.jsx';
 import SettingsModal from '../SettingsModal/SettingsModal.jsx';
 import LogOutModal from '../LogOutModal/LogOutModal.jsx';
@@ -14,10 +14,29 @@ const UserLogo = () => {
   const [isUserLogoModalOpen, setIsUserLogoModalOpen] = useState(false);
   const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const btnContainer = useRef(null);
+  const [dropDownMenu, setDropDownMenu] = useState({});
 
+  const updateBtnPosition = () => {
+      if (btnContainer.current) {
+        const rect = btnContainer.current.getBoundingClientRect();
+        setDropDownMenu({
+          top: rect.top + rect.height + window.scrollY,
+          left: rect.left + window.scrollX,
+        });
+      }
+}
   const handleUserLogoClick = () => {
     setIsUserLogoModalOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    window.addEventListener('resize', updateBtnPosition);
+    updateBtnPosition();
+    return () => {
+      window.removeEventListener('resize', updateBtnPosition);
+    }
+  }, []);
 
   const handleCloseUserLogoModal = () => setIsUserLogoModalOpen(false);
 
@@ -44,7 +63,11 @@ const UserLogo = () => {
           {user?.name ? user.name.substring(0, 10) : 'User'}
         </p>
         <div className={css.logobox}>
-          <button onClick={handleUserLogoClick} className={css.userLogoButton}>
+          <button
+            onClick={handleUserLogoClick}
+            className={css.userLogoButton}
+            ref={btnContainer}
+          >
             {user?.photo ? (
               <img
                 src={user.photo}
@@ -66,16 +89,17 @@ const UserLogo = () => {
           >
             <use href={`${sprite}#icon-chevron-down`} />
           </svg>
-        </div>
 
-        {isUserLogoModalOpen && (
-          <UserLogoModal
-            isOpen={isUserLogoModalOpen}
-            onClose={handleCloseUserLogoModal}
-            onOpenSettings={handleOpenSettingsModal}
-            onOpenLogout={handleOpenLogoutModal}
-          />
-        )}
+          {isUserLogoModalOpen && (
+            <UserLogoModal
+              isOpen={isUserLogoModalOpen}
+              onClose={handleCloseUserLogoModal}
+              onOpenSettings={handleOpenSettingsModal}
+              onOpenLogout={handleOpenLogoutModal}
+              dropDownMenu={dropDownMenu}
+            />
+          )}
+        </div>
       </div>
 
       {isSettingModalOpen && (

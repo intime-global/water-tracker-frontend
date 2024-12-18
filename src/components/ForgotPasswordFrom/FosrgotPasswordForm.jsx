@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+import sprite from '../../icons/sprite.svg';
 import css from './ForgotPasswordForm.module.css';
 import { sendResetPasswordEmail } from '../../redux/user/operations.js';
 import { notifyError, notifySuccess } from '../../services/notifications.js';
@@ -13,19 +14,20 @@ const ForgotPasswordSchema = Yup.object().shape({
     .required('Email is required'),
 });
 
-const ForgotPasswordForm = ({ onSubmit }) => {
-     const dispatch = useDispatch();
+const ForgotPasswordForm = ({ onSubmit, onClose }) => {
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
     try {
       dispatch(sendResetPasswordEmail(values.email)).unwrap();
       onSubmit(values.email);
       actions.resetForm();
+      onClose();
       notifySuccess(`Message sent. Check your email.`);
     } catch {
       notifyError('Something went wrong.');
-   };
-  }
+    }
+  };
 
   return (
     <div className={css.containerModal}>
@@ -57,11 +59,17 @@ const ForgotPasswordForm = ({ onSubmit }) => {
             <button className={css.button} type="submit">
               Send
             </button>
+            <svg
+              className={css.icon}
+              onClick={onClose}
+            >
+              <use href={`${sprite}#icon-close`} />
+            </svg>
           </Form>
         )}
       </Formik>
     </div>
   );
-}
+};
 
 export default ForgotPasswordForm;

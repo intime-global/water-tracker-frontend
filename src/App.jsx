@@ -15,7 +15,7 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 
-const HomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SigninPage = lazy(() => import('./pages/SignInPage/SignInPage'));
 const SignupPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));

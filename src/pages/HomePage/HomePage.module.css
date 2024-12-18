@@ -1,59 +1,29 @@
-.background {
-  position: relative;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-image: url('../../images/HomePage/mob/bubble_mob_1x.png');
+.home {
+  margin: 0 20px;
   padding-top: 24px;
-  padding-bottom: 40px;
-}
-
-.content {
-  width: 100%;
-  height: 100%;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  /* position: fixed; */
-  background-repeat: no-repeat;
-  top: 0;
-  left: 0;
-  background-size: cover;
-  background-position: center;
+  text-align: left;
 }
 
 .dailyNorma {
-  width: 164px;
-  height: 76px;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .bottleSection {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 40px;
+  margin-bottom: 40px;
+  width: 280px;
 }
 
 .bottle {
-  width: 280px;
+  margin-bottom: 16px;
   height: 208px;
   background-repeat: no-repeat;
-  position: relative;
-  z-index: 1;
   background-size: contain;
   background-image: url('../../images/HomePage/mob/bottle_home_mob_1x.png');
 }
 
 .statisticsSection {
-  display: flex;
-  flex-direction: column;
   width: 280px;
-  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0 4px 14px 0 var(--shadow-color);
   background: var(--secondary-color-2);
@@ -61,24 +31,16 @@
 }
 
 .todayWaterList {
-  padding-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 @media screen and (min-resolution: 192dpi) {
-  .background {
-    background-image: url('../../images/HomePage/mob/bubble_mob_2x.png');
-  }
-
   .bottle {
     background-image: url('../../images/HomePage/mob/bottle_home_mob_2x.png');
   }
 }
 
 @media screen and (min-resolution: 288dpi) {
-  .background {
-    background-image: url('../../images/HomePage/mob/bubble_mob_3x.png');
-  }
-
   .bottle {
     background-image: url('../../images/HomePage/mob/bottle_home_mob_3x.png');
   }
@@ -86,43 +48,41 @@
 
 /* ----------Tablet--------- */
 @media screen and (min-width: 768px) {
-  .background {
-    background-image: url('../../images/HomePage/tab/bubble_tab_1x.png');
-    padding-bottom: 44px;
+  .home {
+    padding-top: 40px;
+    margin: 0 32px;
+  }
+
+  .bottleSection {
+    width: 100%;
   }
 
   .bottle {
-    background-image: url('../../images/HomePage/tab/bottle_home_tab_1x.png');
-    width: 518px;
+    width: 100%;
     height: 386px;
+    background-position: center;
+    background-image: url('../../images/HomePage/tab/bottle_home_tab_1x.png');
   }
 
   .statisticsSection {
     width: 704px;
-    flex: 1;
     padding: 32px 24px;
   }
 
   .dailyNorma {
+    margin: 0;
     position: absolute;
     z-index: 10;
   }
 }
 
 @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
-  .background {
-    background-image: url('../../images/HomePage/tab/bubble_tab_2x.png');
-  }
-
   .bottle {
     background-image: url('../../images/HomePage/tab/bottle_home_tab_2x.png');
   }
 }
 
 @media screen and (min-resolution: 288dpi) {
-  .background {
-    background-image: url('../../images/HomePage/tab/bubble_tab_3x.png');
-  }
   .bottle {
     background-image: url('../../images/HomePage/tab/bottle_home_tab_3x.png');
   }
@@ -130,52 +90,57 @@
 
 /*---------- Desk ----------------*/
 @media screen and (min-width: 1440px) {
-  .content {
+  .home {
+    margin: 0 112px;
+    padding-top: 22px;
+    display: flex;
     flex-direction: row;
-  }
-
-  .background {
-    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
-    padding-top: 20px;
-    padding-bottom: 40px;
+    align-items: center;
+    position: relative; /* Для управління z-index */
   }
 
   .bottleSection {
-    z-index: 2;
-    margin-right: -41.67px;
+    position: relative;
+    flex: 1;
+    max-width: 739px;
+    margin-left: -73.33px;
+    z-index: 1; /* під статистикою */
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .bottle {
     width: 739px;
     height: 548px;
+    margin-top: 0;
+    margin-bottom: 24px;
     background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png');
   }
 
   .dailyNorma {
-    left: 73.33px;
     top: 30px;
+    left: 73.33px;
+    z-index: 3;
   }
 
   .statisticsSection {
     z-index: 1;
-    width: 592px;
+    min-width: 592px;
+    height: 680px;
+    margin-left: -40.67px;
+    z-index: 2; /* над бутилкою */
   }
 }
 
 @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
-  .background {
-    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_2x.png');
-  }
-
   .bottle {
     background-image: url('../../images/HomePage/desk/bottle_home_desk_2x.png');
   }
 }
 
 @media screen and (min-resolution: 288dpi) {
-  .background {
-    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png');
-  }
   .bottle {
     background-image: url('../../images/HomePage/desk/bottle_home_desk_3x.png');
   }

@@ -1,57 +1,54 @@
-@media screen and (min-width: 320px) {
-  .reasons {
-    border-radius: 10px;
-    padding: 24px 16px;
-    /* width: 280px;
-    height: 416px; */
-    color: var(--primary-color-black);
-    box-shadow: 0 4px 14px 0 var(--shadow-color);
-    background: var(--secondary-color-blue-1);
-  }
+.reasons {
+  border-radius: 10px;
+  padding: 24px 16px;
+  color: var(--primary-color-black);
+  box-shadow: 0 4px 14px 0 var(--shadow-color);
+  background: var(--secondary-color-blue-1);
+}
 
-  .title3 {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 19.98px;
-    padding-bottom: 12px;
-  }
+.title3 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 19.98px;
+  margin-bottom: 12px;
+}
 
-  .listReasons {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+.reasonsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-  .listText {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-  }
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .benefitsIcon {
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
-    fill: var(--primary-color-blue);
-    cursor: pointer;
-    flex-shrink: 0; /* Не допускаємо зміну розмірів іконок */
-  }
+.listItem::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-color-blue);
+  flex-shrink: 0;
+}
 
-  .listReasons li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+.listText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 @media screen and (min-width: 768px) {
   .reasons {
-    width: 494px;
     padding: 32px 24px;
+    width: 494px;
   }
 }
 @media screen and (min-width: 1440px) {
   .reasons {
-    margin-top: 34px;
+    align-self: flex-end;
   }
 }

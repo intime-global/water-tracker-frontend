@@ -1,30 +1,35 @@
+.container {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .containerWelcome {
-  width: 280px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: left;
-  gap: 40px;
-  margin-top: 24px;
+  padding-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
   .containerWelcome {
-    width: 704px;
-    gap: 60px;
-    margin-top: 40px;
-    align-items: stretch;
+    padding-bottom: 50px;
   }
 }
 
 @media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0;
+  }
+
   .containerWelcome {
-    width: 1014px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 81px;
     margin-top: 80px;
-    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
   }
 }

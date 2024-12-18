@@ -1,7 +1,7 @@
-// import DailyNorma from '../../components/WaterRatioPanel/WaterRatioPanel';
+// import DailyNorma from '../../components/DialyNorma/DialyNorma';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 // import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
-// import MonthStatsTable from '../../components/Calendar/Month/Month';
+// import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import AuthContainer from '../../components/AuthContainer/AuthContainer';
 
 import css from './HomePage.module.css';

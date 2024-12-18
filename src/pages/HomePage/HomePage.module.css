@@ -1,5 +1,8 @@
 .home {
-  padding: 24px 20px 40px 20px;
+  max-width: 320px;
+  margin: 0 auto;
+  margin-top: 24px;
+  padding: 0 20px 40px 20px;
   min-height: 100vh;
   text-align: left;
 }
@@ -10,7 +13,6 @@
 
 .bottleSection {
   margin-bottom: 40px;
-  width: 280px;
 }
 
 .bottle {
@@ -22,10 +24,9 @@
 }
 
 .statisticsSection {
-  width: 280px;
   border-radius: 10px;
   box-shadow: 0 4px 14px 0 var(--shadow-color);
-  background: var(--secondary-color-2);
+  background: var(--secondary-color-blue-1);
   padding: 24px 8px;
 }
 
@@ -48,22 +49,18 @@
 /* ----------Tablet--------- */
 @media screen and (min-width: 768px) {
   .home {
-    padding: 40px 32px 44px 32px;
-  }
-
-  .bottleSection {
-    width: 100%;
+    max-width: 768px;
+    padding: 0 32px 44px 32px;
+    margin-top: 40px;
   }
 
   .bottle {
-    width: 100%;
     height: 386px;
     background-position: center;
     background-image: url('../../images/HomePage/tab/bottle_home_tab_1x.png');
   }
 
   .statisticsSection {
-    width: 704px;
     padding: 32px 24px;
   }
 
@@ -89,10 +86,12 @@
 /*---------- Desk ----------------*/
 @media screen and (min-width: 1440px) {
   .home {
-    padding: 22px 112px 44px 112px;
+    max-width: 1440px;
+    padding: 0 112px 40px 112px;
+    margin-top: 22px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: center;
     position: relative; /* Для управління z-index */
   }
 
@@ -106,12 +105,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    align-self: flex-start;
   }
 
   .bottle {
     width: 739px;
     height: 548px;
-    margin-top: 0;
     margin-bottom: 24px;
     background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png');
   }

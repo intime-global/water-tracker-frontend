@@ -1,6 +1,5 @@
 .home {
-  margin: 0 20px;
-  padding-top: 24px;
+  padding: 24px 20px 40px 20px;
   min-height: 100vh;
   text-align: left;
 }
@@ -49,8 +48,7 @@
 /* ----------Tablet--------- */
 @media screen and (min-width: 768px) {
   .home {
-    padding-top: 40px;
-    margin: 0 32px;
+    padding: 40px 32px 44px 32px;
   }
 
   .bottleSection {
@@ -91,8 +89,7 @@
 /*---------- Desk ----------------*/
 @media screen and (min-width: 1440px) {
   .home {
-    margin: 0 112px;
-    padding-top: 22px;
+    padding: 22px 112px 44px 112px;
     display: flex;
     flex-direction: row;
     align-items: center;

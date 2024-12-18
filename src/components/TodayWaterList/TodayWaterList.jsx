@@ -12,7 +12,7 @@ import ListItem from '../ListItem/ListItem.jsx';
 import { notifySuccess } from '../../services/notifications.js';
 import Loader from '../Loader/Loader.jsx';
 
-import sprite from '../../icons/sprite.svg';
+import Icon from '../Icons/icons.jsx';
 import css from './TodayWaterList.module.css';
 
 export const TodayList = () => {
@@ -70,9 +70,7 @@ export const TodayList = () => {
                     aria-label="Edit entry"
                     onClick={() => openModalToEdit(item)}
                   >
-                    <svg className={css.iconEdit}>
-                      <use href={`${sprite}#icon-edit`}></use>
-                    </svg>
+                    <Icon id={'#icon-edit'} width={24} height={24} />
                   </button>
                   <button
                     className={css.deleteButton}
@@ -80,9 +78,7 @@ export const TodayList = () => {
                     aria-label="Delete entry"
                     onClick={() => openModalToDelete(item)}
                   >
-                    <svg className={css.icon_delete}>
-                      <use href={`${sprite}#icon-delete`}></use>
-                    </svg>
+                    <Icon id={'#icon-delete'} width={24} height={24} />
                   </button>
                 </div>
               </li>
@@ -111,9 +107,7 @@ export const TodayList = () => {
                   onClick={closeModal}
                   aria-label="Close"
                 >
-                  <svg className={css.iconClose}>
-                    <use href={`${sprite}#icon-close`}></use>
-                  </svg>
+                  <Icon id={'#icon-close'} width={24} height={24} />
                 </button>
               </div>
               <p className={css.textDel}>

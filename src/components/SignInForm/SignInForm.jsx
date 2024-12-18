@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useId } from 'react';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import css from './SignInForm.module.css';
 import sprite from '../../icons/sprite.svg';
 
 import Loader from '../Loader/Loader.jsx';
 import ModalContainer from '../ModalContainer/ModalContainer';
-import ForgotPasswordForm from '../ForgotPasswordFrom/FosrgotPasswordForm.jsx'
+import ForgotPasswordForm from '../ForgotPasswordFrom/FosrgotPasswordForm.jsx';
 import { login } from '../../redux/user/operations';
+import { selectIsLoading } from '../../redux/user/selectors.js';
 import { selectAuthError } from '../../redux/user/selectors.js';
 import { notifyError } from '../../services/notifications.js';
 
@@ -27,25 +28,33 @@ const SigninSchema = Yup.object().shape({
     .required('Password required'),
 });
 const SignInForm = () => {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // <-- Стан модального вікна
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const emailFieldId = useId();
   const pwdFieldId = useId();
   const isError = useSelector(selectAuthError);
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+   useEffect(() => {
+      if (isError) {
+        notifyError(isError);
+      }
+    }, [isError]);
+
   const handleSubmit = (values, actions) => {
     if (values.email === '' || values.password === '') return;
-    setLoading(true);
     dispatch(login(values));
-    setLoading(false);
     actions.resetForm();
   };
 
   const handleForgotPasswordSubmit = (email) => {
     console.log('Reset password email sent to:', email);
-    setShowModal(false);
+  
   };
 
   const togglePasswordVisibility = () => {
@@ -54,7 +63,6 @@ const SignInForm = () => {
 
   return (
     <div className={css.formContainer}>
-      {isError && notifyError(isError)}
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
@@ -116,7 +124,7 @@ const SignInForm = () => {
               />
             </label>
             <button className={css.button} type="submit">
-              Sign in
+              {isLoading ? <Loader /> : 'Sign in'}
             </button>
           </Form>
         )}
@@ -124,13 +132,12 @@ const SignInForm = () => {
       <Link to="/signup" className={css.link}>
         Sign up
       </Link>
-      <span className={css.forgotPwd} onClick={() => setShowModal(true)}>
+      <span className={css.forgotPwd} onClick={openModal}>
         Forgot password
       </span>
-      {loading && <Loader />}
-      {showModal && (
-        <ModalContainer onClose={() => setShowModal(false)}>
-          <ForgotPasswordForm onSubmit={handleForgotPasswordSubmit} />
+      {isModalOpen && (
+        <ModalContainer>
+          <ForgotPasswordForm  onClose={closeModal} onSubmit={handleForgotPasswordSubmit} />
         </ModalContainer>
       )}
     </div>

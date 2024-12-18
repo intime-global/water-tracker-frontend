@@ -3,22 +3,22 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
-import { refresh } from './redux/user/operations';
-import { selectIsRefreshing } from './redux/user/selectors';
+import { refresh } from '../redux/user/operations';
+import { selectIsRefreshing } from '../redux/user/selectors';
 
-import RestrictedRoute from './components/UserMenu/RestrictedRoute';
-import PrivateRoute from './components/UserMenu/PrivateRoute';
-import Loader from './components/Loader/Loader';
-import SharedLayout from './components/SharedLayout/SharedLayout';
+import RestrictedRoute from './UserMenu/RestrictedRoute';
+import PrivateRoute from './UserMenu/PrivateRoute';
+import Loader from './Loader/Loader';
+import SharedLayout from './SharedLayout/SharedLayout';
+import PasswordResetPage from '../pages/PasswordResetPage/PasswordResetPage.jsx';
 
-import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage.jsx';
 
-const HomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-const SigninPage = lazy(() => import('./pages/SignInPage/SignInPage'));
-const SignupPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
+const SigninPage = lazy(() => import('../pages/SignInPage/SignInPage'));
+const SignupPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +67,15 @@ function App() {
               path="/home"
               element={
                 <PrivateRoute redirectTo="/signin" component={<HomePage />} />
+              }
+            />
+            <Route
+              path="/reset-pwd"
+              element={
+                <RestrictedRoute
+                  redirectTo="/home"
+                  component={<PasswordResetPage />}
+                />
               }
             />
             <Route path="*" element={<NotFoundPage />} />

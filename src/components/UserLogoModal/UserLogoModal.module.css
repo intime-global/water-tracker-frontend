@@ -1,7 +1,11 @@
 .modal {
     position: absolute;
-    top: 13px;
-    left: -85px;
+    /* top: 100px;
+    /* left: -85px; */
+    /* right: 50px; */
+    /* top: var(--top-offset);
+    left: var(--left-offset ); */
+    transform: translateX(-50%);
     box-shadow: 0 4px 8px 0 var(--shadow-color);
     border-radius: 10px;
     padding: 16px;
@@ -25,7 +29,7 @@
     background: none;
     border: none;
     color: var(--primary-color-blue);
-    cursor: var(--cursor-h);
+    cursor: pointer;
     font-size: 1rem;
     text-decoration: none;
     padding: 0;
@@ -42,4 +46,6 @@
 .logout svg {
     width: 16px;
     height: 16px;
+    fill: var(--primary-color-white);
+    stroke: var(--primary-color-blue);
 }

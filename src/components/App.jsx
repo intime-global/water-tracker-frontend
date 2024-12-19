@@ -26,7 +26,7 @@ const SignupPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading)``;
+  const isLoading = useSelector(selectIsLoading);
   const isRefreshing = useSelector(selectIsRefreshing);
   const accessToken = useSelector(selectAccessToken);
 

@@ -270,7 +270,7 @@ export default function SettingsForm({ onClose }) {
 
           <div className={css.btnWrap}>
             <button type="submit" className={css.submit} disabled={isLoading}>
-              {isLoading ? 'Loadind...' : 'Save'}
+              Save
             </button>
           </div>
         </Form>

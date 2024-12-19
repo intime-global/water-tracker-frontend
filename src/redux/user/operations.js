@@ -227,12 +227,11 @@ export const getUserThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get('/users/');
-      notifySuccess('New user added successfully');
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
-      notifyError('Failed to add new user');
+      notifyError('Failed to get user data');
       return thunkAPI.rejectWithValue(error.message);
     }
   },

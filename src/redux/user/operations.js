@@ -249,7 +249,7 @@ export const editUserAvatarThunk = createAsyncThunk(
       const response = await axiosInstance.patch(
         '/users/avatar',
         {
-          avatarURL: photo,
+          photo: photo,
         },
         { headers: { 'Content-Type': 'multipart/form-data' } },
       );

@@ -270,7 +270,7 @@ export const editUserWaterRateThunk = createAsyncThunk(
   'user/editUserWaterRate',
   async (data, thunkAPI) => {
     try {
-      const response = await axiosInstance.patch('/waterRate/', data);
+      const response = await axiosInstance.patch('/water/rate/', data);
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)

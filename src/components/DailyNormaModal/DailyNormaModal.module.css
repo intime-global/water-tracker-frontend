@@ -1,23 +1,11 @@
- .modal {
+.modal {
     background: white;
     border-radius: 10px;
-    padding: 32px 24px;
-    width: 592px;
-    height: 712px;
+    padding: 24px 12px;
+    width: 280px;
+    height: 816px;
     position: relative;
 }
-
-/* .overlay {
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}  */
 
 .head {
     display: flex;
@@ -28,22 +16,27 @@
 .title {
     font-weight: 500;
     font-size: 26px;
-    line-height: 1.23077;
-    color: #2f2f2f;
+    line-height: 123%;
+    color: var(--primary-color-black);
 }
 
 .closeButton {
-    color: #407bff;
-    border: none;
-    background-color: white;
+    background-color: transparent;
     width: 24px;
     height: 24px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    stroke-width: 1.5px;
+    stroke: var(--primary-color-blue);
 }
 
 .normaList {
-    display: flex;
     margin-bottom: 12px;
-    gap: 24px;
 }
 
 .normaItem {
@@ -60,15 +53,13 @@
     color: #407bff;
 }
 
-
 .explanation {
     border: 1px solid #d7e3ff;
     border-radius: 10px;
     padding: 10px;
-    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 12px;
-    line-height: 1.33333;
+    line-height: 1.33;
     color: #8f8f8f;
     margin-bottom: 24px;
 }
@@ -80,16 +71,20 @@
 .subheading {
     font-weight: 500;
     font-size: 18px;
-    line-height: 1.11111;
+    line-height: 1.11;
     color: #2f2f2f;
     margin-bottom: 16px;
 }
 
 .fieldset {
-    width: 206px;
     height: 20px;
     border: none;
     margin-bottom: 16px;
+    padding: 0;
+}
+
+.labelWom {
+    margin-right: 24px;
 }
 
 .label {
@@ -99,7 +94,7 @@
     font-size: 16px;
     line-height: 1.25;
     color: #2f2f2f;
-    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .input {
@@ -107,40 +102,99 @@
     border: 1px solid #d7e3ff;
     border-radius: 6px;
     padding: 12px 10px;
-    width: 544px;
-    height: 44px;
     color: #407bff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1, 25;
+}
+
+.resultWrap {
+    display: flex;
+    margin-bottom: 24px;
 }
 
 .result {
-    margin-top: 16px;
-    margin-bottom: 24px;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.25;
     color: #2f2f2f;
+    width: 190px;
 }
 
 .waterAmount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     font-size: 18px;
-    line-height: 1.33333;
+    line-height: 1.33;
     color: #407bff;
 }
 
 .saveButton {
     border-radius: 10px;
     padding: 10px 30px;
-    width: 160px;
+    width: 256px;
     height: 44px;
     border: none;
     box-shadow: 0 4px 8px 0 var(--shadow-color);
     background: #407bff;
     font-weight: 500;
     font-size: 18px;
-    line-height: 1.33333;
+    line-height: 1.33;
     text-align: center;
     color: #fff;
-    margin-top: 34px;
     justify-self: end;
+    margin-top: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        padding: 32px 24px;
+        width: 704px;
+        height: 696px;
+    }
+
+    .normaList {
+        display: flex;
+        gap: 24px;
+    }
+
+    .result {
+        width: 342px;
+    }
+
+    .saveButton {
+        width: 160px;
+    }
+
+    .btnWrap {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .modal {
+        width: 592px;
+        height: 712px;
+    }
+
+    .normaList {
+        display: flex;
+        gap: 24px;
+    }
+
+    .result {
+        width: 342px;
+    }
+
+    .saveButton {
+        width: 160px;
+    }
+
+    .btnWrap {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }

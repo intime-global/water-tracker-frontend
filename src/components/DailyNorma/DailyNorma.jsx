@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import DailyNormaModal from '../DeilyNormaModal/DeilyNormaModal.jsx';
+import DeilyNormaModal from '../DeilyNormaModal/DeilyNormaModal.jsx';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
 import css from './DailyNorma.module.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/user/selectors.js';
 
 export default function DailyNorma() {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -10,27 +12,24 @@ export default function DailyNorma() {
 
   const closeModal = () => setIsOpen(false);
 
+  const user = useSelector(selectUser);
+
+  const dailyNorma = user.waterRate / 1000;
+
   return (
     <div className={css.container}>
       <h2 className={css.title}>My daily norma</h2>
       <div className={css.norma}>
-        <p>2L</p> /с бека будет норма воды/
-        <button type="button" onClick={openModal} className={css.button}>
+        <p>{dailyNorma} L</p>
+        <button type="button" className={css.button} onClick={openModal}>
           Edit
         </button>
+        </div>
 
-        {modalIsOpen && (
-          <ModalContainer modalIsOpen={modalIsOpen} handleClose={closeModal}>
-            <DailyNormaModal onCloseModal={closeModal} />
-          </ModalContainer>
-        )}
-        {/* {modalIsOpen && (
-          <DailyNormaModal
-            onCloseModal={closeModal}
-            modalIsOpen={modalIsOpen}
-          />
-        )} */}
-      </div>
+        {modalIsOpen && (<ModalContainer isOpen={modalIsOpen} onClose={closeModal}>
+            <DeilyNormaModal onClose={closeModal} />
+          </ModalContainer>)
+        }
     </div>
   );
 }

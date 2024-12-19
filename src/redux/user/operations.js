@@ -5,6 +5,7 @@ import {
   setAuthHeader,
   clearAuthHeader,
 } from '../../services/axios.config.js';
+import { notifyError, notifySuccess } from '../../services/notifications.js';
 
 const authAPI = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_SERVER_URL,
@@ -23,10 +24,12 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/register', credentials);
+      notifySuccess('Registration was successful');
       return data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Registration failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -41,10 +44,12 @@ export const confirmEmail = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/confirm-email', credentials);
+      notifySuccess('Email confirmed');
       return data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Email has not been confirmed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -60,10 +65,12 @@ export const login = createAsyncThunk(
     try {
       const { data } = await authAPI.post('/auth/login', userInfo);
       setAuthHeader(data.data.accessToken);
+      notifySuccess('You have successfully logged in');
       return data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Login failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -81,6 +88,7 @@ export const getOauthUrl = createAsyncThunk(
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Oauth url failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -99,6 +107,7 @@ export const confirmOauth = createAsyncThunk(
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Oauth confirm failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -115,6 +124,7 @@ export const refresh = createAsyncThunk(
       const { data } = await axiosInstance.get('/users');
       return data;
     } catch (error) {
+      notifyError('Refresh failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -138,6 +148,7 @@ export const refreshSession = createAsyncThunk(
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
+      notifyError('Refresh session failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -157,9 +168,11 @@ export const logout = createAsyncThunk('user/logout', async (_, thunkAPI) => {
   try {
     await authAPI.post('/auth/logout');
     clearAuthHeader();
+    notifySuccess('You have successfully logged out');
   } catch (error) {
     if (error.response?.data?.data?.message)
       return thunkAPI.rejectWithValue(error.response.data.data.message);
+    notifyError('Logout failed');
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -173,10 +186,12 @@ export const sendResetPasswordEmail = createAsyncThunk(
   async (email, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/send-reset-email', email);
+      notifySuccess('Password reset email sent');
       return data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Password reset email was not sent');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -191,10 +206,12 @@ export const resetPassword = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/reset-pwd', credentials);
+      notifySuccess('Password successfully reset');
       return data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Password reset failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -214,6 +231,7 @@ export const getUserThunk = createAsyncThunk(
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Failed to get user data');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -228,10 +246,12 @@ export const editUserInfoThunk = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axiosInstance.patch('/users/', data);
+      notifySuccess('User data edited successfully');
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Failed to save changes');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -253,10 +273,12 @@ export const editUserAvatarThunk = createAsyncThunk(
         },
         { headers: { 'Content-Type': 'multipart/form-data' } },
       );
+      notifySuccess('Avatar changed successfully');
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Failed to change avatar');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -271,10 +293,12 @@ export const editUserWaterRateThunk = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axiosInstance.patch('/water/rate/', data);
+      notifySuccess('Your water rate changed successfully');
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Failed to change water rate');
       return thunkAPI.rejectWithValue(error.message);
     }
   },

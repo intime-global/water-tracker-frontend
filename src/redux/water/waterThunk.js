@@ -2,88 +2,83 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosInstance } from '../../services/axios.config.js';
 import { notifyError, notifySuccess } from '../../services/notifications.js';
 
-export const addWaterThunk = createAsyncThunk(
+export const addWater = createAsyncThunk(
   'water/addWater',
   async (data, thunkApi) => {
     try {
       const response = await axiosInstance.post('/water', data);
-      if (!response.ok) {
-        throw new Error('Failed to add water');
-      }
       notifySuccess('Water added');
-      return response;
+      return response.data;
     } catch (error) {
       notifyError('Failed to add water');
-      return thunkApi.rejectWithValue(error.response.data.message);
+      return thunkApi.rejectWithValue(
+        error.response?.data?.message || 'An unexpected error occurred',
+      );
     }
   },
 );
 
-export const editWaterThunk = createAsyncThunk(
+export const editWater = createAsyncThunk(
   'water/editWater',
   async ({ id, date, waterVolume }, thunkApi) => {
     try {
       const newWater = { date, waterVolume };
       const response = await axiosInstance.patch(`/water/${id}`, newWater);
-      if (!response.ok) {
-        throw new Error('Failed to edit water');
-      }
       notifySuccess('Water edited');
-      return response;
+      return response.data;
     } catch (error) {
       notifyError('Failed to edit water');
-      return thunkApi.rejectWithValue(error.response.data.message);
+      return thunkApi.rejectWithValue(
+        error.response?.data?.message || 'An unexpected error occurred',
+      );
     }
   },
 );
 
-export const deleteWaterThunk = createAsyncThunk(
+export const deleteWater = createAsyncThunk(
   'water/deleteWater',
   async (id, thunkApi) => {
     try {
       const response = await axiosInstance.delete(`/water/${id}`);
-      if (!response.ok) {
-        throw new Error('Failed to delete water');
-      }
       notifySuccess('Water deleted');
-      return response;
+      return response.data;
     } catch (error) {
       notifyError('Failed to delete water');
-      return thunkApi.rejectWithValue(error.response.data.message);
+      return thunkApi.rejectWithValue(
+        error.response?.data?.message || 'An unexpected error occurred',
+      );
     }
   },
 );
 
-export const getWaterTodayThunk = createAsyncThunk(
+export const getWaterToday = createAsyncThunk(
   'water/getWaterToday',
   async (_, thunkApi) => {
     try {
       const response = await axiosInstance.get('/water/today');
-      if (!response.ok) {
-        throw new Error('Failed to get today water');
-      }
-      return response;
+      return response.data;
     } catch (error) {
       notifyError('Failed to get today water');
-      return thunkApi.rejectWithValue(error.response.data.message);
+      return thunkApi.rejectWithValue(
+        error.response?.data?.message || 'An unexpected error occurred',
+      );
     }
   },
 );
 
-export const getWaterMonthThunk = createAsyncThunk(
+export const getWaterMonth = createAsyncThunk(
   'water/getWaterMonth',
   async (data, thunkApi) => {
     try {
       const response = await axiosInstance.get('/water/month', {
         params: data,
       });
-      if (!response.ok) {
-        throw new Error('Failed to get month water');
-      }
-      return response;
+      return response.data;
     } catch (error) {
       notifyError('Failed to get month water');
-      return thunkApi.rejectWithValue(error.response.data.message);
+      return thunkApi.rejectWithValue(
+        error.response?.data?.message || 'An unexpected error occurred',
+      );
     }
   },
 );

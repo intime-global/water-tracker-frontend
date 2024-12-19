@@ -72,8 +72,6 @@ const UserLogo = () => {
                 src={user.photo}
                 alt="User photo"
                 className={css.avatar}
-                width={'28px'}
-                height={'28px'}
               />
             ) : (
               <span className={css.userInitial}>{getUserInitial()}</span>
@@ -81,8 +79,6 @@ const UserLogo = () => {
           </button>
 
           <svg
-            width={28}
-            height={28}
             onClick={handleUserLogoClick}
             className={css.icon}
           >

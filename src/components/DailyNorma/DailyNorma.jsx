@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import DeilyNormaModal from '../DeilyNormaModal/DeilyNormaModal.jsx';
+import DailyNormaModal from '../DailyNormaModal/DailyNormaModal.jsx';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
-import css from './DailyNorma.module.css';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/user/selectors.js';
+import css from './DailyNorma.module.css';
 
 export default function DailyNorma() {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function DailyNorma() {
         </div>
 
         {modalIsOpen && (<ModalContainer isOpen={modalIsOpen} onClose={closeModal}>
-            <DeilyNormaModal onClose={closeModal} />
+            <DailyNormaModal onClose={closeModal} />
           </ModalContainer>)
         }
     </div>

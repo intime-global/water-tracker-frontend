@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Icons from '../../icons/sprite.svg';
 import "../../index.css";
-import css from "./DeilyNormaModal.module.css";
 import { selectIsLoading, selectUser } from "../../redux/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserWaterRateThunk } from "../../redux/user/operations";
 import {toast} from "react-toastify";
 import { toLiters, toMilliliters } from "../../services/helpers";
+import css from "./DailyNormaModal.module.css";
 
 export default function DailyNormaModal({ onClose }) {
   const user = useSelector(selectUser);

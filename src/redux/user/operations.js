@@ -88,6 +88,7 @@ export const getOauthUrl = createAsyncThunk(
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Oauth url failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -106,6 +107,7 @@ export const confirmOauth = createAsyncThunk(
     } catch (error) {
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      notifyError('Oauth confirm failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -122,6 +124,7 @@ export const refresh = createAsyncThunk(
       const { data } = await axiosInstance.get('/users');
       return data;
     } catch (error) {
+      notifyError('Refresh failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -145,6 +148,7 @@ export const refreshSession = createAsyncThunk(
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
+      notifyError('Refresh session failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },

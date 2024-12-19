@@ -1,27 +1,28 @@
 .linkWrapper {
-    display: flex;
-    align-items: center;
-    cursor: var(--cursor-h);
-    color: var(--primary-color-blue);
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primary-color-blue);
+  text-decoration: none;
 }
 
 .navLink {
-    display: flex;
-    align-items: center;
-    color: inherit;
-    text-decoration: none;
-    gap: 8px;
-    cursor: var(--cursor-h);
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  gap: 8px;
+  cursor: pointer;
+  transition: 250ms ease;
+}
+
+.navLink:hover {
+  color: var(--secondary-color-orange);
 }
 
 .icon {
-    width: 28px;
-    height: 28px;
-    fill: transparent;
-    stroke: var(--primary-color-black);
-}
-
-.linkWrapper:hover {
-    color: var(--secondary-color-orange);
+  width: 28px;
+  height: 28px;
+  fill: transparent;
+  stroke: var(--primary-color-black);
 }

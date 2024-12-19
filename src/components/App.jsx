@@ -3,8 +3,8 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
-import { refresh } from '../redux/user/operations';
-import { selectIsRefreshing } from '../redux/user/selectors';
+import { refresh, getUserThunk } from '../redux/user/operations';
+import { selectIsRefreshing, selectAccessToken } from '../redux/user/selectors';
 
 import RestrictedRoute from './UserMenu/RestrictedRoute';
 import PrivateRoute from './UserMenu/PrivateRoute';
@@ -23,10 +23,20 @@ const SignupPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const accessToken = useSelector(selectAccessToken);
 
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch]);
+
+  useEffect(() => {
+    const firstLogIn = () => {
+      if (accessToken) {
+        dispatch(getUserThunk());
+      }
+    };
+    firstLogIn();
+  }, [accessToken, dispatch]);
 
   if (isRefreshing) {
     return <Loader />;

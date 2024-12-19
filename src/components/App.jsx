@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
-import { refresh, getUserThunk } from '../redux/user/operations';
+import { refresh, getUser } from '../redux/user/operations';
 import { selectIsRefreshing, selectAccessToken } from '../redux/user/selectors';
 
 import RestrictedRoute from './UserMenu/RestrictedRoute';
@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     const firstLogIn = () => {
       if (accessToken) {
-        dispatch(getUserThunk());
+        dispatch(getUser());
       }
     };
     firstLogIn();

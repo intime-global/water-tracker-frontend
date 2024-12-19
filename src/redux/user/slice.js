@@ -10,10 +10,10 @@ import {
   register,
   resetPassword,
   sendResetPasswordEmail,
-  getUserThunk,
-  editUserInfoThunk,
-  editUserAvatarThunk,
-  editUserWaterRateThunk,
+  getUser,
+  editUserInfo,
+  editUserAvatar,
+  editUserWaterRate,
 } from './operations.js';
 import {
   handleLogin,
@@ -63,10 +63,10 @@ const userSlice = createSlice({
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
-      .addCase(getUserThunk.fulfilled, handleUserInfo)
-      .addCase(editUserInfoThunk.fulfilled, handleEditUser)
-      .addCase(editUserAvatarThunk.fulfilled, handleUpdateAvatar)
-      .addCase(editUserWaterRateThunk.fulfilled, handleWaterRate)
+      .addCase(getUser.fulfilled, handleUserInfo)
+      .addCase(editUserInfo.fulfilled, handleEditUser)
+      .addCase(editUserAvatar.fulfilled, handleUpdateAvatar)
+      .addCase(editUserWaterRate.fulfilled, handleWaterRate)
       .addMatcher(
         isAnyOf(
           register.pending,
@@ -77,10 +77,10 @@ const userSlice = createSlice({
           logout.pending,
           resetPassword.pending,
           sendResetPasswordEmail.pending,
-          getUserThunk.pending,
-          editUserInfoThunk.pending,
-          editUserAvatarThunk.pending,
-          editUserWaterRateThunk.pending,
+          getUser.pending,
+          editUserInfo.pending,
+          editUserAvatar.pending,
+          editUserWaterRate.pending,
         ),
         (state) => {
           state.isLoading = true;
@@ -109,10 +109,10 @@ const userSlice = createSlice({
           refresh.rejected,
           resetPassword.rejected,
           sendResetPasswordEmail.rejected,
-          getUserThunk.rejected,
-          editUserInfoThunk.rejected,
-          editUserAvatarThunk.rejected,
-          editUserWaterRateThunk.rejected,
+          getUser.rejected,
+          editUserInfo.rejected,
+          editUserAvatar.rejected,
+          editUserWaterRate.rejected,
         ),
         (state, action) => {
           state.isLoading = false;

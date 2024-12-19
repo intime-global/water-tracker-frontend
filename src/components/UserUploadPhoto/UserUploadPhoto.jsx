@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { editUserAvatarThunk } from '../../redux/user/operations.js';
+import { editUserAvatar } from '../../redux/user/operations.js';
 import { selectUser } from '../../redux/user/selectors.js';
 import sprite from '../../icons/sprite.svg';
 import css from './UserUploadPhoto.module.css';
@@ -16,7 +16,7 @@ export default function UserUploadPhoto() {
     const file = evt.target.files[0];
 
     if (file) {
-      dispatch(editUserAvatarThunk(file));
+      dispatch(editUserAvatar(file));
     }
   };
   return (

@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { editUserInfoThunk } from '../../redux/user/operations.js';
+import { editUserInfo } from '../../redux/user/operations.js';
 import { selectIsLoading, selectUser } from '../../redux/user/selectors.js';
 import { notifySuccess } from '../../services/notifications.js';
 import sprite from '../../icons/sprite.svg';
@@ -78,7 +78,7 @@ export default function SettingsForm({ onClose }) {
       filteredValues.newPassword = newPassword;
     }
 
-    dispatch(editUserInfoThunk(filteredValues));
+    dispatch(editUserInfo(filteredValues));
     notifySuccess('Data has successfully changed!');
     onClose();
   };

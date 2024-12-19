@@ -205,29 +205,26 @@ export const resetPassword = createAsyncThunk(
  * Just update local info about user
  * Not sure if it is needed at all
  */
-export const getUserThunk = createAsyncThunk(
-  'user/getUser',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axiosInstance.get('/users/');
-      return response.data;
-    } catch (error) {
-      if (error.response?.data?.data?.message)
-        return thunkAPI.rejectWithValue(error.response.data.data.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
+export const getUser = createAsyncThunk('user/getUser', async (_, thunkAPI) => {
+  try {
+    const response = await axiosInstance.get('/users');
+    return response.data;
+  } catch (error) {
+    if (error.response?.data?.data?.message)
+      return thunkAPI.rejectWithValue(error.response.data.data.message);
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 /**
  * Edit User Info
  * Update user's profile
  */
-export const editUserInfoThunk = createAsyncThunk(
+export const editUserInfo = createAsyncThunk(
   'user/editUserInfo',
   async (data, thunkAPI) => {
     try {
-      const response = await axiosInstance.patch('/users/', data);
+      const response = await axiosInstance.patch('/users', data);
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)
@@ -242,7 +239,7 @@ export const editUserInfoThunk = createAsyncThunk(
  * Upload new user avatar
  * P.S. we need to upload a file, not an URL! And we will get avatarUrl in the response
  */
-export const editUserAvatarThunk = createAsyncThunk(
+export const editUserAvatar = createAsyncThunk(
   'user/editUserAvatar',
   async (photo, thunkAPI) => {
     try {
@@ -266,11 +263,11 @@ export const editUserAvatarThunk = createAsyncThunk(
  * Edit User Water Rate
  * Update user's daily norm
  */
-export const editUserWaterRateThunk = createAsyncThunk(
+export const editUserWaterRate = createAsyncThunk(
   'user/editUserWaterRate',
   async (data, thunkAPI) => {
     try {
-      const response = await axiosInstance.patch('/water/rate/', data);
+      const response = await axiosInstance.patch('/water/rate', data);
       return response.data;
     } catch (error) {
       if (error.response?.data?.data?.message)

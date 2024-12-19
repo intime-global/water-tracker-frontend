@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import css from './RecoveryForm.module.css';
 import * as yup from 'yup';
 import { resetPassword } from '../../redux/user/operations';
 import { notifyError, notifySuccess } from '../../services/notifications';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { selectAuthError, selectIsLoading } from '../../redux/user/selectors';
+import { selectIsLoading } from '../../redux/user/selectors';
 import sprite from '../../icons/sprite.svg';
 import Loader from '../Loader/Loader';
 
@@ -24,12 +24,11 @@ const registerSchema = yup.object({
 
 const RecoveryForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
 
   const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectAuthError);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
@@ -41,16 +40,6 @@ const RecoveryForm = () => {
     setShowRepeatPassword((prevState) => !prevState);
   };
 
-
-
-  useEffect(() => {
-    if (isError) {
-      notifyError(isError);
-    }
-  }, [isError]);
-
-
-
   const initialValues = {
     password: '',
     repeatPassword: '',
@@ -60,7 +49,7 @@ const RecoveryForm = () => {
 
   async function handleSubmit(values, actions) {
     try {
-      await dispatch(resetPassword(values));
+      await dispatch(resetPassword({token: values.token, password: values.password}));
       notifySuccess('Your password has been changed succesfully');
       actions.resetForm();
       navigate('/signin');
@@ -83,6 +72,7 @@ const RecoveryForm = () => {
                       <label className={css.label}>
                         <p className={css.text}>Enter your new password</p>
                         <div className={css.inputContainer}>
+
                           <Field
                             name="password"
                             type={showPassword ? 'text' : 'password'}

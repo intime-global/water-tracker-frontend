@@ -25,3 +25,5 @@ export const notifyError = (message) =>
     theme: 'colored',
     transition: Zoom,
   });
+
+  

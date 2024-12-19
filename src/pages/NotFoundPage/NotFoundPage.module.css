@@ -1,20 +1,65 @@
 .notFoundContainer {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  max-width: 320px;
+  padding: 0 20px;
+  margin: 30px auto 0;
 }
 
 .title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.17;
   color: var(--primary-color-blue);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.problem {
+  margin-bottom: 18px;
 }
 
 .suggestion {
-  color: var(--primary-color-black);
+  text-align: left;
 }
 
 .link {
   color: var(--primary-color-blue);
   margin: 0 4px;
+  transition: color 250ms ease;
+}
+
+.link:hover {
+  color: var(--secondary-color-orange);
+}
+
+@media screen and (min-width: 768px) {
+  .notFoundContainer {
+    max-width: 768px;
+    padding: 0 32px;
+    margin-top: 40px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .problem,
+  .suggestion {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .notFoundContainer {
+    max-width: 1440px;
+    margin-top: 80px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .problem,
+  .suggestion {
+    font-size: 20px;
+  }
 }

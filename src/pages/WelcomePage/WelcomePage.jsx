@@ -1,12 +1,11 @@
-// import AuthContainer from '../../components/AuthContainer/AuthContainer.jsx';
+import BackgroundContainer from '../../components/BackgroundContainer/BackgroundContainer.jsx';
 import Welcome from '../../components/Welcome/Welcome';
-import css from './WelcomePage.module.css';
 
 const WelcomePage = () => {
   return (
-    <div className={`${css.welcome}`}>
+    <BackgroundContainer>
       <Welcome />
-    </div>
+    </BackgroundContainer>
   );
 };
 

@@ -1,12 +1,12 @@
-import * as Yup from "yup";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { editUserInfoThunk } from "../../redux/user/operations.js";
-import { selectIsLoading, selectUser } from "../../redux/user/selectors.js";
-import { notifySuccess } from "../../services/notifications.js";
-import sprite from "../../icons/sprite.svg";
-import css from "./SettingsForm.module.css";
+import * as Yup from 'yup';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { editUserInfoThunk } from '../../redux/user/operations.js';
+import { selectIsLoading, selectUser } from '../../redux/user/selectors.js';
+import { notifySuccess } from '../../services/notifications.js';
+import sprite from '../../icons/sprite.svg';
+import css from './SettingsForm.module.css';
 
 export default function SettingsForm({ onClose }) {
   const user = useSelector(selectUser);
@@ -18,28 +18,28 @@ export default function SettingsForm({ onClose }) {
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object({
-    gender: Yup.string().oneOf(["male", "female"]),
-    name: Yup.string().max(32, "Max 32 letters!"),
-    email: Yup.string().email("Use a valid email!").required("Required!"),
+    gender: Yup.string().oneOf(['male', 'female']),
+    name: Yup.string().max(32, 'Max 32 letters!'),
+    email: Yup.string().email('Use a valid email!').required('Required!'),
     oldPassword: Yup.string()
-      .min(8, "Min 8 characters!")
-      .max(64, "Max 64 characters"),
+      .min(8, 'Min 8 characters!')
+      .max(64, 'Max 64 characters'),
     newPassword: Yup.string()
-      .min(8, "Min 8 characters!")
-      .max(64, "Max 64 characters"),
+      .min(8, 'Min 8 characters!')
+      .max(64, 'Max 64 characters'),
     repeatPassword: Yup.string().oneOf(
-      [Yup.ref("newPassword")],
-      "Password doesn't match!"
+      [Yup.ref('newPassword')],
+      "Password doesn't match!",
     ),
   });
 
   const initialValues = {
-    gender: user?.gender || "female",
-    name: user?.name || "",
-    email: user?.email || "",
-    oldPassword: "",
-    newPassword: "",
-    repeatPassword: "",
+    gender: user?.gender || 'female',
+    name: user?.name || '',
+    email: user?.email || '',
+    oldPassword: '',
+    newPassword: '',
+    repeatPassword: '',
   };
 
   const validateInputs = (values) => {
@@ -52,7 +52,7 @@ export default function SettingsForm({ onClose }) {
     const allEmpty = fields.every((field) => !field);
     const allFilled = fields.every((field) => field);
     if (!allEmpty && !allFilled) {
-      errors.inputs = "All password fields must be filled or empty!";
+      errors.inputs = 'All password fields must be filled or empty!';
     }
     return errors;
   };
@@ -70,9 +70,16 @@ export default function SettingsForm({ onClose }) {
   };
 
   const handleSubmit = (values) => {
-    const { repeatPassword, ...filteredValues } = values;
+    const { repeatPassword, oldPassword, newPassword, ...filteredValues } =
+      values;
+
+    if (oldPassword && newPassword) {
+      filteredValues.oldPassword = oldPassword;
+      filteredValues.newPassword = newPassword;
+    }
+
     dispatch(editUserInfoThunk(filteredValues));
-    notifySuccess("Data has successfully changed!");
+    notifySuccess('Data has successfully changed!');
     onClose();
   };
 
@@ -158,7 +165,7 @@ export default function SettingsForm({ onClose }) {
                   Outdated password:
                 </label>
                 <Field
-                  type={isOldPasswordVisible ? "text" : "password"}
+                  type={isOldPasswordVisible ? 'text' : 'password'}
                   name="oldPassword"
                   id="oldPassword"
                   placeholder="Password"
@@ -192,7 +199,7 @@ export default function SettingsForm({ onClose }) {
                   New Password:
                 </label>
                 <Field
-                  type={isNewPasswordVisible ? "text" : "password"}
+                  type={isNewPasswordVisible ? 'text' : 'password'}
                   name="newPassword"
                   id="newPassword"
                   placeholder="Password"
@@ -221,12 +228,12 @@ export default function SettingsForm({ onClose }) {
                 />
               </div>
 
-              <div className={css.inputWrap} style={{ marginBottom: "0px" }}>
+              <div className={css.inputWrap} style={{ marginBottom: '0px' }}>
                 <label htmlFor="repeatPassword" className={css.label}>
                   Repeat new password:
                 </label>
                 <Field
-                  type={isRepeatPasswordVisible ? "text" : "password"}
+                  type={isRepeatPasswordVisible ? 'text' : 'password'}
                   name="repeatPassword"
                   id="repeatPassword"
                   placeholder="Password"
@@ -263,7 +270,7 @@ export default function SettingsForm({ onClose }) {
 
           <div className={css.btnWrap}>
             <button type="submit" className={css.submit} disabled={isLoading}>
-              {isLoading ? "Loadind..." : "Save"}
+              Save
             </button>
           </div>
         </Form>

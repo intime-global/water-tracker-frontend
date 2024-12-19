@@ -13,12 +13,12 @@ export const handleLogin = (state, { payload }) => {
 
 export const handleEditUser = (state, { payload }) => {
   state.isLoading = false;
-  state.user = { ...state.user, ...payload };
+  state.user = { ...state.user, ...payload.data };
 };
 
 export const handleUpdateAvatar = (state, { payload }) => {
   state.isLoading = false;
-  state.user.avatarURL = payload.avatarURL;
+  state.user.photo = payload.data.photo;
 };
 
 export const handleWaterRate = (state, { payload }) => {

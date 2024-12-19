@@ -12,7 +12,7 @@ import ListItem from '../ListItem/ListItem.jsx';
 import { notifySuccess } from '../../services/notifications.js';
 import Loader from '../Loader/Loader.jsx';
 
-import Icon from '../Icons/icons.jsx';
+import Icon from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
 
 export const TodayList = () => {

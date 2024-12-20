@@ -1,12 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/user/selectors.js';
 import UserLogoModal from '../UserLogoModal/UserLogoModal.jsx';
 import SettingsModal from '../SettingsModal/SettingsModal.jsx';
 import LogOutModal from '../LogOutModal/LogOutModal.jsx';
-import ModalContainer from '../ModalContainer/ModalContainer.jsx';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/user/selectors.js';
-import css from './UserLogo.module.css';
 import sprite from '../../icons/sprite.svg';
+import css from './UserLogo.module.css';
 
 const UserLogo = () => {
   const user = useSelector(selectUser);
@@ -18,14 +17,14 @@ const UserLogo = () => {
   const [dropDownMenu, setDropDownMenu] = useState({});
 
   const updateBtnPosition = () => {
-      if (btnContainer.current) {
-        const rect = btnContainer.current.getBoundingClientRect();
-        setDropDownMenu({
-          top: rect.top + rect.height + window.scrollY,
-          left: rect.left + window.scrollX,
-        });
-      }
-}
+    if (btnContainer.current) {
+      const rect = btnContainer.current.getBoundingClientRect();
+      setDropDownMenu({
+        top: rect.top + rect.height + window.scrollY,
+        left: rect.left + window.scrollX,
+      });
+    }
+  };
   const handleUserLogoClick = () => {
     setIsUserLogoModalOpen((prev) => !prev);
   };
@@ -35,7 +34,7 @@ const UserLogo = () => {
     updateBtnPosition();
     return () => {
       window.removeEventListener('resize', updateBtnPosition);
-    }
+    };
   }, []);
 
   const handleCloseUserLogoModal = () => setIsUserLogoModalOpen(false);
@@ -59,9 +58,7 @@ const UserLogo = () => {
   return (
     <div className={css.wrapper}>
       <div className={`${css.point} ${css.relativeWrapper}`}>
-        <p className={css.user}>
-          {user?.name ? user.name.substring(0, 10) : 'User'}
-        </p>
+        <p className={css.user}>{user?.name || user?.email || 'User'}</p>
         <div className={css.logobox}>
           <button
             onClick={handleUserLogoClick}
@@ -69,24 +66,13 @@ const UserLogo = () => {
             ref={btnContainer}
           >
             {user?.photo ? (
-              <img
-                src={user.photo}
-                alt="User photo"
-                className={css.avatar}
-                width={'28px'}
-                height={'28px'}
-              />
+              <img src={user.photo} alt="User photo" className={css.avatar} />
             ) : (
               <span className={css.userInitial}>{getUserInitial()}</span>
             )}
           </button>
 
-          <svg
-            width={28}
-            height={28}
-            onClick={handleUserLogoClick}
-            className={css.icon}
-          >
+          <svg onClick={handleUserLogoClick} className={css.icon}>
             <use href={`${sprite}#icon-chevron-down`} />
           </svg>
 
@@ -102,24 +88,15 @@ const UserLogo = () => {
         </div>
       </div>
 
-      {isSettingModalOpen && (
-        <ModalContainer onClose={handleCloseSettingsModal}>
-          <SettingsModal
-            isOpen={isSettingModalOpen}
-            onClose={handleCloseSettingsModal}
-          />
-        </ModalContainer>
-      )}
+      <SettingsModal
+        isOpen={isSettingModalOpen}
+        onClose={handleCloseSettingsModal}
+      />
 
-      {isLogoutModalOpen && (
-        <ModalContainer onClose={handleCloseLogoutModal}>
-          <LogOutModal
-            isOpen={isLogoutModalOpen}
-            onClose={handleCloseLogoutModal}
-            user={user}
-          />
-        </ModalContainer>
-      )}
+      <LogOutModal
+        isOpen={isLogoutModalOpen}
+        onClose={handleCloseLogoutModal}
+      />
     </div>
   );
 };

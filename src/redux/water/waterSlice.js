@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  addWaterThunk,
-  getWaterTodayThunk,
-  getWaterMonthThunk,
-  deleteWaterThunk,
-  editWaterThunk,
+  addWater,
+  getWaterToday,
+  getWaterMonth,
+  deleteWater,
+  editWater,
 } from './waterThunk.js';
 
 import {
@@ -30,11 +30,11 @@ export const waterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(addWaterThunk.fulfilled, handleAddWater)
-      .addCase(editWaterThunk.fulfilled, handleEditWater)
-      .addCase(deleteWaterThunk.fulfilled, handleDeleteWater)
-      .addCase(getWaterTodayThunk.fulfilled, handleGetToday)
-      .addCase(getWaterMonthThunk.fulfilled, handleGetMonth);
+      .addCase(addWater.fulfilled, handleAddWater)
+      .addCase(editWater.fulfilled, handleEditWater)
+      .addCase(deleteWater.fulfilled, handleDeleteWater)
+      .addCase(getWaterToday.fulfilled, handleGetToday)
+      .addCase(getWaterMonth.fulfilled, handleGetMonth);
   },
 });
 

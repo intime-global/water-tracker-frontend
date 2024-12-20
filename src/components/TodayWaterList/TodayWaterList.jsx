@@ -1,18 +1,18 @@
 import { useState, useDispatch } from 'react';
 import { useSelector } from 'react-redux';
 
-import { deleteWaterToday } from '../../redux/water/waterThunk.js';
+import { deleteWater } from '../../redux/water/waterThunk.js';
 import { selectTodayWater } from '../../redux/water/waterSelector.js';
 import { getConvertedTime } from './hooksTodayWater.js';
-import { waterIsLoadingSelector } from '../../redux/water/waterSelector.js';
+//import { waterIsLoadingSelector } from '../../redux/water/waterSelector.js';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
 
 //import AddWaterModal  from '../AddWaterModal/AddWaterModal.jsx';
-import ListItem from '../ListItem/ListItem.jsx';
+import {ListItem} from '../ListItem/ListItem.jsx';
 import { notifySuccess } from '../../services/notifications.js';
-import Loader from '../Loader/Loader.jsx';
+//import Loader from '../Loader/Loader.jsx';
 
-import Icon from '../Icon/Icon.jsx';
+import {Icon} from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
 
 export const TodayList =() => {
@@ -22,7 +22,7 @@ export const TodayList =() => {
   const [isDelete, setIsDelete] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const dispatch = useDispatch();
-  const isLoading = useSelector(waterIsLoadingSelector);
+  //const isLoading = useSelector(waterIsLoadingSelector);
   const openModalToAdd = () => {
     setIsModalOpen(true);
     //setisEditing(false);
@@ -44,7 +44,7 @@ export const TodayList =() => {
     setIsModalOpen(false);
   };
   const deleteHandleChange = async (selectedItemId) => {
-    await dispatch(deleteWaterToday({ id: selectedItemId }));
+    await dispatch(deleteWater({ id: selectedItemId }));
     notifySuccess('This item deleted');
     closeModal();
   };
@@ -134,7 +134,7 @@ export const TodayList =() => {
         ) : null
         //<AddWaterModal isOpen={isModalOpen} onClose={closeModal} isEditing={isEditing} />
       }
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
     </div>
   );
 };

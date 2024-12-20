@@ -1,6 +1,6 @@
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
-import TodayList from '../../components/TodayWaterList/TodayWaterList';
+import {TodayList} from '../../components/TodayWaterList/TodayWaterList.jsx';
 // import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 // import AuthContainer from '../../components/AuthContainer/AuthContainer';
 
@@ -27,12 +27,12 @@ const HomePage = () => {
         <div className={css.bottleSection}>
           <DailyNorma className={css.dialyNorma} />
           <div className={css.bottle}></div>
-          <WaterRatioPanel />
+          {/* <WaterRatioPanel /> */}
         </div>
 
         <div className={css.statisticsSection}>
           <TodayList className={css.todayWaterList} />
-          <MonthStatsTable />
+          {/* <MonthStatsTable /> */}
         </div>
       </div>
     </>

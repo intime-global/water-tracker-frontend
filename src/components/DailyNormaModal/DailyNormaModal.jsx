@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import Icons from '../../icons/sprite.svg';
-import '../../index.css';
-import { selectIsLoading, selectUser } from '../../redux/user/selectors';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading, selectUser } from '../../redux/user/selectors';
 import { editUserWaterRate } from '../../redux/user/operations';
-import { toast } from 'react-toastify';
 import { toLiters, toMilliliters } from '../../services/helpers';
+import { notifyError } from '../../services/notifications';
+import Icons from '../../icons/sprite.svg';
 import css from './DailyNormaModal.module.css';
 
 export default function DailyNormaModal({ onClose }) {
@@ -18,20 +17,17 @@ export default function DailyNormaModal({ onClose }) {
   const [waterAmount, setWaterAmount] = useState(user.waterRate || 0);
   const [waterAmountForCalculate, setWaterAmountForCalculate] = useState(0);
 
-  const calculateWaterRate = (gender, weight, activityTime) => {
-    const weightItem = parseFloat(weight);
-    const activitiTimeItem = parseFloat(activityTime);
-    if (isNaN(weightItem) || isNaN(activitiTimeItem)) return;
+ const calculateWaterRate = (gender, weight, activityTime) => {
+  const weightItem = parseFloat(weight);
+  const activitiTimeItem = parseFloat(activityTime) || 0;
+  if (isNaN(weightItem) || isNaN(activitiTimeItem)) return;
 
-    const water =
-      gender === 'female'
-        ? weightItem * 0.03 + activitiTimeItem * 0.4
-        : weightItem * 0.04 + activitiTimeItem * 0.6;
+  const water = gender === "female"
+    ? weightItem * 0.03 + activitiTimeItem * 0.4
+    : weightItem * 0.04 + activitiTimeItem * 0.6;
 
-    const roundedWater = toMilliliters(parseFloat(water.toFixed(1)));
-    setWaterAmount(roundedWater);
-    setWaterAmountForCalculate(roundedWater);
-  };
+  setWaterAmountForCalculate(toMilliliters(parseFloat(water.toFixed(1))));
+};
 
   useEffect(() => {
     calculateWaterRate(gender, weight, activityTime);
@@ -43,28 +39,19 @@ export default function DailyNormaModal({ onClose }) {
     e.preventDefault();
     const water = parseFloat(waterAmount.toFixed(1));
     if (water < toMilliliters(0.5) || water > toMilliliters(15)) {
-      toast.error('The water intake must be between 0.5 and 15 liters.');
+      notifyError('The water intake must be between 0.5 and 15 liters.');
       return;
     }
-    try {
       dispatch(editUserWaterRate({ waterRate: waterAmount }));
-      toast.success('Successfully daily intake saved!');
       onClose();
-    } catch (error) {
-      if (error.response?.status === 500) {
-        toast.error('Server error. Please try again later.');
-      } else {
-        toast.error('An unexpected error occurred. Please try again.');
-      }
-    }
   };
 
   const handleWaterChange = (e) => {
-    let value = e.target.value;
-    if (value === '') {
-      setWaterAmount('');
+    let value = e.target.value.replace(/[^0-9.]/g, ' ');
+    if (value === "") {
+      setWaterAmount("");
     } else {
-      setWaterAmount(parseFloat(value)); // No need for toMilliliters
+      setWaterAmount(toMilliliters(parseFloat(value)));
     }
   };
 

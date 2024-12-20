@@ -72,13 +72,13 @@
   }
 
   .home {
-    position: relative; /* Для управління z-index */
     max-width: 768px;
     padding: 0px 32px 44px 32px;
     margin-top: 40px;
   }
 
   .bottleSection {
+    position: relative;
     padding-bottom: 16px;
   }
 
@@ -142,7 +142,7 @@
     flex: 1;
     max-width: 739px;
     margin-left: -73.33px;
-    z-index: 1; /* під статистикою */
+    z-index: 1;
     margin-bottom: 0px;
     padding-bottom: 0px;
     display: flex;
@@ -166,11 +166,9 @@
   }
 
   .statisticsSection {
-    z-index: 1;
     min-width: 592px;
     height: 680px;
     margin-left: -40.67px;
-    z-index: 2; /* над бутилкою */
   }
 
   @media screen and (min-resolution: 192dpi) {

@@ -13,8 +13,7 @@ const HomePage = () => {
       <div className={css.background}>
         <div className={css.home}>
           <div className={css.bottleSection}>
-            <div className={css.dailyNorma}>DailyNorma</div>
-            {/* <DailyNorma className={css.dailyNorma} /> */}
+            <DailyNorma className={css.dailyNorma} />
             <div className={css.bottle}></div>
             <div>WaterRatioPanel</div>
           </div>
@@ -29,7 +28,7 @@ const HomePage = () => {
       <div className={css.background}>
       <div className={css.home}>
         <div className={css.bottleSection}>
-          <DailyNorma className={css.dialyNorma} />
+          <DailyNorma className={css.dailyNorma} />
           <div className={css.bottle}></div>
           <WaterRatioPanel />
         </div>

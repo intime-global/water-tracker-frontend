@@ -87,7 +87,6 @@ const TodayListModal = ({
   return (
     <ModalContainer onClose={onClose}>
       <div className={css.modalContainer}>
-        {isEditing ? <p>Hello</p> : <p>World</p>}
         <div className={css.header}>
           {isEditing ? (
             <h2 className={css.title}>Edit the entered amount of water</h2>

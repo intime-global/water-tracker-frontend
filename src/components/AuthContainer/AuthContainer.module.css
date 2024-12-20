@@ -1,59 +1,86 @@
-.background {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-image: url('../../images/HomePage/mob/bubble_mob_1x.png');
-  box-sizing: border-box;
+
+@media screen and (min-width: 320px) {
+  .background {
+    max-width: 768px;
+    height: 680px;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-end;
+    background-image: url('../../images/HomePage/mob/bubble_mob_1x.png'),
+      url('../../images/HomePage/mob/bottle_home_mob_1x.png');
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100%, 65%;
+    background-position: center top, center calc(100% - 15px);
+  }
 }
 
 @media screen and (min-resolution: 192dpi) {
   .background {
-    background-image: url('../../images/HomePage/mob/bubble_mob_2x.png');
+    background-image: url('../../images/HomePage/mob/bubble_mob_2x.png'),
+    url('../../images/HomePage/mob/bottle_home_mob_2x.png');
   }
 }
 
 @media screen and (min-resolution: 288dpi) {
   .background {
-    background-image: url('../../images/HomePage/mob/bubble_mob_3x.png');
+    background-image: url('../../images/HomePage/mob/bubble_mob_3x.png'),
+    url('../../images/HomePage/mob/bottle_home_mob_3x.png');
   }
 }
 
 @media screen and (min-width: 768px) {
   .background {
-    background-position: center;
-    background-size: cover;
-    background-image: url('../../images/HomePage/tab/bubble_tab_1x.png');
-  }
+      max-width: 1440px;
+      height: 680px;
+      padding: 0 18px;
+      display: flex;
+      justify-content: flex-end;
+      background-image: url('../../images/HomePage/tab/bubble_tab_1x.png'),
+        url('../../images/HomePage/tab/bottle_home_tab_1x.png');
+      background-repeat: no-repeat, no-repeat;
+      background-size: 100%, 65%;
+      background-position: center top, top 40px right 10px;
+    }
 }
 
 @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
   .background {
-    background-image: url('../../images/HomePage/tab/bubble_tab_2x.png');
+    background-image: url('../../images/HomePage/tab/bubble_tab_2x.png'),
+    url('../../images/HomePage/tab/bottle_home_tab_2x.png');
   }
 }
 
 @media screen and (min-resolution: 288dpi) {
   .background {
-    background-image: url('../../images/HomePage/tab/bubble_tab_3x.png');
+    background-image: url('../../images/HomePage/tab/bubble_tab_3x.png'),
+    url('../../images/HomePage/tab/bottle_home_tab_3x.png');
   }
 }
 
 @media screen and (min-width: 1440px) {
   .background {
-    background-position: center bottom;
-    background-size: cover;
-    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
+    max-width: 1500px;
+    height: 800px;
+    padding: 0 18px;
+    display: flex;
+    justify-content: flex-end;
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png'),
+      url('../../images/HomePage/desk/bottle_home_desk_1x.png');
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100%, 65%;
+    background-position: center top, top 40px left 180px;
   }
 }
-
 @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
   .background {
-    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_2x.png');
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_2x.png'),
+    url('../../images/HomePage/desk/bottle_home_desk_2x.png');
   }
 }
 
 @media screen and (min-resolution: 288dpi) {
   .background {
-    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png');
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png'),
+    url('../../images/HomePage/desk/bottle_home_desk_3x.png');
   }
 }

@@ -1,17 +1,27 @@
 .containerForm {
+  width: 280px;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 5px;
+  padding-left: 5px;
   display: flex;
   flex-direction: column;
   align-items: start;
-  /* margin-top: 24px; */
+}
+
+.button {
+  width: 280px;
 }
 
 .form {
-  width: 100%;
+  width: 280px;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   gap: 16px;
+  margin-bottom: 16px;
+  margin-top: 24px;
 }
 
 .title {
@@ -21,7 +31,8 @@
 }
 
 .label {
-  width: 100%;
+  /* width: 100%; */
+  width: 280px;
   font-weight: 400;
   font-size: 18px;
   color: var(--primary-color-black);
@@ -33,8 +44,9 @@
 }
 
 .inputContainer {
-  position: relative;
-  width: 100%;
+  /* position: relative; */
+  width: 280px;
+  /* width: 100%; */
 }
 
 .icon {
@@ -49,7 +61,8 @@
 }
 
 .input {
-  width: 100%;
+  /* width: 100%; */
+  width: 280px;
   height: 44px;
   border: solid 1px var(--secondary-color-blue-2);
   border-radius: 6px;
@@ -76,7 +89,8 @@ input::placeholder {
 
 .button {
   margin-bottom: 16px;
-  width: 100%;
+  /* width: 100%; */
+  width: 280px;
   height: 36px;
   display: block;
   background-color: var(--primary-color-blue);
@@ -98,6 +112,8 @@ input::placeholder {
 .link {
   color: var(--primary-color-blue);
   width: 56px;
+  margin-left: 0px;
+  text-align: left;
 }
 
 .link:hover,
@@ -116,19 +132,37 @@ input::placeholder {
     flex-wrap: nowrap;
     width: 336px;
     margin-top: 50px;
+    text-align: left;
+    align-items: start;
   }
 
   .button {
+    width: 100%;
     height: 44px;
     font-size: 18px;
   }
+    .label {
+      width: 100%;
+}
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+.input {
+  width: 100%;
 }
 
+}
 @media screen and (min-width: 1440px) {
   .containerForm {
-    margin-right: 198px;
-    margin-top: 162px;
     width: 384px;
+    height: 404px;
+    margin-right: 100px;
+    margin-top: 140px;
   }
+    .form {
+      width: 384px;
+      /* margin-top: 162px; */
+    }
 
 }

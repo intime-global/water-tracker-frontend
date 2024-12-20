@@ -1,6 +1,10 @@
 .formContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin-left: 5px;
+  padding-left: 5px;
   align-items: start;
 }
 
@@ -13,6 +17,7 @@
   align-items: start;
   margin-bottom: 16px;
   margin-top: 24px;
+  margin-left: 5px;
 }
 
 .title {
@@ -27,20 +32,22 @@
   flex-direction: column;
   gap: 8px;
   justify-content: start;
-  width: 100%;
+  /* width: 100%; */
+  width: 280px;
   align-items: start;
   font-weight: 400;
   font-size: 18px;
   line-height: 133%;
   color: var(--primary-color-black);
-  position: relative;
+  /* position: relative; */
 }
 
 .input {
   border: solid 1px var(--secondary-color-blue-2);
   border-radius: 6px;
   padding: 12px 10px;
-  width: 100%;
+  /* width: 100%; */
+  width: 280px;
   height: 44px;
   font-weight: 400;
   font-size: 16px;
@@ -78,7 +85,8 @@
   border-radius: 10px;
   padding: 10px 30px;
   margin: 0 auto;
-  width: 100%;
+  /* width: 100%; */
+  width: 280px;
   height: 44px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--primary-color-blue);
@@ -104,6 +112,7 @@
   line-height: 125%;
   color: var(--primary-color-blue);
   margin-bottom: 8px;
+  margin-left: 0px;
 }
 
 .link:hover{
@@ -131,20 +140,37 @@
 }
 
 @media screen and (min-width: 768px) {
-  .form {
+
+  .formContainer{
     width: 336px;
-    margin-top: 40px;
+    margin-top: 50px;
+    text-align: left;
+    align-items: start;
   }
+    .label {
+      width: 100%;
+    }
   .button {
+    width: 100%;
     font-size: 18px;
     line-height: 133%;
   }
+    .input {
+      width: 100%;
+    }
 }
 
 @media screen and (min-width: 1440px) {
+  .formContainer {
+      width: 384px;
+      height: 312px;
+      margin-top: 140px;
+      margin-right: 100px;
+      text-align: left;
+      align-items: start;
+    }
+
   .form {
     width: 384px;
-    margin-right: 198px;
-    margin-top: 162px;
   }
 }

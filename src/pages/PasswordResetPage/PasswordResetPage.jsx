@@ -1,12 +1,14 @@
 import css from './PasswordResetPage.module.css';
+import AuthContainer from '../../components/AuthContainer/AuthContainer';
 import RecoveryForm from '../../components/RecoveryForm/RecoveryForm';
 
-export default function PasswordResetPage () {
-
+export default function PasswordResetPage() {
   return (
-    <div className={css.pageContainer}>
+    <AuthContainer>
+      <div className={css.passPage}>
+        <RecoveryForm />
+      </div>
       <RecoveryForm />
-    </div>
+    </AuthContainer>
   );
-};
-
+}

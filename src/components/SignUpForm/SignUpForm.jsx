@@ -98,6 +98,8 @@ export default function SignUpForm() {
                 />
                 <svg
                   className={css.icon}
+                  width={16}
+                  height={16}
                   onClick={(e) => {
                     e.preventDefault();
                     toggleShowPassword();
@@ -133,6 +135,8 @@ export default function SignUpForm() {
 
                 <svg
                   className={css.icon}
+                  width={16}
+                  height={16}
                   onClick={(e) => {
                     e.preventDefault();
                     toggleShowConfirmPassword();

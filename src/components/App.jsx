@@ -14,6 +14,8 @@ import PasswordResetPage from '../pages/PasswordResetPage/PasswordResetPage.jsx'
 
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage.jsx';
+const GoogleRedirectHandler = lazy(() => import('../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx'))
+// import GoogleRedirectHandler from '../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -74,6 +76,10 @@ function App() {
               }
             />
             <Route
+              path="/google-redirect"
+              element={<GoogleRedirectHandler />}
+            />
+            <Route
               path="/home"
               element={
                 <PrivateRoute redirectTo="/signin" component={<HomePage />} />
@@ -88,6 +94,8 @@ function App() {
                 />
               }
             />
+            <Route path="/googleauth" element={<GoogleAuthPage />} />
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

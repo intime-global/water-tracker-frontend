@@ -1,19 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { notifyError } from "../../services/notifications";
 import { confirmOauth } from "../../redux/user/operations";
-
 
 
 const GoogleRedirectHandler = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         const handleGoogleAuth = async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
+
+            const code = searchParams.get('code');
 
             if (!code) {
                 notifyError('Authorization code not found');
@@ -30,7 +30,7 @@ const GoogleRedirectHandler = () => {
             }
         };
         handleGoogleAuth();
-    }, [dispatch, navigate]);
+    }, [dispatch, navigate, searchParams]);
 
     return <div>Processing Google Authorization...</div>;
 };

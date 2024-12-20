@@ -103,7 +103,7 @@ function App() {
                 />
               }
             />
-            <Route path="/googleauth" element={<GoogleAuthPage />} />
+            <Route path="/googleauth" element={<GoogleRedirectHandler />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

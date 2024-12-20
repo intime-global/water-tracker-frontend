@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux"
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { notifyError } from "../../services/notifications";
 import { confirmOauth } from "../../redux/user/operations";
+import axios from "axios";
+import { setAuthHeader } from "../../services/axios.config";
 
 
 const GoogleRedirectHandler = () => {
@@ -22,9 +24,13 @@ const GoogleRedirectHandler = () => {
             };
 
             try {
-                await dispatch(confirmOauth({ code })).unwrap();
-                navigate('/home')
+                // const res = await axios.post('http://localhost:3000/auth/confirm-oauth', { code });
+                // console.log(res.data.accessToken);
+                // setAuthHeader(res.data.accessToken);
+                dispatch(confirmOauth({ code })).unwrap();
+                navigate('/home');
             } catch (error) {
+                console.log(error)
                 notifyError(error.message)
                 navigate('/login')
             }

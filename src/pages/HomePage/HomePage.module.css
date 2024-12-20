@@ -64,7 +64,7 @@
 }
 
 /* ----------Tablet--------- */
-@media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+@media screen and (min-width: 768px) {
   .background {
     min-height: calc(100vh - 30px);
     background-position: -4px -2px;
@@ -138,7 +138,6 @@
   }
 
   .bottleSection {
-    position: relative;
     flex: 1;
     max-width: 739px;
     margin-left: -73.33px;
@@ -159,7 +158,6 @@
   }
 
   .dailyNorma {
-    position: absolute;
     top: 30px;
     left: 73.33px;
     z-index: 3;

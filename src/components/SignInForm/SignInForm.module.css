@@ -39,7 +39,7 @@
   font-size: 18px;
   line-height: 133%;
   color: var(--primary-color-black);
-  /* position: relative; */
+  position: relative;
 }
 
 .input {

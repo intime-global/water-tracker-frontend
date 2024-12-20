@@ -61,89 +61,87 @@ const SignInForm = () => {
   };
 
   return (
-    <div className={css.containeF}>
-      <div className={css.formContainer}>
-        <Formik
-          initialValues={{ email: '', password: '' }}
-          onSubmit={handleSubmit}
-          validationSchema={SigninSchema}
-        >
-          {({ touched, errors }) => (
-            <Form className={css.form}>
-              <h2 className={css.title}>Sign In</h2>
-              <label className={css.label}>
-                Enter your email
-                <Field
-                  className={
-                    touched.email && errors.email
-                      ? clsx(css.input, css.inputError)
-                      : css.input
-                  }
-                  name="email"
-                  type="email"
-                  placeholder="E-mail"
-                  id={emailFieldId}
+    <div className={css.formContainer}>
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        onSubmit={handleSubmit}
+        validationSchema={SigninSchema}
+      >
+        {({ touched, errors }) => (
+          <Form className={css.form}>
+            <h2 className={css.title}>Sign In</h2>
+            <label className={css.label}>
+              Enter your email
+              <Field
+                className={
+                  touched.email && errors.email
+                    ? clsx(css.input, css.inputError)
+                    : css.input
+                }
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                id={emailFieldId}
+              />
+              <ErrorMessage
+                className={css.error}
+                name="email"
+                component="span"
+              />
+            </label>
+            <label className={css.label}>
+              Enter your password
+              <Field
+                className={
+                  touched.password && errors.password
+                    ? css.inputError
+                    : css.input
+                }
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                id={pwdFieldId}
+              />
+              <svg
+                className={css.icon}
+                width={16}
+                height={16}
+                onClick={() => {
+                  togglePasswordVisibility();
+                }}
+              >
+                <use
+                  href={`${sprite}#${
+                    showPassword ? 'icon-eye' : 'icon-eye-hidden'
+                  }`}
                 />
-                <ErrorMessage
-                  className={css.error}
-                  name="email"
-                  component="span"
-                />
-              </label>
-              <label className={css.label}>
-                Enter your password
-                <Field
-                  className={
-                    touched.password && errors.password
-                      ? css.inputError
-                      : css.input
-                  }
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Password"
-                  id={pwdFieldId}
-                />
-                <svg
-                  className={css.icon}
-                  width={16}
-                  height={16}
-                  onClick={() => {
-                    togglePasswordVisibility();
-                  }}
-                >
-                  <use
-                    href={`${sprite}#${
-                      showPassword ? 'icon-eye' : 'icon-eye-hidden'
-                    }`}
-                  />
-                </svg>
-                <ErrorMessage
-                  className={css.error}
-                  name="password"
-                  component="span"
-                />
-              </label>
-              <button className={css.button} type="submit">
-                {isLoading ? <Loader /> : 'Sign in'}
-              </button>
-            </Form>
-          )}
-        </Formik>
-        <Link to="/signup" className={css.link}>
-          Sign up
-        </Link>
-        <span className={css.forgotPwd} onClick={openModal}>
-          Forgot password
-        </span>
-        {isModalOpen && (
-          <ModalContainer>
-            <ForgotPasswordForm
-              onClose={closeModal}
-              onSubmit={handleForgotPasswordSubmit}
-            />
-          </ModalContainer>
+              </svg>
+              <ErrorMessage
+                className={css.error}
+                name="password"
+                component="span"
+              />
+            </label>
+            <button className={css.button} type="submit">
+              {isLoading ? <Loader /> : 'Sign in'}
+            </button>
+          </Form>
         )}
-      </div>
+      </Formik>
+      <Link to="/signup" className={css.link}>
+        Sign up
+      </Link>
+      <span className={css.forgotPwd} onClick={openModal}>
+        Forgot password
+      </span>
+      {isModalOpen && (
+        <ModalContainer>
+          <ForgotPasswordForm
+            onClose={closeModal}
+            onSubmit={handleForgotPasswordSubmit}
+          />
+        </ModalContainer>
+      )}
     </div>
   );
 };

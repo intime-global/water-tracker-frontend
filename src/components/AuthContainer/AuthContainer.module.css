@@ -1,7 +1,7 @@
 
 @media screen and (min-width: 320px) {
   .background {
-    max-width: 768px;
+    max-width: 767px;
     height: 680px;
     padding: 0px;
     display: flex;
@@ -31,10 +31,10 @@
 @media screen and (min-width: 768px) {
   .background {
       max-width: 1440px;
-      height: 680px;
-      padding: 0 18px;
       display: flex;
-      justify-content: flex-end;
+      align-items: start;
+      padding-left: 0px;
+      margin-left: 0px;
       background-image: url('../../images/HomePage/tab/bubble_tab_1x.png'),
         url('../../images/HomePage/tab/bottle_home_tab_1x.png');
       background-repeat: no-repeat, no-repeat;
@@ -59,9 +59,9 @@
 
 @media screen and (min-width: 1440px) {
   .background {
-    max-width: 1500px;
+    /* width: 1440px; */
     height: 800px;
-    padding: 0 18px;
+    padding: 0px;
     display: flex;
     justify-content: flex-end;
     background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png'),

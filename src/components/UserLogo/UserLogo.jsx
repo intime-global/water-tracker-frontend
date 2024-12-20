@@ -58,9 +58,7 @@ const UserLogo = () => {
   return (
     <div className={css.wrapper}>
       <div className={`${css.point} ${css.relativeWrapper}`}>
-        <p className={css.user}>
-          {user?.name ? user.name.substring(0, 10) : 'User'}
-        </p>
+        <p className={css.user}>{user?.name || user?.email || 'User'}</p>
         <div className={css.logobox}>
           <button
             onClick={handleUserLogoClick}
@@ -68,20 +66,13 @@ const UserLogo = () => {
             ref={btnContainer}
           >
             {user?.photo ? (
-              <img
-                src={user.photo}
-                alt="User photo"
-                className={css.avatar}
-              />
+              <img src={user.photo} alt="User photo" className={css.avatar} />
             ) : (
               <span className={css.userInitial}>{getUserInitial()}</span>
             )}
           </button>
 
-          <svg
-            onClick={handleUserLogoClick}
-            className={css.icon}
-          >
+          <svg onClick={handleUserLogoClick} className={css.icon}>
             <use href={`${sprite}#icon-chevron-down`} />
           </svg>
 

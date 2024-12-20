@@ -23,5 +23,5 @@ export const handleUpdateAvatar = (state, { payload }) => {
 
 export const handleWaterRate = (state, { payload }) => {
   state.isLoading = false;
-  state.user.waterRate = payload.waterRate;
+  state.user.waterRate = payload.data.waterRate;
 };

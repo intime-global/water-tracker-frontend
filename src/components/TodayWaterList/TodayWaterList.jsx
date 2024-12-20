@@ -15,7 +15,7 @@ import Loader from '../Loader/Loader.jsx';
 import Icon from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
 
-export const TodayList = () => {
+export const TodayList =() => {
   const { waterPortions } = useSelector(selectTodayWater);
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [isEditing, setisEditing] = useState(false);

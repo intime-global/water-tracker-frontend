@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-
 import css from './WaterConsumptionTracker.module.css';
 import sprite from '../../icons/sprite.svg';
 

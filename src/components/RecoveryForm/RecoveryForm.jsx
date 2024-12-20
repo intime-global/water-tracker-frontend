@@ -4,7 +4,6 @@ import { useState } from 'react';
 import css from './RecoveryForm.module.css';
 import * as yup from 'yup';
 import { resetPassword } from '../../redux/user/operations';
-import { notifyError, notifySuccess } from '../../services/notifications';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { selectIsLoading } from '../../redux/user/selectors';
 import sprite from '../../icons/sprite.svg';
@@ -48,14 +47,9 @@ const RecoveryForm = () => {
 
 
   async function handleSubmit(values, actions) {
-    try {
-      await dispatch(resetPassword({token: values.token, password: values.password}));
-      notifySuccess('Your password has been changed succesfully');
+      dispatch(resetPassword({ token: values.token, password: values.password }));
       actions.resetForm();
       navigate('/signin');
-    } catch (error) {
-      notifyError(error.message);
-    }
   }
 
   return (

@@ -1,15 +1,12 @@
 import { useState, useDispatch } from 'react';
 import { useSelector } from 'react-redux';
-
 import { deleteWaterToday } from '../../redux/water/waterThunk.js';
 import { selectTodayWater } from '../../redux/water/waterSelector.js';
 import { getConvertedTime } from './hooksTodayWater.js';
 import { waterIsLoadingSelector } from '../../redux/water/waterSelector.js';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
-
 //import AddWaterModal  from '../AddWaterModal/AddWaterModal.jsx';
 import ListItem from '../ListItem/ListItem.jsx';
-import { notifySuccess } from '../../services/notifications.js';
 import Loader from '../Loader/Loader.jsx';
 
 import Icon from '../Icon/Icon.jsx';
@@ -45,7 +42,6 @@ export const TodayList = () => {
   };
   const deleteHandleChange = async (selectedItemId) => {
     await dispatch(deleteWaterToday({ id: selectedItemId }));
-    notifySuccess('This item deleted');
     closeModal();
   };
   return (

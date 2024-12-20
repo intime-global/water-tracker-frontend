@@ -15,6 +15,7 @@ import { login } from '../../redux/user/operations';
 import { selectIsLoading } from '../../redux/user/selectors.js';
 import { selectAuthError } from '../../redux/user/selectors.js';
 import { notifyError } from '../../services/notifications.js';
+import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton.jsx';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -54,7 +55,7 @@ const SignInForm = () => {
 
   const handleForgotPasswordSubmit = (email) => {
     console.log('Reset password email sent to:', email);
-  
+
   };
 
   const togglePasswordVisibility = () => {
@@ -129,6 +130,7 @@ const SignInForm = () => {
           </Form>
         )}
       </Formik>
+      <GoogleLoginButton/>
       <Link to="/signup" className={css.link}>
         Sign up
       </Link>

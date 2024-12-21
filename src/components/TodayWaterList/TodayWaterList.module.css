@@ -5,26 +5,25 @@
 */
 
 .todayContainer {
-  width: 264px;
-  height: 258px;
   margin-bottom: 24px;
+  flex: 1 0 auto;
 }
 
 .todayTitle {
-  font-weight: 500;
   font-size: 24px;
+  font-weight: 500;
   line-height: 1.2;
-  color: var(--primary-color-black);
   margin-bottom: 16px;
+  color: var(--primary-color-black);
 }
 
 .listItemTools {
   display: flex;
-  column-gap:20px;
+  column-gap: 20px;
 }
 
 .listWaters {
-  max-height:180px;
+  max-height: 180px;
   overflow: auto;
   margin-bottom: 12px;
 }
@@ -48,7 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  column-gap:38px;
+  column-gap: 38px;
   padding: 12px 10px 12px 4px;
   border-bottom: 1px solid var(--secondary-color-blue-2);
 }
@@ -86,12 +85,15 @@
   display: flex;
 }
 
-.edit_button {
-  border: none;
-    background-color: transparent;
-    padding: 0;
-    transition: all 150ms linear;
-    border-bottom: 1px solid transparent;
+.editButton:hover {
+  border-bottom: 1px solid var(--secondary-color-blue-3);
+}
+
+.editIcon {
+  stroke: var(--secondary-color-blue-3);
+  fill: transparent;
+  width: 16px;
+  height: 16px;
 }
 
 .iconEdit {
@@ -101,8 +103,7 @@
   height: 16px;
 }
 
-.iconClose
-{
+.iconClose {
   fill: transparent;
   width: 24px;
   height: 24px;
@@ -115,45 +116,53 @@
   height: 16px;
 }
 
-.deleteButton {
-  border: none;
-  background-color: transparent;
-  padding: 0;
+.deleteButton:hover {
+  border-bottom: 1px solid var(--secondary-color-red);
 }
 
-.deleteButton:hover {
-  border-bottom: 1px solid var(--secondary-second);
+.deleteIcon {
+  stroke: var(--secondary-color-red);
+  fill: transparent;
+  width: 16px;
+  height: 16px;
 }
 
 .button {
+  width: 115px;
+  padding: 0;
+  font-weight: 500;
   border: none;
-  background-color: inherit;
+  background-color: transparent;
+  color: var(--primary-color-blue);
+  display: flex;
+  column-gap: 6px;
+  align-items: center;
+  transition: all 150ms linear;
+}
+
+.button:hover {
+  color: var(--secondary-color-orange);
 }
 
 .button_blok {
   width: 115px;
   padding: 0;
   font-weight: 500;
-  border:none;
-  background-color:transparent;
+  border: none;
+  background-color: transparent;
   color: var(--primary-color-blue);
   display: flex;
-  column-gap:6px;
+  column-gap: 6px;
   align-items: center;
   transition: all 150ms linear;
 }
 
 .button_blok:hover {
-  color: var(--secondary-color-orange);}
+  color: var(--secondary-color-orange);
+}
 
-.span{
-      font-size: 24px;
-  }
-
-.iconPlus {
-  margin-right: 8px;
-  width: 10px;
-  height: 10px;
+.span {
+  font-size: 24px;
 }
 
 .buttonText {
@@ -176,7 +185,7 @@
   }
 
   .listWaters {
-    max-height:170px;
+    max-height: 170px;
   }
 
   .waterItemblok {
@@ -204,14 +213,14 @@
   }
 }
 
-  .listItem {
-    padding: 12px 10px 12px 4px;
-  }
+.listItem {
+  padding: 12px 10px 12px 4px;
+}
 
-  .button_blok {
-    width: 135px;
-    font-size: 18px;
-  }
+.button_blok {
+  width: 135px;
+  font-size: 18px;
+}
 
 /**
   |============================
@@ -220,7 +229,6 @@
 */
 
 @media screen and (min-width: 1440px) {
-
   .todayContainer {
     width: 544px;
     margin-bottom: 45px;

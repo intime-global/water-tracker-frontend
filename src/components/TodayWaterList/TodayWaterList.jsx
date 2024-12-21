@@ -92,12 +92,17 @@ export const TodayList = () => {
                 <ListItem data={item} />
                 <div className={css.listItemTools}>
                   <button
-                    className={css.edit_button}
+                    className={css.editButton}
                     type="button"
                     aria-label="Edit entry"
                     onClick={() => openModalToEdit(item)}
                   >
-                    <Icon id={'#icon-edit'} width={24} height={24} />
+                    <Icon
+                      className={css.editIcon}
+                      id={'#icon-edit'}
+                      width={24}
+                      height={24}
+                    />
                   </button>
                   <button
                     className={css.deleteButton}
@@ -105,7 +110,12 @@ export const TodayList = () => {
                     aria-label="Delete entry"
                     onClick={() => openModalToDelete(item)}
                   >
-                    <Icon id={'#icon-delete'} width={24} height={24} />
+                    <Icon
+                      className={css.deleteIcon}
+                      id={'#icon-delete'}
+                      width={24}
+                      height={24}
+                    />
                   </button>
                 </div>
               </li>
@@ -114,7 +124,7 @@ export const TodayList = () => {
       )}
       <button className={css.button} type="button" onClick={openModalToAdd}>
         <div className={css.button_blok}>
-          <span>+</span>
+          <span className={css.span}>+</span>
           <p className={css.buttonText}>Add Water</p>
         </div>
       </button>

@@ -1,13 +1,20 @@
+import { useSelector } from 'react-redux';
+import { selectWaterIsLoading } from '../../redux/water/waterSelector';
+
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 // import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 // import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 // import AuthContainer from '../../components/AuthContainer/AuthContainer';
+import Loader from '../../components/Loader/Loader';
 
 import css from './HomePage.module.css';
 
 const HomePage = () => {
-  return (
+  const isLoading = useSelector(selectWaterIsLoading);
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       {/* Розмітка для перевірки */}
       <div className={css.background}>

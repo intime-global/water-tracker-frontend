@@ -1,28 +1,56 @@
-import { useState, useDispatch } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { deleteWater } from '../../redux/water/waterThunk.js';
-import { selectTodayWater } from '../../redux/water/waterSelector.js';
-import { getConvertedTime } from './hooksTodayWater.js';
-//import { waterIsLoadingSelector } from '../../redux/water/waterSelector.js';
+//import { selectTodayWater } from '../../redux/water/waterSelector.js';
+//import { getConvertedTime } from './hooksTodayWater.js';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
 
 //import AddWaterModal  from '../AddWaterModal/AddWaterModal.jsx';
-import {ListItem} from '../ListItem/ListItem.jsx';
-import { notifySuccess } from '../../services/notifications.js';
-//import Loader from '../Loader/Loader.jsx';
+import { ListItem } from '../ListItem/ListItem.jsx';
 
-import {Icon} from '../Icon/Icon.jsx';
+import { Icon } from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
 
-export const TodayList =() => {
-  const { waterPortions } = useSelector(selectTodayWater);
+export const TodayList = () => {
+  //const waterList = useSelector(selectTodayWater);
+  const waterList = [
+    {
+      id: '675b93cab74997639d8e7476',
+      userId: '675b8d979f14991c4126ba15',
+      year: 2024,
+      month: 12,
+      day: 14,
+      time: '11:15:05',
+      waterRate: 2000,
+      waterVolume: 250,
+    },
+    {
+      id: '675b93cab74997639d8e7476',
+      userId: '675b8d979f14991c4126ba15',
+      year: 2024,
+      month: 12,
+      day: 14,
+      time: '11:15:05',
+      waterRate: 2000,
+      waterVolume: 250,
+    },
+    {
+      id: '675b93cab74997639d8e7476',
+      userId: '675b8d979f14991c4126ba15',
+      year: 2024,
+      month: 12,
+      day: 14,
+      time: '11:15:05',
+      waterRate: 2000,
+      waterVolume: 250,
+    },
+  ];
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [isEditing, setisEditing] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const dispatch = useDispatch();
-  //const isLoading = useSelector(waterIsLoadingSelector);
   const openModalToAdd = () => {
     setIsModalOpen(true);
     //setisEditing(false);
@@ -42,24 +70,23 @@ export const TodayList =() => {
   };
   const closeModal = () => {
     setIsModalOpen(false);
+    setIsDelete(false);
+    //setisEditing(false);
   };
-  const deleteHandleChange = async (selectedItemId) => {
-    await dispatch(deleteWater({ id: selectedItemId }));
-    notifySuccess('This item deleted');
-    closeModal();
+  const deleteHandleChange = (selectedItemId) => {
+    dispatch(deleteWater(selectedItemId));
+    setIsModalOpen(false);
   };
   return (
     <div className={css.todayContainer}>
       <h2 className={css.todayTitle}>Today</h2>
-      {waterPortions?.length > 0 && (
+      {waterList?.length > 0 && (
         <ul className={css.listWaters}>
-          {waterPortions
+          {waterList
             .slice()
-            .sort(
-              (a, b) =>
-                getConvertedTime(a.time).getTime() -
-                getConvertedTime(b.time).getTime(),
-            )
+            .sort((a, b) => {
+              return a.time - b.time;
+            })
             .map((item) => (
               <li className={css.listItem} key={item.id}>
                 <ListItem data={item} />
@@ -134,7 +161,6 @@ export const TodayList =() => {
         ) : null
         //<AddWaterModal isOpen={isModalOpen} onClose={closeModal} isEditing={isEditing} />
       }
-      {/* {isLoading && <Loader />} */}
     </div>
   );
 };

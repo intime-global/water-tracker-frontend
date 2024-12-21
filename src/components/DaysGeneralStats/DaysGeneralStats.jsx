@@ -1,29 +1,28 @@
 import styles from './DaysGeneralStats.module.css';
 
 const DaysGeneralStats = ({ day, rect, month }) => {
-  console.log(rect);
   const { day: date, waterRate, percentage, consumedTimes } = day;
   let rowRect;
   switch (Math.ceil(rect)) {
-    case 1037:
+    case 583:
       rowRect = -200;
       break;
-    case 1107:
+    case 653:
       rowRect = -130;
       break;
-    case 1177:
+    case 723:
       rowRect = -60;
       break;
-    case 1247:
+    case 793:
       rowRect = 10;
       break;
-    case 1317:
+    case 863:
       rowRect = 80;
       break;
-    case 1387:
+    case 933:
       rowRect = 150;
       break;
-    case 1457:
+    case 1003:
       rowRect = 220;
       break;
     default:
@@ -40,7 +39,7 @@ const DaysGeneralStats = ({ day, rect, month }) => {
         Fulfillment of the daily norm: <span>{percentage}%</span>
       </p>
       <p className={styles.text}>
-        How many serviangs of water: <span>{consumedTimes}</span>
+        How many servings of water: <span>{consumedTimes}</span>
       </p>
     </div>
   );

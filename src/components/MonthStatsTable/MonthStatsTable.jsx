@@ -21,229 +21,228 @@ const months = [
   'November',
   'December',
 ];
-const water = [
-  {
-    day: 1,
-    month: 12,
-    year: 2024,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 100,
-  },
-  {
-    day: 2,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 110,
-  },
-  {
-    day: 3,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 4,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 5,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 6,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
+// const water = [
+//   {
+//     day: 1,
+//     month: 12,
+//     year: 2024,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 100,
+//   },
+//   {
+//     day: 2,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 110,
+//   },
+//   {
+//     day: 3,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 4,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 5,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 6,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
 
-  {
-    day: 7,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 110,
-  },
-  {
-    day: 8,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 9,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 10,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 11,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
+//   {
+//     day: 7,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 110,
+//   },
+//   {
+//     day: 8,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 9,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 10,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 11,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
 
-  {
-    day: 12,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 13,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 14,
-    month: 12,
-    year: 2024,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 100,
-  },
-  {
-    day: 15,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 110,
-  },
-  {
-    day: 16,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 17,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 18,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 19,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
+//   {
+//     day: 12,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 13,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 14,
+//     month: 12,
+//     year: 2024,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 100,
+//   },
+//   {
+//     day: 15,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 110,
+//   },
+//   {
+//     day: 16,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 17,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 18,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 19,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
 
-  {
-    day: 20,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 110,
-  },
-  {
-    day: 21,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 22,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 23,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 24,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
+//   {
+//     day: 20,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 110,
+//   },
+//   {
+//     day: 21,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 22,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 23,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 24,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
 
-  {
-    day: 25,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-  {
-    day: 26,
-    month: 12,
-    waterVolume: 900,
-    waterRate: 1500,
-    consumedTimes: 5,
-    percentage: 60,
-  },
-];
+//   {
+//     day: 25,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+//   {
+//     day: 26,
+//     month: 12,
+//     waterVolume: 900,
+//     waterRate: 1500,
+//     consumedTimes: 5,
+//     percentage: 60,
+//   },
+// ];
 
 export default function MonthStatsTable() {
   // const [loading, setLoading] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());
-  // const water = useSelector(selectMonthWater);
 
   // useEffect(() => {
   //   if (water) {
@@ -253,21 +252,20 @@ export default function MonthStatsTable() {
   //   }
   // }, [water]);
 
-  // useEffect(() => {
-  //   dispatch(
-  //     getWaterMonth({
-  //       month: new Date().getMonth() + 1,
-  //       year: new Date().getFullYear(),
-  //     }),
-  //   );
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(
+      getWaterMonth({
+        month: new Date().getMonth() + 1,
+        year: new Date().getFullYear(),
+      }),
+    );
+  }, [dispatch]);
 
-  // let month = water[0].month;
-  // let year = water[0].year;
+  const water = useSelector(selectMonthWater);
 
-  // useEffect(() => {
-  //   dispatch(getWaterMonth({ month, year }));
-  // }, [dispatch, month, year]);
+  useEffect(() => {
+    dispatch(getWaterMonth({ month, year }));
+  }, [dispatch, month, year]);
 
   function setPrevMonth() {
     if (month === 1) {

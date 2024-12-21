@@ -2,64 +2,31 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { deleteWater } from '../../redux/water/waterThunk.js';
-//import { selectTodayWater } from '../../redux/water/waterSelector.js';
-//import { getConvertedTime } from './hooksTodayWater.js';
+import { selectTodayWater } from '../../redux/water/waterSelector.js';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
 
-//import AddWaterModal  from '../AddWaterModal/AddWaterModal.jsx';
+import AddWaterModal  from '../AddWaterModal/AddWaterModal.jsx';
 import { ListItem } from '../ListItem/ListItem.jsx';
 
 import { Icon } from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
 
 export const TodayList = () => {
-  //const waterList = useSelector(selectTodayWater);
-  const waterList = [
-    {
-      id: '675b93cab74997639d8e7476',
-      userId: '675b8d979f14991c4126ba15',
-      year: 2024,
-      month: 12,
-      day: 14,
-      time: '11:15:05',
-      waterRate: 2000,
-      waterVolume: 250,
-    },
-    {
-      id: '675b93cab74997639d8e7476',
-      userId: '675b8d979f14991c4126ba15',
-      year: 2024,
-      month: 12,
-      day: 14,
-      time: '11:15:05',
-      waterRate: 2000,
-      waterVolume: 250,
-    },
-    {
-      id: '675b93cab74997639d8e7476',
-      userId: '675b8d979f14991c4126ba15',
-      year: 2024,
-      month: 12,
-      day: 14,
-      time: '11:15:05',
-      waterRate: 2000,
-      waterVolume: 250,
-    },
-  ];
+const waterList = useSelector(selectTodayWater);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isEditing, setisEditing] = useState(false);
+  const [isEditing, setisEditing] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const dispatch = useDispatch();
   const openModalToAdd = () => {
     setIsModalOpen(true);
-    //setisEditing(false);
+    setisEditing(false);
     setIsDelete(false);
     setSelectedItem(null);
   };
   const openModalToEdit = (item) => {
     setIsModalOpen(true);
-    //setisEditing(true);
+    setisEditing(true);
     setIsDelete(false);
     setSelectedItem(item);
   };
@@ -71,7 +38,7 @@ export const TodayList = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setIsDelete(false);
-    //setisEditing(false);
+    setisEditing(false);
   };
   const deleteHandleChange = (selectedItemId) => {
     dispatch(deleteWater(selectedItemId));
@@ -123,10 +90,8 @@ export const TodayList = () => {
         </ul>
       )}
       <button className={css.button} type="button" onClick={openModalToAdd}>
-        <div className={css.button_blok}>
-          <span className={css.span}>+</span>
-          <p className={css.buttonText}>Add Water</p>
-        </div>
+        <span className={css.span}>+</span>
+        <p className={css.buttonText}>Add Water</p>
       </button>
       {
         isDelete ? (
@@ -144,7 +109,12 @@ export const TodayList = () => {
                   onClick={closeModal}
                   aria-label="Close"
                 >
-                  <Icon id={'#icon-close'} width={24} height={24} />
+                  <Icon
+                    className={css.iconClose}
+                    id={'#icon-close'}
+                    width={24}
+                    height={24}
+                  />
                 </button>
               </div>
               <p className={css.textDel}>
@@ -169,7 +139,7 @@ export const TodayList = () => {
             </div>
           </ModalContainer>
         ) : null
-        //<AddWaterModal isOpen={isModalOpen} onClose={closeModal} isEditing={isEditing} />
+        <AddWaterModal isOpen={isModalOpen} onClose={closeModal} isEditing={isEditing}/>
       }
     </div>
   );

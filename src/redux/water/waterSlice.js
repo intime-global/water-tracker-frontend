@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addWater,
   getWaterToday,
@@ -6,6 +6,8 @@ import {
   deleteWater,
   editWater,
 } from './waterThunk.js';
+
+import { logout } from '../user/operations.js';
 
 import {
   handleAddWater,
@@ -20,6 +22,7 @@ const initialState = {
   today: {
     waterList: [],
   },
+  isLoading: false,
 };
 
 export const waterSlice = createSlice({
@@ -34,8 +37,21 @@ export const waterSlice = createSlice({
       .addCase(editWater.fulfilled, handleEditWater)
       .addCase(deleteWater.fulfilled, handleDeleteWater)
       .addCase(getWaterToday.fulfilled, handleGetToday)
-      .addCase(getWaterMonth.fulfilled, handleGetMonth);
+      .addCase(getWaterMonth.fulfilled, handleGetMonth)
+      .addCase(logout.fulfilled, () => initialState)
+      .addMatcher(
+        isAnyOf(
+          addWater.pending,
+          editWater.pending,
+          deleteWater.pending,
+          getWaterToday.pending,
+          getWaterMonth.pending,
+        ),
+        (state) => {
+          state.isLoading = true;
+        },
+      );
   },
 });
 
-export const waterReducer = waterSlice.reducer;
+export default waterSlice.reducer;

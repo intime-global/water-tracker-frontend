@@ -1,21 +1,29 @@
+import { useSelector } from 'react-redux';
+import { selectWaterIsLoading } from '../../redux/water/waterSelector';
+
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 import {TodayList} from '../../components/TodayWaterList/TodayWaterList.jsx';
 // import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 // import AuthContainer from '../../components/AuthContainer/AuthContainer';
+import Loader from '../../components/Loader/Loader';
 
 import css from './HomePage.module.css';
 
 const HomePage = () => {
-  return (
-   <>
+  const isLoading = useSelector(selectWaterIsLoading);
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <>
       {/* Розмітка для перевірки */}
-      <div className={css.home}>
-        <div className={css.bottleSection}>
-          <div className={css.dailyNorma}><DailyNorma/></div>
-          <div className={css.bottle}></div>
-          <div>WaterRatioPanel</div>
-        </div>
+      <div className={css.background}>
+        <div className={css.home}>
+          <div className={css.bottleSection}>
+            <DailyNorma className={css.dailyNorma} />
+            <div className={css.bottle}></div>
+            <div>WaterRatioPanel</div>
+          </div>
 
         <div className={css.statisticsSection}>
           <div className={css.todayWaterList}><TodayList/></div>
@@ -25,7 +33,7 @@ const HomePage = () => {
 
        <div className={css.home}>
         <div className={css.bottleSection}>
-          <DailyNorma className={css.dialyNorma} />
+          <DailyNorma className={css.dailyNorma} />
           <div className={css.bottle}></div>
           {/* <WaterRatioPanel /> */}
         </div>

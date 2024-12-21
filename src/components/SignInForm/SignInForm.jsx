@@ -10,7 +10,7 @@ import sprite from '../../icons/sprite.svg';
 
 import Loader from '../Loader/Loader.jsx';
 import ModalContainer from '../ModalContainer/ModalContainer';
-import ForgotPasswordForm from '../ForgotPasswordFrom/FosrgotPasswordForm.jsx';
+import ForgotPasswordForm from '../ForgotPasswordFrom/ForgotPasswordForm.jsx';
 import { login } from '../../redux/user/operations';
 import { selectIsLoading } from '../../redux/user/selectors.js';
 import { selectAuthError } from '../../redux/user/selectors.js';
@@ -40,11 +40,11 @@ const SignInForm = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-   useEffect(() => {
-      if (isError) {
-        notifyError(isError);
-      }
-    }, [isError]);
+  useEffect(() => {
+    if (isError) {
+      notifyError(isError);
+    }
+  }, [isError]);
 
   const handleSubmit = (values, actions) => {
     if (values.email === '' || values.password === '') return;
@@ -54,7 +54,6 @@ const SignInForm = () => {
 
   const handleForgotPasswordSubmit = (email) => {
     console.log('Reset password email sent to:', email);
-  
   };
 
   const togglePasswordVisibility = () => {
@@ -107,7 +106,8 @@ const SignInForm = () => {
                 className={css.icon}
                 width={16}
                 height={16}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   togglePasswordVisibility();
                 }}
               >
@@ -137,7 +137,10 @@ const SignInForm = () => {
       </span>
       {isModalOpen && (
         <ModalContainer>
-          <ForgotPasswordForm  onClose={closeModal} onSubmit={handleForgotPasswordSubmit} />
+          <ForgotPasswordForm
+            onClose={closeModal}
+            onSubmit={handleForgotPasswordSubmit}
+          />
         </ModalContainer>
       )}
     </div>

@@ -1,8 +1,10 @@
 .formContainer {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: start;
   margin-top: 24px;
+  width: 280px;
 }
 
 .form {
@@ -101,7 +103,7 @@ input::placeholder {
   padding: 10px 30px;
   margin: 0 auto;
   width: 100%;
-  height: 44px;
+  height: 36px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--primary-color-blue);
   font-weight: 500;
@@ -125,7 +127,7 @@ input::placeholder {
     display: flex;
     flex-wrap: nowrap;
     width: 336px;
-    margin-top: 50px;
+    margin: 40px 0 0 0;
   }
 
   .button {

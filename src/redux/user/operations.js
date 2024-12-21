@@ -121,6 +121,8 @@ export const refresh = createAsyncThunk(
   'user/refresh',
   async (_, thunkAPI) => {
     try {
+      const reduxState = thunkAPI.getState();
+      setAuthHeader(reduxState.user.accessToken);
       const { data } = await axiosInstance.get('/users');
       return data;
     } catch (error) {

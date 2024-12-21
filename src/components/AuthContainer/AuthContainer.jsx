@@ -1,5 +1,5 @@
 import css from './AuthContainer.module.css';
 
-export default function AuthContainer({ children, className }) {
-  return <div className={`${css.background} ${className}`}>{children}</div>;
+export default function AuthContainer({ children}) {
+  return <div className={css.background}>{children}</div>;
 }

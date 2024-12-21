@@ -3,13 +3,12 @@ import { selectWaterIsLoading } from '../../redux/water/waterSelector';
 
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
-import {TodayList} from '../../components/TodayWaterList/TodayWaterList.jsx';
+import { TodayList } from '../../components/TodayWaterList/TodayWaterList.jsx';
 // import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 // import AuthContainer from '../../components/AuthContainer/AuthContainer';
 import Loader from '../../components/Loader/Loader';
 
 import css from './HomePage.module.css';
-
 const HomePage = () => {
   const isLoading = useSelector(selectWaterIsLoading);
   return isLoading ? (
@@ -25,24 +24,29 @@ const HomePage = () => {
             <div>WaterRatioPanel</div>
           </div>
 
-        <div className={css.statisticsSection}>
-          <div className={css.todayWaterList}><TodayList/></div>
-          <div>MonthStatsTable</div>
+          <div className={css.statisticsSection}>
+            <div className={css.todayWaterList}>
+              <TodayList />
+            </div>
+            <div>MonthStatsTable</div>
+          </div>
         </div>
       </div>
-
-       <div className={css.home}>
+      {/*
+      <div className={css.background}>
+      <div className={css.home}>
         <div className={css.bottleSection}>
           <DailyNorma className={css.dailyNorma} />
           <div className={css.bottle}></div>
-          {/* <WaterRatioPanel /> */}
+          <WaterRatioPanel />
         </div>
 
         <div className={css.statisticsSection}>
-          <TodayList className={css.todayWaterList} />
-          {/* <MonthStatsTable /> */}
+          <TodayWaterList className={css.todayWaterList} />
+          <MonthStatsTable />
         </div>
       </div>
+      </div>*/}
     </>
   );
 };

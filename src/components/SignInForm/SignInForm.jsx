@@ -107,7 +107,8 @@ const SignInForm = () => {
                 className={css.icon}
                 width={16}
                 height={16}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   togglePasswordVisibility();
                 }}
               >

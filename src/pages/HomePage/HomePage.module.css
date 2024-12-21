@@ -1,9 +1,16 @@
+.background {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../../images/HomePage/mob/bubble_mob_1x.png');
+}
+
 .home {
   max-width: 320px;
   margin: 0 auto;
   margin-top: 24px;
   padding: 0 20px 40px 20px;
-  min-height: 100vh;
   text-align: left;
 }
 
@@ -35,12 +42,20 @@
 }
 
 @media screen and (min-resolution: 192dpi) {
+  .background {
+    background-image: url('../../images/HomePage/mob/bubble_mob_2x.png');
+  }
+
   .bottle {
     background-image: url('../../images/HomePage/mob/bottle_home_mob_2x.png');
   }
 }
 
 @media screen and (min-resolution: 288dpi) {
+  .background {
+    background-image: url('../../images/HomePage/mob/bubble_mob_3x.png');
+  }
+
   .bottle {
     background-image: url('../../images/HomePage/mob/bottle_home_mob_3x.png');
   }
@@ -48,10 +63,21 @@
 
 /* ----------Tablet--------- */
 @media screen and (min-width: 768px) {
+  .background {
+    min-height: calc(100vh - 30px);
+    background-position: -4px -2px;
+    background-image: url('../../images/HomePage/tab/bubble_tab_1x.png');
+  }
+
   .home {
     max-width: 768px;
-    padding: 0 32px 44px 32px;
+    padding: 0px 32px 44px 32px;
     margin-top: 40px;
+  }
+
+  .bottleSection {
+    position: relative;
+    padding-bottom: 16px;
   }
 
   .bottle {
@@ -65,53 +91,66 @@
   }
 
   .dailyNorma {
+    top: 16px;
     margin: 0;
     position: absolute;
     z-index: 10;
   }
-}
 
-@media screen and (min-width: 768px) and (min-resolution: 192dpi) {
-  .bottle {
-    background-image: url('../../images/HomePage/tab/bottle_home_tab_2x.png');
+  @media screen and (min-resolution: 192dpi) {
+    .background {
+      background-image: url('../../images/HomePage/tab/bubble_tab_2x.png');
+    }
+
+    .bottle {
+      background-image: url('../../images/HomePage/tab/bottle_home_tab_2x.png');
+    }
   }
-}
 
-@media screen and (min-resolution: 288dpi) {
-  .bottle {
-    background-image: url('../../images/HomePage/tab/bottle_home_tab_3x.png');
+  @media screen and (min-resolution: 288dpi) {
+    .background {
+      background-image: url('../../images/HomePage/tab/bubble_tab_3x.png');
+    }
+
+    .bottle {
+      background-image: url('../../images/HomePage/tab/bottle_home_tab_3x.png');
+    }
   }
 }
 
 /*---------- Desk ----------------*/
 @media screen and (min-width: 1440px) {
+  .background {
+    background-position: -11px 27px;
+    background-size: contain;
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
+  }
+
   .home {
     max-width: 1440px;
     padding: 0 112px 40px 112px;
     margin-top: 22px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    position: relative; /* Для управління z-index */
+    align-items: center;
   }
 
   .bottleSection {
-    position: relative;
     flex: 1;
     max-width: 739px;
     margin-left: -73.33px;
-    z-index: 1; /* під статистикою */
+    z-index: 1;
     margin-bottom: 0px;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     align-self: flex-start;
   }
 
   .bottle {
-    width: 739px;
-    height: 548px;
+    width: 738px;
+    min-height: 548px;
     margin-bottom: 24px;
     background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png');
   }
@@ -123,22 +162,28 @@
   }
 
   .statisticsSection {
-    z-index: 1;
     min-width: 592px;
     height: 680px;
     margin-left: -40.67px;
-    z-index: 2; /* над бутилкою */
   }
-}
 
-@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
-  .bottle {
-    background-image: url('../../images/HomePage/desk/bottle_home_desk_2x.png');
+  @media screen and (min-resolution: 192dpi) {
+    .background {
+      background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_2x.png');
+    }
+
+    .bottle {
+      background-image: url('../../images/HomePage/desk/bottle_home_desk_2x.png');
+    }
   }
-}
 
-@media screen and (min-resolution: 288dpi) {
-  .bottle {
-    background-image: url('../../images/HomePage/desk/bottle_home_desk_3x.png');
+  @media screen and (min-resolution: 288dpi) {
+    .background {
+      background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png');
+    }
+
+    .bottle {
+      background-image: url('../../images/HomePage/desk/bottle_home_desk_3x.png');
+    }
   }
 }

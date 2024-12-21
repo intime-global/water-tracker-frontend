@@ -7,6 +7,8 @@ import {
   editWater,
 } from './waterThunk.js';
 
+import { logout } from '../user/operations.js';
+
 import {
   handleAddWater,
   handleDeleteWater,
@@ -36,6 +38,7 @@ export const waterSlice = createSlice({
       .addCase(deleteWater.fulfilled, handleDeleteWater)
       .addCase(getWaterToday.fulfilled, handleGetToday)
       .addCase(getWaterMonth.fulfilled, handleGetMonth)
+      .addCase(logout.fulfilled, () => initialState)
       .addMatcher(
         isAnyOf(
           addWater.pending,
@@ -47,8 +50,8 @@ export const waterSlice = createSlice({
         (state) => {
           state.isLoading = true;
         },
-      )
+      );
   },
 });
 
-export const waterReducer = waterSlice.reducer;
+export default waterSlice.reducer;

@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 import sprite from '../../icons/sprite.svg';
 import css from './ForgotPasswordForm.module.css';
 import { sendResetPasswordEmail } from '../../redux/user/operations.js';
-import { notifyError, notifySuccess } from '../../services/notifications.js';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -18,15 +17,10 @@ const ForgotPasswordForm = ({ onSubmit, onClose }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    try {
-      dispatch(sendResetPasswordEmail(values.email)).unwrap();
-      onSubmit(values.email);
-      actions.resetForm();
-      onClose();
-      notifySuccess(`Message sent. Check your email.`);
-    } catch {
-      notifyError('Something went wrong.');
-    }
+    dispatch(sendResetPasswordEmail(values)).unwrap();
+    onSubmit(values);
+    actions.resetForm();
+    onClose();
   };
 
   return (
@@ -59,10 +53,7 @@ const ForgotPasswordForm = ({ onSubmit, onClose }) => {
             <button className={css.button} type="submit">
               Send
             </button>
-            <svg
-              className={css.icon}
-              onClick={onClose}
-            >
+            <svg className={css.icon} onClick={onClose}>
               <use href={`${sprite}#icon-close`} />
             </svg>
           </Form>

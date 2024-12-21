@@ -1,11 +1,11 @@
 .background {
   min-height: 100vh;
   overflow: hidden;
-  background-image: url('../../images/HomePage/mob/bottle_home_mob_1x.png'),
-    url('../../images/HomePage/mob/bubble_mob_1x.png');
   background-repeat: no-repeat, no-repeat;
   background-size: 280px 208px, 100%;
   background-position: top 106px center, top 52px left 0;
+  background-image: url('../../images/HomePage/mob/bottle_home_mob_1x.png'),
+    url('../../images/HomePage/mob/bubble_mob_1x.png');
 }
 
 .home {
@@ -87,10 +87,8 @@
 /*---------- Desk ----------------*/
 @media screen and (min-width: 1440px) {
   .background {
-    margin: 0 auto;
-    max-width: 1440px;
     background-size: 738px 548px, 1404px;
-    background-position: top 22px left 38.67px, top 58px right 28px;
+    background-position: top 22px left 38.67px, top 58px left 9px;
     background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png'),
       url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
   }
@@ -114,7 +112,6 @@
   .statisticsSection {
     width: 592px;
     height: 680px;
-    /* margin-left: 40.67px; */
   }
 
   @media screen and (min-resolution: 192dpi) {
@@ -128,6 +125,41 @@
     .background {
       background-image: url('../../images/HomePage/desk/bottle_home_desk_3x.png'),
         url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png');
+    }
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .background {
+    background-size: 100%;
+    background-position: top 58px left 9px;
+    background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
+  }
+
+  .home {
+    background-repeat: no-repeat;
+    background-size: 738px 548px;
+    background-position: top 22px left 38.67px;
+    background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png');
+  }
+
+  @media screen and (min-resolution: 192dpi) {
+    .background {
+      background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_2x.png');
+    }
+
+    .home {
+      background-image: url('../../images/HomePage/desk/bottle_home_desk_2x.png');
+    }
+  }
+
+  @media screen and (min-resolution: 288dpi) {
+    .background {
+      background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_3x.png');
+    }
+
+    .home {
+      background-image: url('../../images/HomePage/desk/bottle_home_desk_3x.png');
     }
   }
 }

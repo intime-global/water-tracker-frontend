@@ -1,18 +1,21 @@
 .formContainer {
+  width: 280px;
   display: flex;
   flex-direction: column;
   align-items: start;
+  margin: 0 auto;
+  margin-top: 24px;
 }
 
 .form {
-  width: 280px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: start;
   align-items: start;
   margin-bottom: 16px;
-  margin-top: 24px;
+
 }
 
 .title {
@@ -106,11 +109,11 @@
   margin-bottom: 8px;
 }
 
-.link:hover{
+.link:hover {
   color: var(--secondary-color-orange);
 }
 
-.forgotPwd{
+.forgotPwd {
   font-weight: 400;
   font-size: 16px;
   line-height: 125%;
@@ -118,7 +121,7 @@
   cursor: pointer;
 }
 
-.forgotPwd:hover{
+.forgotPwd:hover {
   color: var(--secondary-color-orange);
 }
 
@@ -131,10 +134,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .form {
+  .formContainer {
     width: 336px;
-    margin-top: 40px;
+    margin: 40px 0 0 0;
   }
+
   .button {
     font-size: 18px;
     line-height: 133%;
@@ -142,9 +146,9 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .form {
-    width: 384px;
+  .formContainer {
     margin-right: 198px;
     margin-top: 162px;
+    width: 384px;
   }
 }

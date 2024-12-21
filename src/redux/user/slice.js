@@ -53,12 +53,18 @@ const userSlice = createSlice({
       })
       .addCase(refresh.fulfilled, (state) => {
         state.isRefreshing = false;
+        state.isLoggedIn = true;
       })
       .addCase(refreshSession.fulfilled, handleLogin)
+      .addCase(refresh.rejected, (state) => {
+        state.isRefreshing = false;
+        state.isLoggedIn = false;
+      })
       .addCase(refreshSession.rejected, (state, action) => {
         state.accessToken = null;
         state.isError = action.payload;
         state.isRefreshing = false;
+        state.isLoggedIn = false;
       })
       .addCase(logout.fulfilled, () => {
         return initialState;
@@ -106,7 +112,6 @@ const userSlice = createSlice({
           getOauthUrl.rejected,
           confirmOauth.rejected,
           login.rejected,
-          refresh.rejected,
           resetPassword.rejected,
           sendResetPasswordEmail.rejected,
           getUser.rejected,

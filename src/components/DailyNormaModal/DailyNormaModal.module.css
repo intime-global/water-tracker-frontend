@@ -5,6 +5,8 @@
     width: 280px;
     height: 816px;
     position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .head {

@@ -47,8 +47,8 @@ export const waterSlice = createSlice({
         (state) => {
           state.isLoading = true;
         },
-      )
+      );
   },
 });
 
-export const waterReducer = waterSlice.reducer;
+export default waterSlice.reducer;

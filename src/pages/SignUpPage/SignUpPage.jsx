@@ -1,9 +1,12 @@
+import AuthContainer from '../../components/AuthContainer/AuthContainer';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
-import css from './SignUpPage.module.css';
+// import css from './SignUpPage.module.css';
 export default function SignUpPage() {
   return (
-    <div className={css.container}>
-      <SignUpForm />
-    </div>
+    <AuthContainer>
+      <>
+        <SignUpForm />
+      </>
+    </AuthContainer>
   );
 }

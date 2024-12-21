@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 import css from './DayWaterItem.module.css';
 import clsx from 'clsx';
@@ -17,9 +17,9 @@ export default function DayWaterItem({ day, month }) {
     setIsClicked(true);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsClicked(false);
-  };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -33,7 +33,20 @@ export default function DayWaterItem({ day, month }) {
     };
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
-  }, [isClicked]);
+  }, [isClicked, closeModal]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.code === 'Escape') {
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [closeModal]);
 
   return (
     <>

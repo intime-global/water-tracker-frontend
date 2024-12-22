@@ -1,15 +1,30 @@
-import { useSelector } from 'react-redux';
-import { selectWaterIsLoading } from '../../redux/water/waterSelector';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectWaterIsLoading } from '../../redux/water/waterSelector.js';
 
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 // import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
-// import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
+import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
+// import AuthContainer from '../../components/AuthContainer/AuthContainer';
 import Loader from '../../components/Loader/Loader';
 
 import css from './HomePage.module.css';
+import { useEffect, useState } from 'react';
+import { getWaterMonth } from '../../redux/water/waterThunk.js';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const initMonth = new Date().getMonth();
+  const initYear = new Date().getFullYear();
+  const [selectedDate, setSelectedDate] = useState({
+    month: initMonth,
+    year: initYear,
+  });
+
+  useEffect(() => {
+    dispatch(getWaterMonth(selectedDate));
+  }, [dispatch, selectedDate]);
+
   const isLoading = useSelector(selectWaterIsLoading);
   return isLoading ? (
     <Loader />
@@ -26,8 +41,10 @@ const HomePage = () => {
           <div className={css.statisticsSection}>
             {/* <TodayWaterList className={css.todayWaterList} /> */}
             <div className={css.todayWaterList}>TodayWaterList</div>
-            {/* <MonthStatsTable /> */}
-            <div>MonthStatsTable</div>
+            <MonthStatsTable
+              selectedDate={selectedDate}
+              setDate={setSelectedDate}
+            />
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 .background {
-  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
   background-repeat: no-repeat, no-repeat;
   background-size: 280px 208px, 100%;
@@ -22,6 +24,8 @@
 }
 
 .statisticsSection {
+  width: 280px;
+  /* height: 836px; розтягнеться разом з бульбашками коли буде готовий компонент */
   border-radius: 10px;
   box-shadow: 0 4px 14px 0 var(--shadow-color);
   background: var(--secondary-color-blue-1);
@@ -66,6 +70,8 @@
   }
 
   .statisticsSection {
+    width: 704px;
+    /* height: 688px; */
     padding: 32px 24px;
   }
 
@@ -87,7 +93,10 @@
 /*---------- Desk ----------------*/
 @media screen and (min-width: 1440px) {
   .background {
+    align-items: flex-start;
+    min-height: calc(100vh - 60px);
     background-size: 738px 548px, 1404px;
+    /* розмір фону бульбашок стоїть не по середині,тому його ширина обмежена та задана позиція */
     background-position: top 22px left 38.67px, top 58px left 9px;
     background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png'),
       url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
@@ -132,7 +141,7 @@
 @media screen and (min-width: 1441px) {
   .background {
     background-size: 100%;
-    background-position: top 58px left 9px;
+    background-position: top 22px center;
     background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
   }
 

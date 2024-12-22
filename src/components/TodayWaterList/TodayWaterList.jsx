@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteWater } from '../../redux/water/waterThunk.js';
 import { selectTodayWater } from '../../redux/water/waterSelector.js';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
 
-import AddWaterModal  from '../AddWaterModal/AddWaterModal.jsx';
+import AddWaterModal from '../AddWaterModal/AddWaterModal.jsx';
 import { ListItem } from '../ListItem/ListItem.jsx';
 
 import { Icon } from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
 
 export const TodayList = () => {
-const waterList = useSelector(selectTodayWater);
+  const waterList = useSelector(selectTodayWater);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setisEditing] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
@@ -93,54 +93,57 @@ const waterList = useSelector(selectTodayWater);
         <span className={css.span}>+</span>
         <p className={css.buttonText}>Add Water</p>
       </button>
-      {
-        isDelete ? (
-          <ModalContainer
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            selectedItemId={selectedItem?.id}
-          >
-            <div className={css.containerDel}>
-              <div className={css.firstblock}>
-                <h2 className={css.title}>Delete entry</h2>
-                <button
-                  className={css.exit}
-                  type="button"
-                  onClick={closeModal}
-                  aria-label="Close"
-                >
-                  <Icon
-                    className={css.iconClose}
-                    id={'#icon-close'}
-                    width={24}
-                    height={24}
-                  />
-                </button>
-              </div>
-              <p className={css.textDel}>
-                Are you sure you want to delete the entry?
-              </p>
-              <div className={css.containerBtnDel}>
-                <button
-                  className={css.btnCancellDel}
-                  type="button"
-                  onClick={closeModal}
-                >
-                  Cancel
-                </button>
-                <button
-                  className={css.btnDeletelDel}
-                  type="button"
-                  onClick={deleteHandleChange}
-                >
-                  Delete
-                </button>
-              </div>
+      {isDelete ? (
+        <ModalContainer
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          selectedItemId={selectedItem?.id}
+        >
+          <div className={css.containerDel}>
+            <div className={css.firstblock}>
+              <h2 className={css.title}>Delete entry</h2>
+              <button
+                className={css.exit}
+                type="button"
+                onClick={closeModal}
+                aria-label="Close"
+              >
+                <Icon
+                  className={css.iconClose}
+                  id={'#icon-close'}
+                  width={24}
+                  height={24}
+                />
+              </button>
             </div>
-          </ModalContainer>
-        ) : null
-        <AddWaterModal isOpen={isModalOpen} onClose={closeModal} isEditing={isEditing}/>
-      }
+            <p className={css.textDel}>
+              Are you sure you want to delete the entry?
+            </p>
+            <div className={css.containerBtnDel}>
+              <button
+                className={css.btnCancellDel}
+                type="button"
+                onClick={closeModal}
+              >
+                Cancel
+              </button>
+              <button
+                className={css.btnDeletelDel}
+                type="button"
+                onClick={deleteHandleChange}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </ModalContainer>
+      ) : (
+        <AddWaterModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          isEditing={isEditing}
+        />
+      )}
     </div>
   );
 };

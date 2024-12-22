@@ -33,9 +33,13 @@
 .btnNext {
   border: none;
 }
+
 .iconNext {
   transform: rotate(180deg);
   fill: var(--primary-color-blue);
+}
+.hiddenBtn {
+  fill: transparent;
 }
 .list {
   width: 264px;

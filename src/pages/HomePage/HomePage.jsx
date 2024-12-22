@@ -44,6 +44,8 @@ const HomePage = () => {
             <MonthStatsTable
               selectedDate={selectedDate}
               setDate={setSelectedDate}
+              initMonth={initMonth}
+              initYear={initYear}
             />
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function DayWaterItem({ day, month }) {
   const openModal = () => {
     if (rowRect.current) {
       const rect = rowRect.current.getBoundingClientRect();
-      setRect(rect.top + rect.height + window.scrollY);
+      setRect(rect.top + window.scrollY);
     }
     setIsClicked(true);
   };
@@ -48,23 +48,27 @@ export default function DayWaterItem({ day, month }) {
     };
   }, [closeModal]);
 
+  const clsxDay = clsx(
+    css.day,
+    day.percentage < 100 && css.border,
+    day.noData && css.empty,
+  );
+
   return (
     <>
-      <div
-        className={day.percentage < 100 ? clsx(css.day, css.border) : css.day}
-        onClick={() => openModal()}
-        ref={rowRect}
-      >
+      <div className={clsxDay} onClick={() => openModal()} ref={rowRect}>
         {day.day}
         {isClicked && (
           <div
             className={
-              daysForReversedStat.includes(day.day)
+              daysForReversedStat.includes(Number(day.day))
                 ? css.dayReversedComponent
                 : css.dayComponent
             }
           >
-            <DaysGeneralStats day={day} rect={rect} month={month} />
+            {!day.noData && (
+              <DaysGeneralStats day={day} rect={rect} month={month} />
+            )}
           </div>
         )}
       </div>

@@ -3,6 +3,7 @@ import { selectMonthWater } from '../../redux/water/waterSelector.js';
 import css from './MonthStatsTable.module.css';
 import DayWaterItem from '../DayWaterItem/DayWaterItem.jsx';
 import sprite from '../../icons/sprite.svg';
+import { useEffect, useRef } from 'react';
 
 const months = [
   'January',
@@ -19,8 +20,29 @@ const months = [
   'December',
 ];
 
-export default function MonthStatsTable({ selectedDate, setDate }) {
+export default function MonthStatsTable({
+  selectedDate,
+  setDate,
+  initYear,
+  initMonth,
+}) {
+  const nextButton = useRef(null);
   const water = useSelector(selectMonthWater);
+  const daysOfMonth = [];
+
+  let disabled = true;
+  if (selectedDate.month === initMonth && selectedDate.year === initYear) {
+    disabled = true;
+  } else {
+    disabled = false;
+  }
+  useEffect(() => {
+    if (disabled) {
+      nextButton.current.disabled = true;
+    } else {
+      nextButton.current.disabled = false;
+    }
+  }, [disabled]);
 
   function setPrevMonth() {
     if (selectedDate.month === 0) {
@@ -50,6 +72,30 @@ export default function MonthStatsTable({ selectedDate, setDate }) {
     }
   }
 
+  function getDaysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+  }
+
+  const numberOfDays = getDaysInMonth(
+    selectedDate.month + 1,
+    selectedDate.year,
+  );
+
+  for (let i = 0; i < water.length; i++) {
+    if (water[i]) daysOfMonth[water[i].day - 1] = water[i];
+  }
+
+  for (let i = 0; i < numberOfDays; i++) {
+    if (!daysOfMonth[i]) {
+      daysOfMonth[i] = {
+        day: i + 1,
+        month: selectedDate.month,
+        year: selectedDate.year,
+        noData: true,
+      };
+    }
+  }
+
   return (
     <>
       <div className={css.titleContainer}>
@@ -68,6 +114,7 @@ export default function MonthStatsTable({ selectedDate, setDate }) {
             onClick={() => {
               setNextMonth();
             }}
+            ref={nextButton}
           >
             <svg className={css.iconNext} width={14} height={14}>
               <use href={`${sprite}#icon-chevron-left`} />
@@ -76,7 +123,7 @@ export default function MonthStatsTable({ selectedDate, setDate }) {
         </div>
       </div>
       <ul className={css.list}>
-        {water.map((item, index) => (
+        {daysOfMonth.map((item, index) => (
           <li className={css.item} key={index}>
             <DayWaterItem day={item} month={months[selectedDate.month]} />
           </li>

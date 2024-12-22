@@ -15,6 +15,7 @@ import { login } from '../../redux/user/operations';
 import { selectIsLoading } from '../../redux/user/selectors.js';
 import { selectAuthError } from '../../redux/user/selectors.js';
 import { notifyError } from '../../services/notifications.js';
+import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton.jsx';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -50,10 +51,6 @@ const SignInForm = () => {
     if (values.email === '' || values.password === '') return;
     dispatch(login(values));
     actions.resetForm();
-  };
-
-  const handleForgotPasswordSubmit = (email) => {
-    console.log('Reset password email sent to:', email);
   };
 
   const togglePasswordVisibility = () => {
@@ -129,6 +126,7 @@ const SignInForm = () => {
           </Form>
         )}
       </Formik>
+      <GoogleLoginButton>Sign In with Google</GoogleLoginButton>
       <Link to="/signup" className={css.link}>
         Sign up
       </Link>
@@ -137,10 +135,7 @@ const SignInForm = () => {
       </span>
       {isModalOpen && (
         <ModalContainer>
-          <ForgotPasswordForm
-            onClose={closeModal}
-            onSubmit={handleForgotPasswordSubmit}
-          />
+          <ForgotPasswordForm onClose={closeModal} />
         </ModalContainer>
       )}
     </div>

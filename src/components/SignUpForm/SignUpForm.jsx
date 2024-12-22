@@ -10,6 +10,7 @@ import { selectIsLoading } from '../../redux/user/selectors.js';
 import { selectAuthError } from '../../redux/user/selectors.js';
 import { notifyError } from '../../services/notifications.js';
 import Loader from '../Loader/Loader';
+import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton.jsx';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -162,6 +163,7 @@ export default function SignUpForm() {
           </Form>
         )}
       </Formik>
+      <GoogleLoginButton>Sign Up with Google</GoogleLoginButton>
       <Link className={css.link} to="/signin">
         Sign in
       </Link>

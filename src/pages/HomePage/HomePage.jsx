@@ -18,14 +18,14 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const initMonth = new Date().getMonth();
   const initYear = new Date().getFullYear();
-  const [selectedDate, setSelectedDate] = useState({
+  const [selectedMonth, setSelectedMonth] = useState({
     month: initMonth,
     year: initYear,
   });
 
   useEffect(() => {
-    dispatch(getWaterMonth(selectedDate));
-  }, [dispatch, selectedDate]);
+    dispatch(getWaterMonth(selectedMonth));
+  }, [dispatch, selectedMonth]);
 
   const isLoading = useSelector(selectWaterIsLoading);
   return isLoading ? (
@@ -42,8 +42,8 @@ const HomePage = () => {
           <div className={css.statisticsSection}>
             <TodayList />
             <MonthStatsTable
-              selectedDate={selectedDate}
-              setDate={setSelectedDate}
+              selectedMonth={selectedMonth}
+              setMonth={setSelectedMonth}
             />
           </div>
         </div>

@@ -45,7 +45,9 @@
   row-gap: 16px;
   justify-content: start;
   align-items: start;
-  position: relative;
+}
+.item {
+  height: 52px;
 }
 
 @media screen and (min-width: 768px) {
@@ -57,11 +59,17 @@
     font-size: 26px;
     line-height: 123%;
   }
+  .item {
+    height: 58px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .list {
     width: 544px;
     column-gap: 22px;
     row-gap: 20px;
+  }
+  .item {
+    height: 56px;
   }
 }

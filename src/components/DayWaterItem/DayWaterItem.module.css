@@ -15,7 +15,9 @@
   color: var(--primary-color-black);
   margin: 0 auto 4px;
 }
-
+.empty {
+  background-color: rgb(226, 225, 225);
+}
 .percentage {
   font-weight: 400;
   font-size: 12px;

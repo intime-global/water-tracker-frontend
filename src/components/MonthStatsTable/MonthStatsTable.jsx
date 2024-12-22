@@ -1,11 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { selectMonthWater } from '../../redux/Water/waterSelector.js';
+import { useSelector } from 'react-redux';
+import { selectMonthWater } from '../../redux/water/waterSelector.js';
 import css from './MonthStatsTable.module.css';
 import DayWaterItem from '../DayWaterItem/DayWaterItem.jsx';
 import sprite from '../../icons/sprite.svg';
-import { getWaterMonth } from '../../redux/Water/waterThunk.js';
-import { useEffect, useState } from 'react';
-import Loader from '../Loader/Loader.jsx';
 
 const months = [
   'January',
@@ -21,6 +18,73 @@ const months = [
   'November',
   'December',
 ];
+
+export default function MonthStatsTable({ selectedDate, setDate }) {
+  const water = useSelector(selectMonthWater);
+
+  function setPrevMonth() {
+    if (selectedDate.month === 0) {
+      setDate({
+        month: 11,
+        year: selectedDate.year - 1,
+      });
+    } else {
+      setDate({
+        month: selectedDate.month - 1,
+        year: selectedDate.year,
+      });
+    }
+  }
+
+  function setNextMonth() {
+    if (selectedDate.month === 11) {
+      setDate({
+        month: 0,
+        year: selectedDate.year + 1,
+      });
+    } else {
+      setDate({
+        month: selectedDate.month + 1,
+        year: selectedDate.year,
+      });
+    }
+  }
+
+  return (
+    <>
+      <div className={css.titleContainer}>
+        <h2 className={css.title}>Month</h2>
+        <div className={css.paginator}>
+          <button className={css.btnPrev} onClick={setPrevMonth}>
+            <svg className={css.iconPrev} width={14} height={14}>
+              <use href={`${sprite}#icon-chevron-left`} />
+            </svg>
+          </button>
+          <p className={css.date}>{`${months[selectedDate.month]}, ${
+            selectedDate.year
+          }`}</p>
+          <button
+            className={css.btnNext}
+            onClick={() => {
+              setNextMonth();
+            }}
+          >
+            <svg className={css.iconNext} width={14} height={14}>
+              <use href={`${sprite}#icon-chevron-left`} />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <ul className={css.list}>
+        {water.map((item, index) => (
+          <li className={css.item} key={index}>
+            <DayWaterItem day={item} month={months[selectedDate.month]} />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
 // const water = [
 //   {
 //     day: 1,
@@ -237,90 +301,3 @@ const months = [
 //     percentage: 60,
 //   },
 // ];
-
-export default function MonthStatsTable() {
-  // const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const [month, setMonth] = useState(new Date().getMonth() + 1);
-  const [year, setYear] = useState(new Date().getFullYear());
-
-  // useEffect(() => {
-  //   if (water) {
-  //     setLoading(false);
-  //   } else {
-  //     setLoading(true);
-  //   }
-  // }, [water]);
-
-  useEffect(() => {
-    dispatch(
-      getWaterMonth({
-        month: new Date().getMonth() + 1,
-        year: new Date().getFullYear(),
-      }),
-    );
-  }, [dispatch]);
-
-  const water = useSelector(selectMonthWater);
-
-  useEffect(() => {
-    dispatch(getWaterMonth({ month, year }));
-  }, [dispatch, month, year]);
-
-  function setPrevMonth() {
-    if (month === 1) {
-      setYear(year - 1);
-      setMonth(12);
-    } else {
-      setMonth(month - 1);
-    }
-  }
-
-  function setNextMonth() {
-    if (month === 12) {
-      setYear(year + 1);
-      setMonth(1);
-    } else {
-      setMonth(month + 1);
-    }
-  }
-
-  // if (loading) {
-  //   return <Loader />;
-  // }
-
-  return (
-    <>
-      <div className={css.titleContainer}>
-        <h2 className={css.title}>Month</h2>
-        <div className={css.paginator}>
-          <button className={css.btnPrev} onClick={setPrevMonth}>
-            <svg className={css.iconPrev} width={14} height={14}>
-              <use href={`${sprite}#icon-chevron-left`} />
-            </svg>
-          </button>
-          <p className={css.date}>
-            {months[month - 1]}, {year}
-          </p>
-          <button
-            className={css.btnNext}
-            onClick={() => {
-              setNextMonth();
-            }}
-          >
-            <svg className={css.iconNext} width={14} height={14}>
-              <use href={`${sprite}#icon-chevron-left`} />
-            </svg>
-          </button>
-        </div>
-      </div>
-      <ul className={css.list}>
-        {water.map((item, index) => (
-          <li className={css.item} key={index}>
-            <DayWaterItem day={item} month={months[month - 1]} />
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-}

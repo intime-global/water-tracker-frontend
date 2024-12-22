@@ -5,7 +5,7 @@ import css from './GoogleLoginButton.module.css';
 
 import { FcGoogle } from 'react-icons/fc';
 
-const GoogleLoginButton = () => {
+const GoogleLoginButton = ({children}) => {
   const dispatch = useDispatch();
 
   const handleGoogleLogin = async () => {
@@ -22,7 +22,7 @@ const GoogleLoginButton = () => {
   return (
     <>
       <button onClick={handleGoogleLogin} className={css.button}>
-        <span>Login with Google</span>
+        <span>{children}</span>
         <FcGoogle size={25} />
       </button>
     </>

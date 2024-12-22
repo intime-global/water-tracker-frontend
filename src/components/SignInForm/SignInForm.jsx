@@ -126,7 +126,7 @@ const SignInForm = () => {
           </Form>
         )}
       </Formik>
-      <GoogleLoginButton />
+      <GoogleLoginButton>Sign In with Google</GoogleLoginButton>
       <Link to="/signup" className={css.link}>
         Sign up
       </Link>

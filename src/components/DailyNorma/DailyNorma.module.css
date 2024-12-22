@@ -1,58 +1,58 @@
 .container {
-    border: 1px solid var(--secondary-color-blue-2);
-    border-radius: 10px;
-    padding: 8px 20px;
-    width: 165px;
-    height: 74px;
-    box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
-    background: var(--primary-color-white);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
+  border: 1px solid var(--secondary-color-blue-2);
+  border-radius: 10px;
+  padding: 8px 20px;
+  width: 166px;
+  height: 74px;
+  box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
+  background: var(--primary-color-white);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 .title {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.33;
-    margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 12px;
 }
 
 .norma {
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 100%;
-    color: var(--primary-color-blue);
-    width: 90px;
-    height: 22px;
-    display: flex;
-    align-items: flex-end;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 100%;
+  color: var(--primary-color-blue);
+  width: 90px;
+  height: 22px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .button {
-    padding: 0;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 125%;
-    color: #8baeff;
-    margin-left: 12px;
-    text-align: end;
-    border: none;
-    background-color: inherit;
+  padding: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #8baeff;
+  margin-left: 12px;
+  text-align: end;
+  border: none;
+  background-color: inherit;
 
-    &:hover {
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        height: 76px;
-    }
+  .container {
+    height: 76px;
+  }
 
-    .norma {
-        font-size: 24px;
-        width: 94px;
-        height: 24px;
-    }
+  .norma {
+    font-size: 24px;
+    width: 94px;
+    height: 24px;
+  }
 }

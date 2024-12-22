@@ -1,28 +1,32 @@
-import { useDispatch } from "react-redux"
-import { getOauthUrl } from "../../redux/user/operations";
-import { notifyError } from "../../services/notifications";
-import css from './GoogleLoginButton.module.css'
+import { useDispatch } from 'react-redux';
+import { getOauthUrl } from '../../redux/user/operations';
+import { notifyError } from '../../services/notifications';
+import css from './GoogleLoginButton.module.css';
+
+import { FcGoogle } from 'react-icons/fc';
 
 const GoogleLoginButton = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const handleGoogleLogin = async () => {
-        try {
-            const { data } = await dispatch(getOauthUrl()).unwrap();
-            window.location.href = data.url;
-        } catch (error) {
-            notifyError(error.message);
-        }
-    };
+  const handleGoogleLogin = async () => {
+    try {
+      const {
+        data: { url },
+      } = await dispatch(getOauthUrl()).unwrap();
+      window.location.href = url;
+    } catch (error) {
+      notifyError(error.message);
+    }
+  };
 
-    return (
-        <>
-            <button onClick={handleGoogleLogin} className={css.button}>
-                Login with Google
-            </button>
-        </>
-    );
-
+  return (
+    <>
+      <button onClick={handleGoogleLogin} className={css.button}>
+        <span>Login with Google</span>
+        <FcGoogle size={25} />
+      </button>
+    </>
+  );
 };
 
 export default GoogleLoginButton;

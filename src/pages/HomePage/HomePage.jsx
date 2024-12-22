@@ -30,16 +30,16 @@ const HomePage = () => {
     <Loader />
   ) : (
     <>
-      {/* Розмітка для перевірки */}
       <div className={css.background}>
         <div className={css.home}>
           <div className={css.bottleSection}>
-            <DailyNorma className={css.dailyNorma} />
-            <div className={css.bottle}></div>
+            <DailyNorma />
+            {/* <WaterRatioPanel /> */}
             <div>WaterRatioPanel</div>
           </div>
 
           <div className={css.statisticsSection}>
+            {/* <TodayWaterList className={css.todayWaterList} /> */}
             <div className={css.todayWaterList}>TodayWaterList</div>
             <MonthStatsTable
               selectedDate={selectedDate}
@@ -48,21 +48,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      {/*
-      <div className={css.background}>
-      <div className={css.home}>
-        <div className={css.bottleSection}>
-          <DailyNorma className={css.dailyNorma} />
-          <div className={css.bottle}></div>
-          <WaterRatioPanel />
-        </div>
-
-        <div className={css.statisticsSection}>
-          <TodayWaterList className={css.todayWaterList} />
-          <MonthStatsTable />
-        </div>
-      </div>
-      </div>*/}
     </>
   );
 };

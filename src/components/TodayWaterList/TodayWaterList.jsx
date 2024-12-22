@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { deleteWater } from '../../redux/water/waterThunk.js';
 import { selectTodayWater } from '../../redux/water/waterSelector.js';
 import ModalContainer from '../ModalContainer/ModalContainer.jsx';
-
-import AddWaterModal from '../AddWaterModal/AddWaterModal.jsx';
+import TodayListModal from '../TodayListModal/TodayListModal.jsx';
 import { ListItem } from '../ListItem/ListItem.jsx';
-
 import { Icon } from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
 
 export const TodayList = () => {
   const waterList = useSelector(selectTodayWater);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setisEditing] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
@@ -32,6 +30,7 @@ export const TodayList = () => {
   };
   const openModalToDelete = (item) => {
     setIsModalOpen(true);
+    setisEditing(false);
     setIsDelete(true);
     setSelectedItem(item);
   };
@@ -40,8 +39,10 @@ export const TodayList = () => {
     setIsDelete(false);
     setisEditing(false);
   };
-  const deleteHandleChange = (selectedItemId) => {
-    dispatch(deleteWater(selectedItemId));
+
+  console.log(selectedItem);
+  const deleteHandleChange = async (selectedItem) => {
+    await dispatch(deleteWater(selectedItem._id));
     setIsModalOpen(false);
   };
   return (
@@ -51,11 +52,9 @@ export const TodayList = () => {
         <ul className={css.listWaters}>
           {waterList
             .slice()
-            .sort((a, b) => {
-              return a.time - b.time;
-            })
+            .sort((a, b) => a.time.localeCompare(b.time))
             .map((item) => (
-              <li className={css.listItem} key={item.id}>
+              <li className={css.listItem} key={item._id}>
                 <ListItem data={item} />
                 <div className={css.listItemTools}>
                   <button
@@ -93,57 +92,58 @@ export const TodayList = () => {
         <span className={css.span}>+</span>
         <p className={css.buttonText}>Add Water</p>
       </button>
-      {isDelete ? (
-        <ModalContainer
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          selectedItemId={selectedItem?.id}
-        >
-          <div className={css.containerDel}>
-            <div className={css.firstblock}>
-              <h2 className={css.title}>Delete entry</h2>
-              <button
-                className={css.exit}
-                type="button"
-                onClick={closeModal}
-                aria-label="Close"
-              >
-                <Icon
-                  className={css.iconClose}
-                  id={'#icon-close'}
-                  width={24}
-                  height={24}
-                />
-              </button>
+
+      {isModalOpen &&
+        (isDelete ? (
+          <ModalContainer onClose={closeModal}>
+            <div className={css.containerDel}>
+              <div className={css.firstblock}>
+                <h2 className={css.title}>Delete entry</h2>
+                <button
+                  className={css.exit}
+                  type="button"
+                  onClick={closeModal}
+                  aria-label="Close"
+                >
+                  <Icon
+                    className={css.iconClose}
+                    id={'#icon-close'}
+                    width={24}
+                    height={24}
+                  />
+                </button>
+              </div>
+              <p className={css.textDel}>
+                Are you sure you want to delete the entry?
+              </p>
+              <div className={css.containerBtnDel}>
+                <button
+                  className={css.btnCancellDel}
+                  type="button"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </button>
+                <button
+                  className={css.btnDeletelDel}
+                  type="button"
+                  onClick={deleteHandleChange(selectedItem)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-            <p className={css.textDel}>
-              Are you sure you want to delete the entry?
-            </p>
-            <div className={css.containerBtnDel}>
-              <button
-                className={css.btnCancellDel}
-                type="button"
-                onClick={closeModal}
-              >
-                Cancel
-              </button>
-              <button
-                className={css.btnDeletelDel}
-                type="button"
-                onClick={deleteHandleChange}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </ModalContainer>
-      ) : (
-        <AddWaterModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          isEditing={isEditing}
-        />
-      )}
+          </ModalContainer>
+        ) : (
+          <TodayListModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            isEditing={isEditing}
+            selectedItemId={selectedItem?._id}
+            initialAmount={selectedItem?.waterAmount}
+            initialTime={selectedItem?.time}
+          />
+        ))}
     </div>
   );
 };

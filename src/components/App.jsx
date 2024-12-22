@@ -10,6 +10,8 @@ import {
   selectIsLoading,
 } from '../redux/user/selectors';
 
+import { getWaterToday } from '../redux/water/waterThunk.js';
+
 import RestrictedRoute from './UserMenu/RestrictedRoute';
 import PrivateRoute from './UserMenu/PrivateRoute';
 import Loader from './Loader/Loader';
@@ -18,7 +20,9 @@ import PasswordResetPage from '../pages/PasswordResetPage/PasswordResetPage.jsx'
 
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage.jsx';
-const GoogleRedirectHandler = lazy(() => import('../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx'))
+const GoogleRedirectHandler = lazy(() =>
+  import('../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx'),
+);
 // import GoogleRedirectHandler from '../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -40,6 +44,7 @@ function App() {
     const firstLogIn = () => {
       if (accessToken) {
         dispatch(getUser());
+        dispatch(getWaterToday());
       }
     };
     firstLogIn();

@@ -40,10 +40,7 @@ const HomePage = () => {
             <div>WaterRatioPanel</div>
           </div>
           <div className={css.statisticsSection}>
-            <div className={css.todayWaterList}>
-              <TodayList />
-            </div>
-            <div className={css.todayWaterList}>TodayWaterList</div>
+            <TodayList />
             <MonthStatsTable
               selectedDate={selectedDate}
               setDate={setSelectedDate}

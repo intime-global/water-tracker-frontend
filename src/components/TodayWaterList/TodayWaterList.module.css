@@ -5,6 +5,7 @@
 */
 
 .todayContainer {
+  min-height: 258px;
   margin-bottom: 24px;
   flex: 1 0 auto;
 }
@@ -23,7 +24,6 @@
 }
 
 .listWaters {
-  max-height: 180px;
   overflow: auto;
   margin-bottom: 12px;
 }
@@ -52,6 +52,14 @@
   border-bottom: 1px solid var(--secondary-color-blue-2);
 }
 
+.editButton {
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
 .editButton:hover {
   border-bottom: 1px solid var(--secondary-color-blue-3);
 }
@@ -67,6 +75,13 @@
   fill: transparent;
   width: 24px;
   height: 24px;
+}
+.deleteButton {
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
 }
 
 .deleteButton:hover {
@@ -109,16 +124,16 @@
 }
 
 .containerDel {
-  display: flex;
-  flex-direction: column;
-  row-gap: 24px;
+  background: var(--primary-color-white);
+  border-radius: 10px;
+  padding: 32px 12px;
+  width: 280px;
 }
 
 .firstblock {
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 24px;
 }
 
 .title {
@@ -133,14 +148,10 @@
 .exit {
   border: none;
   background-color: transparent;
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 30px;
-  right: 18px;
 }
 
 .iconClose {
+  position: relative;
   width: 24px;
   height: 24px;
   stroke: var(--primary-color-blue);
@@ -153,10 +164,17 @@
 }
 
 .btnCancellDel {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
   color: var(--primary-color-blue);
   background-color: var(--secondary-color-blue-2);
   box-shadow: none;
-  min-width: 116px;
+  margin: 0 auto;
+  width: 232px;
+  padding: 8px 30px;
+  border: none;
+  border-radius: 10px;
 }
 
 .btnCancellDel:hover {
@@ -165,9 +183,18 @@
 }
 
 .btnDeletelDel {
+  color: var(--primary-color-white);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
   background-color: var(--secondary-color-red);
-  box-shadow: none;
-  min-width: 116px;
+  box-shadow: 0px 4px 8px 0px var(--shadow-color);
+  border: none;
+  border-radius: 10px;
+  margin: 0 auto;
+
+  width: 232px;
+  padding: 8px 30px;
 }
 
 .btnDeletelDel:hover {
@@ -213,6 +240,23 @@
     max-width: 600px;
   }
 
+  .containerDel {
+    width: 592px;
+    padding: 32px 24px;
+  }
+
+  .btnDeletelDel {
+    margin: 0;
+    width: 160px;
+    padding: 10px 30px;
+  }
+
+  .btnCancellDel {
+    margin: 0;
+    width: 160px;
+    padding: 10px 30px;
+  }
+
   .exit {
     top: 42px;
     right: 30px;
@@ -222,13 +266,4 @@
     flex-direction: row;
     justify-content: flex-end;
   }
-}
-
-/**
-  |============================
-  | Desktop version styles
-  |============================
-*/
-
-@media screen and (min-width: 1440px) {
 }

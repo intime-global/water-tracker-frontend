@@ -28,10 +28,6 @@
   padding: 24px 8px;
 }
 
-.todayWaterList {
-  margin-bottom: 24px;
-}
-
 @media screen and (min-resolution: 192dpi) {
   .background {
     background-image: url('../../images/HomePage/mob/bottle_home_mob_2x.png'),

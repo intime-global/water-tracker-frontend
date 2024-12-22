@@ -261,12 +261,11 @@ export default function SettingsForm({ onClose }) {
                   className={css.error}
                 />
               </div>
+              {errors.inputs && (
+                <div className={css.commonError}>{errors.inputs}</div>
+              )}
             </div>
           </div>
-
-          {errors.inputs && (
-            <div className={css.commonError}>{errors.inputs}</div>
-          )}
 
           <div className={css.btnWrap}>
             <button type="submit" className={css.submit} disabled={isLoading}>

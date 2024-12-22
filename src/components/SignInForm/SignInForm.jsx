@@ -53,10 +53,6 @@ const SignInForm = () => {
     actions.resetForm();
   };
 
-  const handleForgotPasswordSubmit = (email) => {
-    console.log('Reset password email sent to:', email);
-  };
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -139,10 +135,7 @@ const SignInForm = () => {
       </span>
       {isModalOpen && (
         <ModalContainer>
-          <ForgotPasswordForm
-            onClose={closeModal}
-            onSubmit={handleForgotPasswordSubmit}
-          />
+          <ForgotPasswordForm onClose={closeModal} />
         </ModalContainer>
       )}
     </div>

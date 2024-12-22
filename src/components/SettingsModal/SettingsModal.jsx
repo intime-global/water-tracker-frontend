@@ -11,7 +11,7 @@ export default function SettingsModal({ isOpen, onClose }) {
         <ModalContainer onClose={onClose}>
           <div className={css.modal}>
             <div className={css.wrap}>
-              <h2 className={css.title}>Setting</h2>
+              <h2 className={css.title}>Settings</h2>
               <button
                 type="button"
                 className={css.close}

@@ -57,7 +57,7 @@ export default function DayWaterItem({ day, month }) {
   return (
     <>
       <div className={clsxDay} onClick={() => openModal()} ref={rowRect}>
-        {day.day}
+        {Number(day.day)}
         {isClicked && (
           <div
             className={

@@ -1,0 +1,228 @@
+.modalContainer {
+  border-radius: 10px;
+  padding: 24px 12px;
+  width: 280px;
+  background-color: var(--primary-color-white);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 123%;
+  color: var(--primary-color-black);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+}
+
+.iconClose {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5px;
+  stroke: var(--primary-color-blue);
+  transition: fill 0.3s ease;
+}
+.amountDisplay {
+  border-radius: 10px;
+  padding: 8px 24px;
+  width: 256px;
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-color-blue-1);
+  margin-bottom: 24px;
+}
+
+.iconGlass {
+  width: 36px;
+  height: 36px;
+  fill: var(--primary-color-blue);
+  margin-right: 12px;
+}
+
+.amount {
+  font-size: 18px;
+  line-height: 133%;
+  color: var(--primary-color-blue);
+  margin-right: 16px;
+}
+
+.time {
+  font-size: 12px;
+  line-height: 200%;
+  color: var(--primery-color-black);
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+  color: var(--primary-color-black);
+  margin-bottom: 16px;
+}
+
+.amountControls {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.subtitleText {
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--primary-color-black);
+  margin-bottom: 12px;
+}
+
+.controlsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color-white);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid var(--secondary-color-blue-3);
+  border-radius: 30px;
+  padding: 10px;
+  width: 44px;
+  box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
+}
+
+.controlButton:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+}
+
+.iconStepP {
+  stroke: var(--primary-color-blue);
+}
+
+.iconStepM {
+  fill: var(--primary-color-blue);
+}
+
+.amountText {
+  color: var(--primary-color-blue);
+  background-color: var(--secondary-color-blue-2);
+  display: inline-block;
+  text-align: center;
+  border-radius: 40px;
+  padding: 6px 10px;
+  width: 92px;
+  height: 36px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 133%;
+}
+
+.label {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.input {
+  border: 1px solid var(--secondary-color-blue-2);
+  border-radius: 6px;
+  padding: 12px 10px;
+  width: 256px;
+  height: 44px;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--primary-color-blue);
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.amountSave {
+  font-size: 18px;
+  color: var(--primary-color-blue);
+  font-weight: 700;
+  line-height: 133%;
+  text-align: center;
+}
+
+.saveButton {
+  border-radius: 10px;
+  padding: 8px 30px;
+  width: 256px;
+  height: 36px;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
+  color: var(--primary-color-white);
+  cursor: pointer;
+  border: none;
+  background-color: var(--primary-color-blue);
+  transition: background-color 0.3s;
+}
+
+.saveButton:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+}
+
+@media screen and (min-width: 768px) {
+  .modalContainer {
+    padding: 32px 24px;
+    width: 704px;
+  }
+
+  .header {
+    align-items: center;
+  }
+
+  .closeButton {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .amountDisplay {
+    width: 254px;
+    margin-bottom: 20px;
+  }
+
+  .input {
+    width: 544px;
+  }
+
+  .btnContainer {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .saveButton {
+    padding: 10px 30px;
+    width: 160px;
+    height: 44px;
+    font-size: 18px;
+    line-height: 133%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modalContainer {
+    width: 592px;
+  }
+}

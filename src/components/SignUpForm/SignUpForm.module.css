@@ -55,6 +55,9 @@
   padding: 12px 10px;
   color: var(--primary-color-blue);
   box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
 }
 
 .inputError {

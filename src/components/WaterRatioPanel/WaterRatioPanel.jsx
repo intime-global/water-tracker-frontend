@@ -17,7 +17,7 @@ const WaterRatioPanel = () => {
     (acc, curr) => acc + curr.waterVolume,
     0,
   );
-  const percentage = Math.floor((totalAmount / waterRate) * 100);
+  const percentage = Math.round((totalAmount / waterRate) * 100);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [initialAmount, setInitialAmount] = useState(0);

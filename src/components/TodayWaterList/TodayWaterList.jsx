@@ -7,6 +7,7 @@ import TodayListModal from '../TodayListModal/TodayListModal.jsx';
 import { ListItem } from '../ListItem/ListItem.jsx';
 import { Icon } from '../Icon/Icon.jsx';
 import css from './TodayWaterList.module.css';
+import { transformTimeToHHMM } from '../../services/hooks.js';
 
 export const TodayList = () => {
   const waterList = useSelector(selectTodayWater);
@@ -15,6 +16,7 @@ export const TodayList = () => {
   const [isEditing, setisEditing] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+
   const dispatch = useDispatch();
   const openModalToAdd = () => {
     setIsModalOpen(true);
@@ -40,11 +42,14 @@ export const TodayList = () => {
     setisEditing(false);
   };
 
-  console.log(selectedItem);
   const deleteHandleChange = async (selectedItem) => {
     await dispatch(deleteWater(selectedItem._id));
     setIsModalOpen(false);
   };
+
+  const selectedItemTransformed = selectedItem
+    ? { ...selectedItem, time: transformTimeToHHMM(selectedItem.time) }
+    : null;
   return (
     <div className={css.todayContainer}>
       <h2 className={css.todayTitle}>Today</h2>
@@ -127,7 +132,7 @@ export const TodayList = () => {
                 <button
                   className={css.btnDeletelDel}
                   type="button"
-                  onClick={deleteHandleChange(selectedItem)}
+                  onClick={() => deleteHandleChange(selectedItem)}
                 >
                   Delete
                 </button>
@@ -139,9 +144,9 @@ export const TodayList = () => {
             isOpen={isModalOpen}
             onClose={closeModal}
             isEditing={isEditing}
-            selectedItemId={selectedItem?._id}
-            initialAmount={selectedItem?.waterAmount}
-            initialTime={selectedItem?.time}
+            selectedItemId={selectedItemTransformed?._id}
+            initialAmount={selectedItemTransformed?.waterVolume}
+            initialTime={selectedItemTransformed?.time}
           />
         ))}
     </div>

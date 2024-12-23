@@ -10,8 +10,6 @@ import {
   selectIsLoading,
 } from '../redux/user/selectors';
 
-import { getWaterToday } from '../redux/water/waterThunk.js';
-
 import RestrictedRoute from './UserMenu/RestrictedRoute';
 import PrivateRoute from './UserMenu/PrivateRoute';
 import Loader from './Loader/Loader';
@@ -44,7 +42,6 @@ function App() {
     const firstLogIn = () => {
       if (accessToken) {
         dispatch(getUser());
-        dispatch(getWaterToday());
       }
     };
     firstLogIn();

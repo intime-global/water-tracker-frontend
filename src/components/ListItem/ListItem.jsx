@@ -1,11 +1,15 @@
 import { Icon } from '../Icon/Icon.jsx';
+import { transformTimeToHHMM } from '../../services/hooks.js';
 import css from './ListItem.module.css';
 
 export const ListItem = ({ data: { waterVolume, time } }) => {
-  const convertedTime = (time) => {
-    const [hours, minutes] = time.split(':');
-    return `${hours}:${minutes}`;
-  };
+  function isValidTime(time) {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/; // Matches HH:mm format
+    return timeRegex.test(time);
+  }
+  if (!isValidTime(time)) {
+    time = transformTimeToHHMM(time);
+  }
   return (
     <div className={css.item_container}>
       <Icon
@@ -15,7 +19,7 @@ export const ListItem = ({ data: { waterVolume, time } }) => {
         height={24}
       />
       <div className={css.water_amount}>{waterVolume} ml</div>
-      <div className={css.water_time}>{convertedTime(time)}</div>
+      <div className={css.water_time}>{time}</div>
     </div>
   );
 };

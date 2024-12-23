@@ -12,7 +12,7 @@ import Loader from '../../components/Loader/Loader';
 import css from './HomePage.module.css';
 
 import { useEffect, useState } from 'react';
-import { getWaterMonth } from '../../redux/water/waterThunk.js';
+import { getWaterMonth, getWaterToday } from '../../redux/water/waterThunk.js';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const HomePage = () => {
   });
 
   useEffect(() => {
+    dispatch(getWaterToday());
     dispatch(getWaterMonth(selectedMonth));
   }, [dispatch, selectedMonth]);
 

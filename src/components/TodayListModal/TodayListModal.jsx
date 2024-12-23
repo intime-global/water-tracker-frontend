@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import { format } from 'date-fns';
 import { useFormik } from 'formik';
@@ -8,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import css from './TodayListModal.module.css';
 import { addWater, editWater } from '../../redux/water/waterThunk';
 import { ListItem } from '../ListItem/ListItem';
+import { transformTimeToISO } from '../../services/hooks.js';
 
 const maxVolumeLimit = 5000;
 const minVolumeLimit = 50;
@@ -25,44 +25,37 @@ const TodayListModal = ({
   isOpen,
   onClose,
   isEditing,
-  selectedItemId = null,
-  initialAmount = 0,
-  initialTime = null,
+  selectedItemId,
+  initialAmount,
+  initialTime,
 }) => {
   const dispatch = useDispatch();
-  const [amount] = useState(initialAmount || minVolumeLimit);
-  const [time] = useState(initialTime || format(new Date(), 'HH:mm'));
 
   const formik = useFormik({
     initialValues: {
-      portionOfWater: amount,
-      time: time,
+      portionOfWater: initialAmount || minVolumeLimit,
+      time: initialTime || format(new Date(), 'HH:mm'),
     },
     validationSchema,
     onSubmit: async (values) => {
       const payload = {
-        time: values.time,
-        waterAmount: values.portionOfWater,
-        id: selectedItemId || null,
+        date: transformTimeToISO(values.time),
+        waterVolume: values.portionOfWater,
+        id: selectedItemId,
       };
       if (isEditing) {
         dispatch(editWater(payload));
       } else {
         dispatch(
           addWater({
+            date: transformTimeToISO(values.time),
             waterVolume: values.portionOfWater,
-            date: format(new Date(), "yyyy-MM-dd'T'HH:mm:ss"),
           }),
         );
       }
       onClose();
     },
   });
-
-  useEffect(() => {
-    formik.setFieldValue('portionOfWater', initialAmount || minVolumeLimit);
-    formik.setFieldValue('time', initialTime || format(new Date(), 'HH:mm'));
-  }, [initialAmount, initialTime]);
 
   const increaseAmount = () => {
     formik.setFieldValue(
@@ -77,7 +70,6 @@ const TodayListModal = ({
       Math.max(formik.values.portionOfWater - step, minVolumeLimit),
     );
   };
-  console.log(formik.values);
 
   return (
     <ModalContainer isOpen={isOpen} onClose={onClose}>
@@ -100,8 +92,8 @@ const TodayListModal = ({
           <div className={css.amountDisplay}>
             <ListItem
               data={{
-                waterVolume: formik.values.portionOfWater,
-                time: formik.values.time,
+                waterVolume: initialAmount,
+                time: initialTime,
               }}
             />
           </div>

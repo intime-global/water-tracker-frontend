@@ -56,7 +56,7 @@ export default function SignUpForm() {
       >
         {({ errors, touched }) => (
           <Form className={css.form} autoComplete="off">
-            <h2 className={css.title}>Sign up</h2>
+            <h2 className={css.title}>Sign Up</h2>
             <label className={css.label}>
               <p className={css.text}>Enter your email</p>
               <Field

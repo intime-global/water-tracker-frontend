@@ -18,7 +18,7 @@ import PasswordResetPage from '../pages/PasswordResetPage/PasswordResetPage.jsx'
 
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage.jsx';
-import ConfirmEmailPage from '../pages/ConfirmEmailPage/ConfirmEmailPage.jsx';
+const ConfirmEmailPage = lazy(() => import('../pages/ConfirmEmailPage/ConfirmEmailPage.jsx'));
 const GoogleRedirectHandler = lazy(() => import('../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx'))
 // import GoogleRedirectHandler from '../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx';
 

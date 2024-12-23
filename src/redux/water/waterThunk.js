@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosInstance } from '../../services/axios.config.js';
 import { notifyError, notifySuccess } from '../../services/notifications.js';
+import { date } from 'yup';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
@@ -41,6 +42,9 @@ export const deleteWater = createAsyncThunk(
     try {
       const response = await axiosInstance.delete(`/water/${id}`);
       notifySuccess('Water deleted');
+      if (response.status === 204) {
+        return id;
+      }
       return response.data;
     } catch (error) {
       notifyError('Failed to delete water');
@@ -53,9 +57,17 @@ export const deleteWater = createAsyncThunk(
 
 export const getWaterToday = createAsyncThunk(
   'water/getWaterToday',
-  async (_, thunkApi) => {
+  async (data, thunkApi) => {
+    // Since we save month in Javascript format (from 0 to 11), we do +1 only here
+    const requestParams = {
+      day: data.day,
+      month: data.month + 1,
+      year: data.year,
+    };
     try {
-      const response = await axiosInstance.get('/water/today');
+      const response = await axiosInstance.get('/water/day', {
+        params: requestParams,
+      });
       return response.data;
     } catch (error) {
       notifyError('Failed to get today water');
@@ -69,9 +81,14 @@ export const getWaterToday = createAsyncThunk(
 export const getWaterMonth = createAsyncThunk(
   'water/getWaterMonth',
   async (data, thunkApi) => {
+    // Since we save month in Javascript format (from 0 to 11), we do +1 only here
+    const requestParams = {
+      month: data.month + 1,
+      year: data.year,
+    };
     try {
       const response = await axiosInstance.get('/water/month', {
-        params: data,
+        params: requestParams,
       });
       return response.data;
     } catch (error) {

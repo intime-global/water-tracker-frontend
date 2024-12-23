@@ -1,20 +1,38 @@
 .item_container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.icon_glass {
+  width: 26px;
+  height: 26px;
+  fill: var(--primary-color-blue);
 }
 
 .water_amount {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.33333;
-    color: var(--primary-color-blue);
+  font-weight: 400;
+  color: var(--primary-color-blue);
+  font-size: 18px;
+  line-height: 140%;
 }
 
 .water_time {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 2;
-    color: var(--primary-color-black);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 200%;
+  color: var(--primary-color-black);
 }
 
+/**
+  |============================
+  | Tablet version styles
+  |============================
+*/
+
+@media screen and (min-width: 768px) {
+  .icon_glass {
+    width: 36px;
+    height: 36px;
+  }
+}

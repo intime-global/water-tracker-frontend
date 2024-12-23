@@ -1,17 +1,36 @@
+import { useEffect, useRef, useState } from 'react';
 import styles from './DaysGeneralStats.module.css';
 
-const DaysGeneralStats = ({ date, dailyNorm, fulfillment, serviangs }) => {
+const DaysGeneralStats = ({ day, rect, month, listLeft }) => {
+  const { day: date, waterRate, percentage, consumedTimes } = day;
+  const containerRef = useRef(null);
+  const [containerHeight, setContainerHeight] = useState(0);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const { height } = containerRef.current.getBoundingClientRect();
+      setContainerHeight(height);
+    }
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <h2 className={styles.subtitle}>{date}</h2>
+    <div
+      className={styles.container}
+      ref={containerRef}
+      style={{
+        top: rect - containerHeight - 5,
+        left: listLeft - 8,
+      }}
+    >
+      <h2 className={styles.subtitle}>{`${date}, ${month}`}</h2>
       <p className={styles.text}>
-        Daily norma: <span>{dailyNorm} L</span>
+        Daily norma: <span>{waterRate} L</span>
       </p>
       <p className={styles.text}>
-        Fulfillment of the daily norm: <span>{fulfillment}%</span>
+        Fulfillment of the daily norm: <span>{percentage}%</span>
       </p>
       <p className={styles.text}>
-        How many serviangs of water: <span>{serviangs}</span>
+        How many servings of water: <span>{consumedTimes}</span>
       </p>
     </div>
   );

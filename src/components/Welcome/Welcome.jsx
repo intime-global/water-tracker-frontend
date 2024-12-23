@@ -1,4 +1,4 @@
-import WaterConsumptionTracker from '../WaterСonsumptionTracker/WaterConsumptionTracker';
+import WaterConsumptionTracker from '../WaterConsumptionTracker/WaterConsumptionTracker';
 import WhyDrinkWater from '../WhyDrinkWater/WhyDrinkWater';
 import css from './Welcome.module.css';
 

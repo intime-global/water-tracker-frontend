@@ -20,7 +20,7 @@ import {
 const initialState = {
   month: [],
   today: {
-    waterList: [],
+    notes: [],
   },
   isLoading: false,
 };

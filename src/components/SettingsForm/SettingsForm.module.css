@@ -126,10 +126,8 @@
 .commonError {
   color: var(--secondary-color-red);
   line-height: 1.11;
-  font-size: 13px;
-  position: absolute;
-  bottom: 2%;
-  left: 5%;
+  font-size: 14px;
+  margin-top: 26px;
 }
 
 .submit {
@@ -179,11 +177,6 @@
     line-height: 1.33;
   }
 
-  .commonError {
-    font-size: 14px;
-    left: auto;
-    bottom: 5%;
-  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -204,7 +197,4 @@
     right: 2%;
   }
 
-  .commonError {
-    bottom: 8%;
-  }
 }

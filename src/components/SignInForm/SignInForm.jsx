@@ -4,17 +4,14 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useId } from 'react';
 import clsx from 'clsx';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import css from './SignInForm.module.css';
 import sprite from '../../icons/sprite.svg';
-
 import Loader from '../Loader/Loader.jsx';
 import ModalContainer from '../ModalContainer/ModalContainer';
-import ForgotPasswordForm from '../ForgotPasswordFrom/ForgotPasswordForm.jsx';
+import ForgotPasswordForm from '../ForgotPasswordForm/ForgotPasswordForm.jsx';
 import { login } from '../../redux/user/operations';
 import { selectIsLoading } from '../../redux/user/selectors.js';
-import { selectAuthError } from '../../redux/user/selectors.js';
-import { notifyError} from '../../services/notifications.js';
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton.jsx';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -36,16 +33,10 @@ const SignInForm = () => {
   const dispatch = useDispatch();
   const emailFieldId = useId();
   const pwdFieldId = useId();
-  const isError = useSelector(selectAuthError);
+  // const isError = useSelector(selectAuthError);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  useEffect(() => {
-    if (isError) {
-      notifyError(isError);
-    }
-  }, [isError]);
 
   const handleSubmit = (values, actions) => {
     if (values.email === '' || values.password === '') return;

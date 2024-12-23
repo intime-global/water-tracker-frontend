@@ -1,0 +1,56 @@
+.border {
+  border: 1px solid var(--secondary-color-orange);
+}
+
+.day {
+  border-radius: 20px;
+  padding: 7px 6px;
+  width: 32px;
+  height: 32px;
+  background: var(--primary-color-white);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  text-align: center;
+  color: var(--primary-color-black);
+  margin: 0 auto 4px;
+}
+.empty {
+  background-color: rgb(226, 225, 225);
+}
+.percentage {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--secondary-color-blue-3);
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .dayComponent {
+    position: absolute;
+    top: -190px;
+    right: 17px;
+  }
+  .dayReversedComponent {
+    position: absolute;
+    top: -190px;
+    left: 17px;
+  }
+  .day {
+    padding: 7px;
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 125%;
+    margin: 0 auto 4px;
+    position: relative;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .dayReversedComponent {
+    left: unset;
+    right: 17px;
+  }
+}

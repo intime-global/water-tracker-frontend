@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './DaysGeneralStats.module.css';
 
-const DaysGeneralStats = ({ day, rect, month }) => {
+const DaysGeneralStats = ({ day, rect, month, listLeft }) => {
   const { day: date, waterRate, percentage, consumedTimes } = day;
   const containerRef = useRef(null);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -17,7 +17,10 @@ const DaysGeneralStats = ({ day, rect, month }) => {
     <div
       className={styles.container}
       ref={containerRef}
-      style={{ top: rect - containerHeight - 5 }}
+      style={{
+        top: rect - containerHeight - 5,
+        left: listLeft - 8,
+      }}
     >
       <h2 className={styles.subtitle}>{`${date}, ${month}`}</h2>
       <p className={styles.text}>

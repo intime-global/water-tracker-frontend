@@ -4,6 +4,7 @@ import css from './MonthStatsTable.module.css';
 import DayWaterItem from '../DayWaterItem/DayWaterItem.jsx';
 import sprite from '../../icons/sprite.svg';
 import clsx from 'clsx';
+import { useEffect, useRef, useState } from 'react';
 
 const months = [
   'January',
@@ -25,12 +26,12 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
   const daysOfMonth = [];
   const initMonth = new Date().getMonth();
   const initYear = new Date().getFullYear();
-
+  const listRef = useRef(null);
   const disabled =
     selectedMonth.month === initMonth && selectedMonth.year === initYear
       ? true
       : false;
-
+  const [rect, setRect] = useState(0);
   function setPrevMonth() {
     if (selectedMonth.month === 0) {
       setMonth({
@@ -83,6 +84,21 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
     }
   }
 
+  useEffect(() => {
+    window.addEventListener('resize', getRect);
+    getRect();
+    return () => {
+      window.removeEventListener('resize', getRect);
+    };
+  }, []);
+
+  function getRect() {
+    if (listRef.current) {
+      const { left } = listRef.current.getBoundingClientRect();
+      setRect(left);
+    }
+  }
+
   return (
     <>
       <div className={css.titleContainer}>
@@ -113,10 +129,14 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
           </button>
         </div>
       </div>
-      <ul className={css.list}>
+      <ul className={css.list} ref={listRef}>
         {daysOfMonth.map((item, index) => (
           <li className={css.item} key={index}>
-            <DayWaterItem day={item} month={months[selectedMonth.month]} />
+            <DayWaterItem
+              day={item}
+              month={months[selectedMonth.month]}
+              listLeft={rect}
+            />
           </li>
         ))}
       </ul>

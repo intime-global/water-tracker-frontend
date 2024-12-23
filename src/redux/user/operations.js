@@ -45,10 +45,13 @@ export const confirmEmail = createAsyncThunk(
   'user/confirm-email',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await authAPI.post('/auth/confirm-email', credentials);
+      const response = await authAPI.post('/auth/confirm-email', credentials);
+      console.log(response);
+      setAuthHeader(response.data.data.accessToken);
       notifySuccess('Email confirmed');
-      return data;
+      return response.data;
     } catch (error) {
+      console.log(error);
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
       notifyError('Email has not been confirmed');

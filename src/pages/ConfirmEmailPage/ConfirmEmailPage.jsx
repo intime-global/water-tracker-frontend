@@ -11,7 +11,7 @@ const ConfirmEmailPage = () => {
 
     const handleEmailConfirmation = async () => {
     try {
-        const response = await axios.post('http://localhost:3000/auth/confirm-email', { token: token });
+        const response = await axios.post('https://api.water-tracker.online/auth/confirm-email', { token: token });
 // api.water-tracker.online
       if (!response.status==='201') {
         throw new Error('Email confirmation failed');

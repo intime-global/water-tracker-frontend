@@ -21,7 +21,11 @@ const months = [
   'December',
 ];
 
-export default function MonthStatsTable({ selectedMonth, setMonth }) {
+export default function MonthStatsTable({
+  selectedMonth,
+  setMonth,
+  onDaySelect,
+}) {
   const water = useSelector(selectMonthWater);
   const daysOfMonth = [];
   const initMonth = new Date().getMonth();
@@ -131,7 +135,11 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
       </div>
       <ul className={css.list} ref={listRef}>
         {daysOfMonth.map((item, index) => (
-          <li className={css.item} key={index}>
+          <li
+            onClick={() => onDaySelect(item)}
+            className={css.item}
+            key={index}
+          >
             <DayWaterItem
               day={item}
               month={months[selectedMonth.month]}

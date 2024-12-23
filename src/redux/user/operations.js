@@ -65,14 +65,16 @@ export const login = createAsyncThunk(
   'user/login',
   async (userInfo, thunkAPI) => {
     try {
-      const { data } = await authAPI.post('/auth/login', userInfo);
-      setAuthHeader(data.data.accessToken);
+      const response = await authAPI.post('/auth/login', userInfo);
+      setAuthHeader(response.data.data.accessToken);
       notifySuccess('You have successfully logged in');
-      return data;
+      return response.data;
     } catch (error) {
-      if (error.response?.data?.data?.message)
-        return thunkAPI.rejectWithValue(error.response.data.data.message);
-      notifyError('Login failed');
+      if (error.response?.status === 401) {
+        notifyError('Incorrect email or password');
+      } else {
+        notifyError('Login failed');
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -248,9 +250,13 @@ export const editUserInfo = createAsyncThunk(
       notifySuccess('User data edited successfully');
       return response.data;
     } catch (error) {
+      if (error.response.status === 400) {
+        notifyError('Invalid password');
+      } else {
+        notifyError('Failed to edit user data');
+      }
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
-      notifyError('Failed to save changes');
       return thunkAPI.rejectWithValue(error.message);
     }
   },

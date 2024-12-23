@@ -3,6 +3,13 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { notifyError, notifySuccess } from "../../services/notifications";
 import { useEffect } from "react";
 
+const authAPI = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_SERVER_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: true,
+});
 
 const ConfirmEmailPage = () => {
     const navigate = useNavigate();
@@ -11,8 +18,7 @@ const ConfirmEmailPage = () => {
 
     const handleEmailConfirmation = async () => {
     try {
-        const response = await axios.post('https://api.water-tracker.online/auth/confirm-email', { token: token });
-// api.water-tracker.online
+        const response = await authAPI.post('/auth/confirm-email', { token: token });
       if (!response.status==='201') {
         throw new Error('Email confirmation failed');
       }

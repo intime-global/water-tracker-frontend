@@ -136,7 +136,13 @@ export default function MonthStatsTable({
       <ul className={css.list} ref={listRef}>
         {daysOfMonth.map((item, index) => (
           <li
-            onClick={() => onDaySelect(item)}
+            onClick={() =>
+              onDaySelect({
+                day: Number(item.day),
+                month: Number(item.month) - 1,
+                year: Number(item.year),
+              })
+            }
             className={css.item}
             key={index}
           >

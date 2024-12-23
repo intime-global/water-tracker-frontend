@@ -8,10 +8,12 @@ import DailyNorma from '../../components/DailyNorma/DailyNorma';
 import Loader from '../../components/Loader/Loader';
 
 import css from './HomePage.module.css';
+import { selectIsLoading } from '../../redux/user/selectors';
 
 const HomePage = () => {
   const isLoading = useSelector(selectWaterIsLoading);
-  return isLoading ? (
+  const isUserLoading = useSelector(selectIsLoading)
+  return isLoading || isUserLoading ? (
     <Loader />
   ) : (
     <>

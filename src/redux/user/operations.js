@@ -24,7 +24,9 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/register', credentials);
-      notifySuccess('Registration was successful');
+      notifySuccess(
+        'Registration is successful. Please confirm your email via your mailbox',
+      );
       return data;
     } catch (error) {
       if (error.response?.data?.data?.message)

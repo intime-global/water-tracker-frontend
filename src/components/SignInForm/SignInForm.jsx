@@ -14,7 +14,7 @@ import ForgotPasswordForm from '../ForgotPasswordFrom/ForgotPasswordForm.jsx';
 import { login } from '../../redux/user/operations';
 import { selectIsLoading } from '../../redux/user/selectors.js';
 import { selectAuthError } from '../../redux/user/selectors.js';
-import { notifyError } from '../../services/notifications.js';
+import { notifyError} from '../../services/notifications.js';
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton.jsx';
 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -49,7 +49,7 @@ const SignInForm = () => {
 
   const handleSubmit = (values, actions) => {
     if (values.email === '' || values.password === '') return;
-    dispatch(login(values));
+      dispatch(login(values));
     actions.resetForm();
   };
 

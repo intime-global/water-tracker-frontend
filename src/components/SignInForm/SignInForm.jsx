@@ -9,7 +9,7 @@ import css from './SignInForm.module.css';
 import sprite from '../../icons/sprite.svg';
 import Loader from '../Loader/Loader.jsx';
 import ModalContainer from '../ModalContainer/ModalContainer';
-import ForgotPasswordForm from '../ForgotPasswordFrom/ForgotPasswordForm.jsx';
+import ForgotPasswordForm from '../ForgotPasswordForm/ForgotPasswordForm.jsx';
 import { login } from '../../redux/user/operations';
 import { selectIsLoading } from '../../redux/user/selectors.js';
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton.jsx';

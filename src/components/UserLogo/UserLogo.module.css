@@ -9,6 +9,8 @@
   border-radius: 50%;
   overflow: hidden;
   position: relative;
+  width: 30px;
+  height: 30px;
 }
 
 .userLogoButton:hover {
@@ -54,7 +56,6 @@
   width: 16px;
   height: 16px;
   fill: var(--primary-color-blue);
-  /* cursor: var(--cursor-h); */
   cursor: pointer;
   margin-left: 4px;
 }
@@ -69,4 +70,13 @@
   margin-right: 8px;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
 }
+
+@media (min-width: 768px) {
+  .user {
+    max-width: none;
+  }
+}
+

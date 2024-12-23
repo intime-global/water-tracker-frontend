@@ -24,7 +24,7 @@ const DaysGeneralStats = ({ day, rect, month, listLeft }) => {
     >
       <h2 className={styles.subtitle}>{`${date}, ${month}`}</h2>
       <p className={styles.text}>
-        Daily norma: <span>{waterRate} L</span>
+        Daily norma: <span>{waterRate / 1000} L</span>
       </p>
       <p className={styles.text}>
         Fulfillment of the daily norm: <span>{percentage}%</span>

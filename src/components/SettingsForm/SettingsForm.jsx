@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { editUserInfo } from '../../redux/user/operations.js';
 import { selectIsLoading, selectUser } from '../../redux/user/selectors.js';
-import { notifySuccess } from '../../services/notifications.js';
 import sprite from '../../icons/sprite.svg';
 import css from './SettingsForm.module.css';
 
@@ -70,7 +69,7 @@ export default function SettingsForm({ onClose }) {
   };
 
   const handleSubmit = (values) => {
-    const { repeatPassword, oldPassword, newPassword, ...filteredValues } =
+    const { oldPassword, newPassword, ...filteredValues } =
       values;
 
     if (oldPassword && newPassword) {
@@ -79,7 +78,6 @@ export default function SettingsForm({ onClose }) {
     }
 
     dispatch(editUserInfo(filteredValues));
-    notifySuccess('Data has successfully changed!');
     onClose();
   };
 

@@ -1,14 +1,12 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { register } from '../../redux/user/operations';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import css from './SignUpForm.module.css';
 import sprite from '../../icons/sprite.svg';
 import { selectIsLoading } from '../../redux/user/selectors.js';
-import { selectAuthError } from '../../redux/user/selectors.js';
-import { notifyError } from '../../services/notifications.js';
 import Loader from '../Loader/Loader';
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton.jsx';
 
@@ -34,13 +32,7 @@ export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectAuthError);
-
-  useEffect(() => {
-    if (isError) {
-      notifyError(isError);
-    }
-  }, [isError]);
+  // const isError = useSelector(selectAuthError);
 
   const toggleShowPassword = () => {
     setShowPassword((prevState) => !prevState);

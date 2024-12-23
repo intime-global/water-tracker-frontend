@@ -3,7 +3,7 @@ import { selectMonthWater } from '../../redux/water/waterSelector.js';
 import css from './MonthStatsTable.module.css';
 import DayWaterItem from '../DayWaterItem/DayWaterItem.jsx';
 import sprite from '../../icons/sprite.svg';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const months = [
   'January',
@@ -31,7 +31,7 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
     selectedMonth.month === initMonth && selectedMonth.year === initYear
       ? true
       : false;
-  let listLeft;
+  const [rect, setRect] = useState(0);
   function setPrevMonth() {
     if (selectedMonth.month === 0) {
       setMonth({
@@ -83,10 +83,22 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
       };
     }
   }
-  if (listRef.current) {
-    const { left } = listRef.current.getBoundingClientRect();
-    listLeft = left;
+
+  useEffect(() => {
+    window.addEventListener('resize', getRect);
+    getRect();
+    return () => {
+      window.removeEventListener('resize', getRect);
+    };
+  }, []);
+
+  function getRect() {
+    if (listRef.current) {
+      const { left } = listRef.current.getBoundingClientRect();
+      setRect(left);
+    }
   }
+
   return (
     <>
       <div className={css.titleContainer}>
@@ -120,7 +132,7 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
             <DayWaterItem
               day={item}
               month={months[selectedMonth.month]}
-              listLeft={listLeft}
+              listLeft={rect}
             />
           </li>
         ))}

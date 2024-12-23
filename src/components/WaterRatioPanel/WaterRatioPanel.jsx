@@ -13,8 +13,11 @@ const WaterRationPanel = ({ selectedDate }) => {
   const waterToday = useSelector(selectTodayWater);
   const waterRate = useSelector(selectWaterRate);
 
-  const totalAmount = selectedDate?.percentage ?? 0;
-  const percentage = waterRate && totalAmount;
+  const totalAmount = waterToday.reduce(
+    (acc, curr) => acc + curr.waterVolume,
+    0,
+  );
+  const percentage = (totalAmount / waterRate) * 100;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [initialAmount, setInitialAmount] = useState(0);

@@ -38,7 +38,7 @@ export default function DailyNormaModal({ onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const water = parseFloat(waterAmount.toFixed(2));
+    const water = parseFloat(waterAmount.toFixed(0));
     if (water < toMilliliters(0.5) || water > toMilliliters(15)) {
       notifyError('The water intake must be between 0.5 and 15 liters.');
       return;

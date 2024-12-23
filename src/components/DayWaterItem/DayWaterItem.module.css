@@ -19,6 +19,12 @@
 .empty {
   background-color: rgb(226, 225, 225);
 }
+.currentDay {
+  box-shadow: 0 0 10px 4px rgba(64, 123, 255, 0.6);
+  color: var(--secondary-color-red);
+  font-weight: 500;
+}
+
 .percentage {
   font-weight: 400;
   font-size: 12px;

@@ -128,7 +128,6 @@ export const refresh = createAsyncThunk(
       const { data } = await axiosInstance.get('/users');
       return data;
     } catch (error) {
-      notifyError('Refresh failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -152,7 +151,6 @@ export const refreshSession = createAsyncThunk(
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
-      notifyError('Refresh session failed');
       return thunkAPI.rejectWithValue(error.message);
     }
   },

@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosInstance } from '../../services/axios.config.js';
 import { notifyError, notifySuccess } from '../../services/notifications.js';
-import { date } from 'yup';
 
 export const addWater = createAsyncThunk(
   'water/addWater',

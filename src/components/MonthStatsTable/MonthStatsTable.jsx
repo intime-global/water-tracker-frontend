@@ -3,7 +3,8 @@ import { selectMonthWater } from '../../redux/water/waterSelector.js';
 import css from './MonthStatsTable.module.css';
 import DayWaterItem from '../DayWaterItem/DayWaterItem.jsx';
 import sprite from '../../icons/sprite.svg';
-import { useEffect, useRef } from 'react';
+import clsx from 'clsx';
+import { useRef } from 'react';
 
 const months = [
   'January',
@@ -26,12 +27,12 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
   const daysOfMonth = [];
   const initMonth = new Date().getMonth();
   const initYear = new Date().getFullYear();
-
+  const listRef = useRef(null);
   const disabled =
     selectedMonth.month === initMonth && selectedMonth.year === initYear
       ? true
       : false;
-
+  let listLeft;
   function setPrevMonth() {
     if (selectedMonth.month === 0) {
       setMonth({
@@ -83,7 +84,10 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
       };
     }
   }
-
+  if (listRef.current) {
+    const { left } = listRef.current.getBoundingClientRect();
+    listLeft = left;
+  }
   return (
     <>
       <div className={css.titleContainer}>
@@ -111,10 +115,14 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
           </button>
         </div>
       </div>
-      <ul className={css.list}>
+      <ul className={css.list} ref={listRef}>
         {daysOfMonth.map((item, index) => (
           <li className={css.item} key={index}>
-            <DayWaterItem day={item} month={months[selectedMonth.month]} />
+            <DayWaterItem
+              day={item}
+              month={months[selectedMonth.month]}
+              listLeft={listLeft}
+            />
           </li>
         ))}
       </ul>

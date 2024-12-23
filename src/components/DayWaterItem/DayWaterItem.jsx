@@ -3,7 +3,7 @@ import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 import css from './DayWaterItem.module.css';
 import clsx from 'clsx';
 
-export default function DayWaterItem({ day, month }) {
+export default function DayWaterItem({ day, month, listLeft }) {
   const [isClicked, setIsClicked] = useState(false);
   const [rect, setRect] = useState(0);
   const daysForReversedStat = [1, 2, 3, 4, 11, 12, 13, 14, 21, 22, 23, 24, 31];
@@ -67,7 +67,12 @@ export default function DayWaterItem({ day, month }) {
             }
           >
             {!day.noData && (
-              <DaysGeneralStats day={day} rect={rect} month={month} />
+              <DaysGeneralStats
+                day={day}
+                rect={rect}
+                month={month}
+                listLeft={listLeft}
+              />
             )}
           </div>
         )}

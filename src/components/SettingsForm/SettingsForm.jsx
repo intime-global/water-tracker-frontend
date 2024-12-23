@@ -69,7 +69,7 @@ export default function SettingsForm({ onClose }) {
   };
 
   const handleSubmit = (values) => {
-    const { oldPassword, newPassword, ...filteredValues } =
+    const { repeatPassword, oldPassword, newPassword, ...filteredValues } =
       values;
 
     if (oldPassword && newPassword) {

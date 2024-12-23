@@ -3,14 +3,16 @@ import { selectWaterIsLoading } from '../../redux/water/waterSelector.js';
 
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 // import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
-// import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
+
+import { TodayList } from '../../components/TodayWaterList/TodayWaterList.jsx';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
-// import AuthContainer from '../../components/AuthContainer/AuthContainer';
+
 import Loader from '../../components/Loader/Loader';
 
 import css from './HomePage.module.css';
+
 import { useEffect, useState } from 'react';
-import { getWaterMonth } from '../../redux/water/waterThunk.js';
+import { getWaterMonth, getWaterToday } from '../../redux/water/waterThunk.js';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const HomePage = () => {
   });
 
   useEffect(() => {
+    dispatch(getWaterToday());
     dispatch(getWaterMonth(selectedMonth));
   }, [dispatch, selectedMonth]);
 
@@ -37,10 +40,8 @@ const HomePage = () => {
             {/* <WaterRatioPanel /> */}
             <div>WaterRatioPanel</div>
           </div>
-
           <div className={css.statisticsSection}>
-            {/* <TodayWaterList className={css.todayWaterList} /> */}
-            <div className={css.todayWaterList}>TodayWaterList</div>
+            <TodayList />
             <MonthStatsTable
               selectedMonth={selectedMonth}
               setMonth={setSelectedMonth}

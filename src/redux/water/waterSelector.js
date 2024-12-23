@@ -1,4 +1,4 @@
-export const selectTodayWater = (state) => state.water.today.waterList;
+export const selectTodayWater = (state) => state.water.today.notes;
 
 export const selectMonthWater = (state) => state.water.month;
 

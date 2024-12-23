@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import { format } from 'date-fns';
 import { useFormik } from 'formik';
@@ -7,6 +6,8 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import css from './TodayListModal.module.css';
 import { addWater, editWater } from '../../redux/water/waterThunk';
+import { ListItem } from '../ListItem/ListItem';
+import { transformTimeToISO } from '../../services/hooks.js';
 
 const maxVolumeLimit = 5000;
 const minVolumeLimit = 50;
@@ -23,52 +24,38 @@ const validationSchema = Yup.object({
 const TodayListModal = ({
   isOpen,
   onClose,
-  initialAmount = 0,
-  initialTime,
   isEditing,
-  selectedItemId = null,
+  selectedItemId,
+  initialAmount,
+  initialTime,
 }) => {
   const dispatch = useDispatch();
-  const [amount, setAmount] = useState(initialAmount || minVolumeLimit);
-  const [time, setTime] = useState(initialTime || format(new Date(), 'HH:mm'));
 
   const formik = useFormik({
     initialValues: {
-      portionOfWater: amount,
-      time: time,
+      portionOfWater: initialAmount || minVolumeLimit,
+      time: initialTime || format(new Date(), 'HH:mm'),
     },
     validationSchema,
     onSubmit: async (values) => {
       const payload = {
-        time: values.time,
-        waterAmount: values.portionOfWater,
-        id: selectedItemId || null,
+        date: transformTimeToISO(values.time),
+        waterVolume: values.portionOfWater,
+        id: selectedItemId,
       };
-
-      try {
-        if (isEditing) {
-          await dispatch(editWater(payload));
-        } else {
-          await dispatch(
-            addWater({
-              ...payload,
-              date: format(new Date(), 'dd/MM/yyyy'),
-            }),
-          );
-        }
-        onClose();
-      } catch (error) {
-        console.error('Error during add/edit', error);
+      if (isEditing) {
+        dispatch(editWater(payload));
+      } else {
+        dispatch(
+          addWater({
+            date: transformTimeToISO(values.time),
+            waterVolume: values.portionOfWater,
+          }),
+        );
       }
+      onClose();
     },
   });
-
-  useEffect(() => {
-    formik.setValues({
-      portionOfWater: initialAmount || minVolumeLimit,
-      time: initialTime || format(new Date(), 'HH:mm'),
-    });
-  }, [initialAmount, initialTime]);
 
   const increaseAmount = () => {
     formik.setFieldValue(
@@ -85,7 +72,7 @@ const TodayListModal = ({
   };
 
   return (
-    <ModalContainer onClose={onClose}>
+    <ModalContainer isOpen={isOpen} onClose={onClose}>
       <div className={css.modalContainer}>
         <div className={css.header}>
           {isEditing ? (
@@ -103,13 +90,12 @@ const TodayListModal = ({
 
         {isEditing && (
           <div className={css.amountDisplay}>
-            <svg className={css.iconGlass}>
-              <use href={SpriteSvg + '#icon-water-glass'} />
-            </svg>
-            <span className={css.amount}>
-              {formik.values.portionOfWater} ml
-            </span>
-            <span className={css.time}>{formik.values.time}</span>
+            <ListItem
+              data={{
+                waterVolume: initialAmount,
+                time: initialTime,
+              }}
+            />
           </div>
         )}
 

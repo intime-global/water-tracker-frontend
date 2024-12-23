@@ -3,7 +3,6 @@ import { selectMonthWater } from '../../redux/water/waterSelector.js';
 import css from './MonthStatsTable.module.css';
 import DayWaterItem from '../DayWaterItem/DayWaterItem.jsx';
 import sprite from '../../icons/sprite.svg';
-import clsx from 'clsx';
 import { useRef } from 'react';
 
 const months = [

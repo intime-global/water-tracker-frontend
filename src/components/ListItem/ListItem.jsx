@@ -1,14 +1,25 @@
-import sprite from '../../icons/sprite.svg';
+import { Icon } from '../Icon/Icon.jsx';
+import { transformTimeToHHMM } from '../../services/hooks.js';
 import css from './ListItem.module.css';
 
-export const ListItem = ({ data: { amount, time } }) => {
+export const ListItem = ({ data: { waterVolume, time } }) => {
+  function isValidTime(time) {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/; // Matches HH:mm format
+    return timeRegex.test(time);
+  }
+  if (!isValidTime(time)) {
+    time = transformTimeToHHMM(time);
+  }
   return (
     <div className={css.item_container}>
-      <svg>
-        <use href={`${sprite}#icon-glass`}></use>
-      </svg>
-      <p className={css.water_amount}>{amount} ml</p>
-      <p className={css.water_time}>{time} AM</p>
+      <Icon
+        className={css.icon_glass}
+        id={'#icon-water-glass'}
+        width={24}
+        height={24}
+      />
+      <div className={css.water_amount}>{waterVolume} ml</div>
+      <div className={css.water_time}>{time}</div>
     </div>
   );
 };

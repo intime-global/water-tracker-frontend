@@ -8,6 +8,9 @@ export default function DayWaterItem({ day, month, listLeft }) {
   const [rect, setRect] = useState(0);
   const daysForReversedStat = [1, 2, 3, 4, 11, 12, 13, 14, 21, 22, 23, 24, 31];
   const rowRect = useRef(null);
+  const initDate = new Date().getDate();
+  const initMonth = new Date().getMonth();
+  const initYear = new Date().getFullYear();
 
   const openModal = () => {
     if (rowRect.current) {
@@ -48,15 +51,21 @@ export default function DayWaterItem({ day, month, listLeft }) {
     };
   }, [closeModal]);
 
-  const clsxDay = clsx(
-    css.day,
-    day.percentage < 100 && css.border,
-    day.noData && css.empty,
-  );
-
   return (
     <>
-      <div className={clsxDay} onClick={() => openModal()} ref={rowRect}>
+      <div
+        className={clsx(
+          css.day,
+          day.percentage < 100 && css.border,
+          day.noData && css.empty,
+          day.day == initDate &&
+            day.month == initMonth + 1 &&
+            day.year == initYear &&
+            css.currentDay,
+        )}
+        onClick={() => openModal()}
+        ref={rowRect}
+      >
         {Number(day.day)}
         {isClicked && (
           <div

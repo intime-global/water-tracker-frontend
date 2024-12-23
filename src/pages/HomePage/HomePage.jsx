@@ -1,14 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectTodayWater,
-  selectWaterIsLoading,
-} from '../../redux/water/waterSelector.js';
+import { selectTodayWater } from '../../redux/water/waterSelector.js';
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 import { TodayList } from '../../components/TodayWaterList/TodayWaterList.jsx';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
-import Loader from '../../components/Loader/Loader';
 import css from './HomePage.module.css';
-import { selectIsLoading } from '../../redux/user/selectors';
 import { useEffect, useState } from 'react';
 import { getWaterMonth, getWaterToday } from '../../redux/water/waterThunk.js';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel.jsx';
@@ -37,11 +32,7 @@ const HomePage = () => {
     dispatch(getWaterMonth(selectedMonth));
   }, [dispatch, selectedMonth, todayWater]);
 
-  const isLoading = useSelector(selectWaterIsLoading);
-  const isUserLoading = useSelector(selectIsLoading);
-  return isLoading || isUserLoading ? (
-    <Loader />
-  ) : (
+  return (
     <>
       <div className={css.background}>
         <div className={css.home}>

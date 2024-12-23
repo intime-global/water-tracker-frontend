@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux"
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { notifyError } from "../../services/notifications";
 import { confirmOauth } from "../../redux/user/operations";
-import axios from "axios";
-import { setAuthHeader } from "../../services/axios.config";
+// import axios from "axios";
+// import { setAuthHeader } from "../../services/axios.config";
 
 
 const GoogleRedirectHandler = () => {

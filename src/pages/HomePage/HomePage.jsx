@@ -10,6 +10,7 @@ import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import Loader from '../../components/Loader/Loader';
 
 import css from './HomePage.module.css';
+import { selectIsLoading } from '../../redux/user/selectors';
 
 import { useEffect, useState } from 'react';
 import { getWaterMonth, getWaterToday } from '../../redux/water/waterThunk.js';
@@ -39,7 +40,8 @@ const HomePage = () => {
   }, [dispatch, selectedMonth]);
 
   const isLoading = useSelector(selectWaterIsLoading);
-  return isLoading ? (
+  const isUserLoading = useSelector(selectIsLoading)
+  return isLoading || isUserLoading ? (
     <Loader />
   ) : (
     <>

@@ -40,7 +40,7 @@ const SignInForm = () => {
 
   const handleSubmit = (values, actions) => {
     if (values.email === '' || values.password === '') return;
-    dispatch(login(values));
+      dispatch(login(values));
     actions.resetForm();
   };
 

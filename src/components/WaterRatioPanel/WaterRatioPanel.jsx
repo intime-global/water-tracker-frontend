@@ -9,7 +9,7 @@ import { format } from 'date-fns';
 import SpriteSvg from '../../icons/sprite.svg';
 import css from './WaterRatioPanel.module.css';
 
-const WaterRationPanel = ({ selectedDate }) => {
+const WaterRatioPanel = () => {
   const waterToday = useSelector(selectTodayWater);
   const waterRate = useSelector(selectWaterRate);
 
@@ -36,9 +36,7 @@ const WaterRationPanel = ({ selectedDate }) => {
     <div className={css.panel}>
       <div className={css.info}>
         <div className={css.titleWrap}>
-          <h3 className={css.title}>
-            {selectedDate ? `Day ${selectedDate.day}` : 'Today'}
-          </h3>
+          <h3 className={css.title}>Today</h3>
         </div>
         <div className={css.progressWrapper}>
           <div className={css.progressBar}>
@@ -86,6 +84,6 @@ const WaterRationPanel = ({ selectedDate }) => {
   );
 };
 
-export default WaterRationPanel;
+export default WaterRatioPanel;
 
 // "yyyy-MM-dd'T'HH:mm:ss";

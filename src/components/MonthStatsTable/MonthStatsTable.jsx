@@ -21,11 +21,7 @@ const months = [
   'December',
 ];
 
-export default function MonthStatsTable({
-  selectedMonth,
-  setMonth,
-  onDaySelect,
-}) {
+export default function MonthStatsTable({ selectedMonth, setMonth }) {
   const water = useSelector(selectMonthWater);
   const daysOfMonth = [];
   const initMonth = new Date().getMonth();

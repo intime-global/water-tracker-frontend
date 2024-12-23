@@ -23,7 +23,6 @@
   font-size: 22px;
   line-height: 100%;
   color: var(--primary-color-blue);
-  width: 90px;
   height: 22px;
   display: flex;
   align-items: flex-end;
@@ -52,7 +51,6 @@
 
   .norma {
     font-size: 24px;
-    width: 94px;
     height: 24px;
   }
 }

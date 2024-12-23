@@ -14,6 +14,7 @@
   text-align: center;
   color: var(--primary-color-black);
   margin: 0 auto 4px;
+  cursor: pointer;
 }
 .empty {
   background-color: rgb(226, 225, 225);

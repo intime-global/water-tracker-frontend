@@ -77,7 +77,7 @@ export default function DayWaterItem({ day, month, listLeft }) {
           </div>
         )}
       </div>
-      <p className={css.percentage}>{day.percentage}</p>
+      <p className={css.percentage}>{day.percentage || 0}%</p>
     </>
   );
 }

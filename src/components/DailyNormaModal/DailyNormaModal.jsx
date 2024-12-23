@@ -17,17 +17,18 @@ export default function DailyNormaModal({ onClose }) {
   const [waterAmount, setWaterAmount] = useState(user.waterRate || 0);
   const [waterAmountForCalculate, setWaterAmountForCalculate] = useState(0);
 
- const calculateWaterRate = (gender, weight, activityTime) => {
-  const weightItem = parseFloat(weight);
-  const activitiTimeItem = parseFloat(activityTime) || 0;
-  if (isNaN(weightItem) || isNaN(activitiTimeItem)) return;
+  const calculateWaterRate = (gender, weight, activityTime) => {
+    const weightItem = parseFloat(weight);
+    const activitiTimeItem = parseFloat(activityTime) || 0;
+    if (isNaN(weightItem) || isNaN(activitiTimeItem)) return;
 
-  const water = gender === "female"
-    ? weightItem * 0.03 + activitiTimeItem * 0.4
-    : weightItem * 0.04 + activitiTimeItem * 0.6;
+    const water =
+      gender === 'female'
+        ? weightItem * 0.03 + activitiTimeItem * 0.4
+        : weightItem * 0.04 + activitiTimeItem * 0.6;
 
-  setWaterAmountForCalculate(toMilliliters(parseFloat(water.toFixed(1))));
-};
+    setWaterAmountForCalculate(toMilliliters(parseFloat(water.toFixed(1))));
+  };
 
   useEffect(() => {
     calculateWaterRate(gender, weight, activityTime);
@@ -37,19 +38,19 @@ export default function DailyNormaModal({ onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const water = parseFloat(waterAmount.toFixed(1));
+    const water = parseFloat(waterAmount.toFixed(2));
     if (water < toMilliliters(0.5) || water > toMilliliters(15)) {
       notifyError('The water intake must be between 0.5 and 15 liters.');
       return;
     }
-      dispatch(editUserWaterRate({ waterRate: waterAmount }));
-      onClose();
+    dispatch(editUserWaterRate({ waterRate: water }));
+    onClose();
   };
 
   const handleWaterChange = (e) => {
     let value = e.target.value.replace(/[^0-9.]/g, ' ');
-    if (value === "") {
-      setWaterAmount("");
+    if (value === '') {
+      setWaterAmount('');
     } else {
       setWaterAmount(toMilliliters(parseFloat(value)));
     }

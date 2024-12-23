@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectWaterIsLoading } from '../../redux/water/waterSelector.js';
+import {
+  selectTodayWater,
+  selectWaterIsLoading,
+} from '../../redux/water/waterSelector.js';
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 import { TodayList } from '../../components/TodayWaterList/TodayWaterList.jsx';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
@@ -12,6 +15,7 @@ import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel.js
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const todayWater = useSelector(selectTodayWater);
   const initDay = new Date().getDate();
   const initMonth = new Date().getMonth();
   const initYear = new Date().getFullYear();
@@ -31,7 +35,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getWaterMonth(selectedMonth));
-  }, [dispatch, selectedMonth]);
+  }, [dispatch, selectedMonth, todayWater]);
 
   const isLoading = useSelector(selectWaterIsLoading);
   const isUserLoading = useSelector(selectIsLoading);

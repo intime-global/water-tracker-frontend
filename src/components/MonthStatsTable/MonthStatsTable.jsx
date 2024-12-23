@@ -3,7 +3,7 @@ import { selectMonthWater } from '../../redux/water/waterSelector.js';
 import css from './MonthStatsTable.module.css';
 import DayWaterItem from '../DayWaterItem/DayWaterItem.jsx';
 import sprite from '../../icons/sprite.svg';
-import { useEffect, useRef } from 'react';
+import clsx from 'clsx';
 
 const months = [
   'January',
@@ -21,7 +21,6 @@ const months = [
 ];
 
 export default function MonthStatsTable({ selectedMonth, setMonth }) {
-  const nextButton = useRef(null);
   const water = useSelector(selectMonthWater);
   const daysOfMonth = [];
   const initMonth = new Date().getMonth();
@@ -103,9 +102,12 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
             onClick={() => {
               setNextMonth();
             }}
-            ref={nextButton}
           >
-            <svg className={css.iconNext} width={14} height={14}>
+            <svg
+              className={clsx(css.iconNext, disabled && css.hiddenBtn)}
+              width={14}
+              height={14}
+            >
               <use href={`${sprite}#icon-chevron-left`} />
             </svg>
           </button>

@@ -10,15 +10,22 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import userSlice from './user/slice.js';
+import waterSlice from './water/waterSlice.js';
 
-const authPersistConfig = {
-  key: 'authSlice',
+const userPersistConfig = {
+  key: 'user',
   storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken'],
 };
 
+const persistedUserReducer = persistReducer(userPersistConfig, userSlice);
+
 export const perStore = configureStore({
-  reducer: {},
+  reducer: {
+    user: persistedUserReducer,
+    water: waterSlice,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

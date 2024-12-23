@@ -54,7 +54,7 @@ export const deleteWater = createAsyncThunk(
 
 export const getWaterToday = createAsyncThunk(
   'water/getWaterToday',
-  async (_, thunkApi) => {
+  async (data, thunkApi) => {
     // Since we save month in Javascript format (from 0 to 11), we do +1 only here
     const requestParams = {
       day: data.day,
@@ -62,7 +62,7 @@ export const getWaterToday = createAsyncThunk(
       year: data.year,
     };
     try {
-      const response = await axiosInstance.get('/water/today', {
+      const response = await axiosInstance.get('/water/day', {
         params: requestParams,
       });
       return response.data;

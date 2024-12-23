@@ -19,7 +19,11 @@ const months = [
   'December',
 ];
 
-export default function MonthStatsTable({ selectedDate, setDate }) {
+export default function MonthStatsTable({
+  selectedDate,
+  setDate,
+  onDaySelect,
+}) {
   const water = useSelector(selectMonthWater);
 
   function setPrevMonth() {
@@ -77,7 +81,11 @@ export default function MonthStatsTable({ selectedDate, setDate }) {
       </div>
       <ul className={css.list}>
         {water.map((item, index) => (
-          <li className={css.item} key={index}>
+          <li
+            onClick={() => onDaySelect(item)}
+            className={css.item}
+            key={index}
+          >
             <DayWaterItem day={item} month={months[selectedDate.month]} />
           </li>
         ))}

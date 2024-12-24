@@ -29,8 +29,10 @@ export const register = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      if (error.response?.data?.data?.message)
+      if (error.response?.data?.data?.message) {
+        notifyError(error.response.data.data.message);
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      }
       notifyError('Registration failed');
       return thunkAPI.rejectWithValue(error.message);
     }

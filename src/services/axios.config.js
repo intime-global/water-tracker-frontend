@@ -29,23 +29,15 @@ export const setupInterceptors = (store) => {
         // Mark the request as retried to avoid infinite loops.
         try {
           originalRequest._retry = true;
-          const peremenaya = await store.dispatch(refreshSession()).unwrap();
-          console.log(peremenaya);
-          setAuthHeader(peremenaya.data.accessToken);
-          console.log(
-            'Headers: ',
-            axiosInstance.defaults.headers.common.Authorization,
-          );
+          const refresh = await store.dispatch(refreshSession()).unwrap();
+          setAuthHeader(refresh.data.accessToken);
           originalRequest.headers[
             'Authorization'
-          ] = `Bearer ${peremenaya.data.accessToken}`;
+          ] = `Bearer ${refresh.data.accessToken}`;
           return axiosInstance(originalRequest); // Retry the original request with the new access token.
         } catch (refreshError) {
           // Handle refresh token errors by clearing stored tokens and redirecting to the login page.
-          console.log(refreshError);
           await store.dispatch(logout());
-          console.log('first');
-          window.location.href = '/signin';
           return Promise.reject(refreshError);
         }
       }

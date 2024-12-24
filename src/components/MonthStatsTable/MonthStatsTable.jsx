@@ -77,7 +77,7 @@ export default function MonthStatsTable({ selectedMonth, setMonth }) {
     if (!daysOfMonth[i]) {
       daysOfMonth[i] = {
         day: i + 1,
-        month: selectedMonth.month,
+        month: selectedMonth.month + 1,
         year: selectedMonth.year,
         noData: true,
       };

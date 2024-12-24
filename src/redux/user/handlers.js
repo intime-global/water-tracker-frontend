@@ -4,7 +4,6 @@ export const handleUserInfo = (state, { payload }) => {
 };
 
 export const handleLogin = (state, { payload }) => {
-  state.user = payload.data.data;
   state.accessToken = payload.data.accessToken;
   state.isLoading = false;
   state.isRefreshing = false;

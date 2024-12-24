@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { refreshSession } from '../redux/user/operations.js';
+import { logout, refreshSession } from '../redux/user/operations.js';
 
 export const setAuthHeader = (token) => {
   axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -26,13 +26,22 @@ export const setupInterceptors = (store) => {
     async (error) => {
       const originalRequest = error.config;
       if (error.response.status === 401 && !originalRequest._retry) {
-        originalRequest._retry = true; // Mark the request as retried to avoid infinite loops.
+        // Mark the request as retried to avoid infinite loops.
         try {
-          await store.dispatch(refreshSession());
+          originalRequest._retry = true;
+          const peremenaya = await store.dispatch(refreshSession()).unwrap();
+          console.log(peremenaya);
+          setAuthHeader(peremenaya.data.accessToken);
+          console.log(
+            'Headers: ',
+            axiosInstance.defaults.headers.common.Authorization,
+          );
           return axiosInstance(originalRequest); // Retry the original request with the new access token.
         } catch (refreshError) {
           // Handle refresh token errors by clearing stored tokens and redirecting to the login page.
-          clearAuthHeader();
+          console.log(refreshError);
+          await store.dispatch(logout());
+          console.log('first');
           window.location.href = '/signin';
           return Promise.reject(refreshError);
         }

@@ -153,6 +153,8 @@ export const refreshSession = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/refresh');
+      console.log(data);
+      console.log(data.data.accessToken);
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
@@ -175,7 +177,7 @@ export const logout = createAsyncThunk('user/logout', async (_, thunkAPI) => {
   try {
     await authAPI.post('/auth/logout');
     clearAuthHeader();
-    notifySuccess('You have successfully logged out');
+    notifySuccess('You are logged out');
   } catch (error) {
     if (error.response?.data?.data?.message)
       return thunkAPI.rejectWithValue(error.response.data.data.message);

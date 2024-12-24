@@ -71,6 +71,7 @@ export default function SettingsForm({ onClose }) {
   const handleSubmit = (values) => {
     const { repeatPassword, oldPassword, newPassword, ...filteredValues } =
       values;
+    // деструктуризация values необходима для дальнейшей отправки запроса на бек без учета поля repeatPassword;
 
     if (oldPassword && newPassword) {
       filteredValues.oldPassword = oldPassword;

@@ -45,6 +45,7 @@ const userSlice = createSlice({
     builder
       .addCase(confirmOauth.fulfilled, handleLogin)
       .addCase(login.fulfilled, handleLogin)
+      .addCase(confirmEmail.fulfilled, handleLogin)
       .addCase(refresh.pending, (state) => {
         state.isRefreshing = true;
       })
@@ -96,7 +97,6 @@ const userSlice = createSlice({
       .addMatcher(
         isAnyOf(
           register.fulfilled,
-          confirmEmail.fulfilled,
           getOauthUrl.fulfilled,
           sendResetPasswordEmail.fulfilled,
           resetPassword.fulfilled,

@@ -29,8 +29,10 @@ export const register = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      if (error.response?.data?.data?.message)
+      if (error.response?.data?.data?.message) {
+        notifyError(error.response.data.data.message);
         return thunkAPI.rejectWithValue(error.response.data.data.message);
+      }
       notifyError('Registration failed');
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -45,10 +47,13 @@ export const confirmEmail = createAsyncThunk(
   'user/confirm-email',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await authAPI.post('/auth/confirm-email', credentials);
+      const response = await authAPI.post('/auth/confirm-email', credentials);
+      console.log(response);
+      setAuthHeader(response.data.data.accessToken);
       notifySuccess('Email confirmed');
-      return data;
+      return response.data;
     } catch (error) {
+      console.log(error);
       if (error.response?.data?.data?.message)
         return thunkAPI.rejectWithValue(error.response.data.data.message);
       notifyError('Email has not been confirmed');
@@ -150,6 +155,8 @@ export const refreshSession = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/refresh');
+      console.log(data);
+      console.log(data.data.accessToken);
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
@@ -172,7 +179,7 @@ export const logout = createAsyncThunk('user/logout', async (_, thunkAPI) => {
   try {
     await authAPI.post('/auth/logout');
     clearAuthHeader();
-    notifySuccess('You have successfully logged out');
+    notifySuccess('You are logged out');
   } catch (error) {
     if (error.response?.data?.data?.message)
       return thunkAPI.rejectWithValue(error.response.data.data.message);

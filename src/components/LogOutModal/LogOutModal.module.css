@@ -68,7 +68,7 @@ button {
 
 .cancel:hover,
 .logOut:hover {
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
 
 .logOut {

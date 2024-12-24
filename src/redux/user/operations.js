@@ -77,7 +77,7 @@ export const login = createAsyncThunk(
     } catch (error) {
       if (error.response?.status === 401) {
         if (error.response?.data?.data?.message) {
-        notifyError(error.response?.data?.data?.message);
+          notifyError(error.response?.data?.data?.message);
         } else {
           notifyError('Incorrect email or password');
         }
@@ -159,8 +159,6 @@ export const refreshSession = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await authAPI.post('/auth/refresh');
-      console.log(data);
-      console.log(data.data.accessToken);
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {

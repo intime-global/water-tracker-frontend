@@ -89,11 +89,11 @@
 /*---------- Desk ----------------*/
 @media screen and (min-width: 1440px) {
   .background {
-    align-items: flex-start;
+    position: relative;
     min-height: calc(100vh - 60px);
     background-size: 738px 548px, 1404px;
     /* розмір фону бульбашок стоїть не по середині,тому його ширина обмежена та задана позиція */
-    background-position: top 22px left 38.67px, top 58px left 9px;
+    background-position: top 179px left 38.67px, top 201px left 9px;
     background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png'),
       url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
   }
@@ -101,10 +101,12 @@
   .home {
     max-width: 1440px;
     padding: 0 112px 40px 112px;
-    margin-top: 20px;
+    margin: auto;
     display: flex;
     flex-direction: row;
     gap: 32px;
+    position: fixed;
+    top: 250px;
   }
 
   .bottleSection {
@@ -137,7 +139,7 @@
 @media screen and (min-width: 1441px) {
   .background {
     background-size: 100%;
-    background-position: top 58px center;
+    background-position: center;
     background-image: url('../../images/WelcomePage/desk/backgr_bubbles_desk_1x.png');
   }
 
@@ -146,6 +148,7 @@
     background-size: 738px 548px;
     background-position: top 22px left 38.67px;
     background-image: url('../../images/HomePage/desk/bottle_home_desk_1x.png');
+    position: unset;
   }
 
   @media screen and (min-resolution: 192dpi) {

@@ -37,23 +37,21 @@ const HomePage = () => {
   }, [dispatch, selectedMonth, todayWater, waterRate]);
 
   return (
-    <>
-      <div className={css.background}>
-        <div className={css.home}>
-          <div className={css.bottleSection}>
-            <DailyNorma />
-            <WaterRatioPanel />
-          </div>
-          <div className={css.statisticsSection}>
-            <TodayList />
-            <MonthStatsTable
-              selectedMonth={selectedMonth}
-              setMonth={setSelectedMonth}
-            />
-          </div>
+    <div className={css.background}>
+      <div className={css.home}>
+        <div className={css.bottleSection}>
+          <DailyNorma />
+          <WaterRatioPanel />
+        </div>
+        <div className={css.statisticsSection}>
+          <TodayList />
+          <MonthStatsTable
+            selectedMonth={selectedMonth}
+            setMonth={setSelectedMonth}
+          />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

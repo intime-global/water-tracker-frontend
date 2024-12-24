@@ -1,4 +1,4 @@
-// import { StrictMode } from 'react';
+import { StrictMode } from 'react';
 
 import { createRoot } from 'react-dom/client';
 import './index.css';
@@ -11,13 +11,13 @@ import { setupInterceptors } from './services/axios.config.js';
 
 setupInterceptors(perStore);
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-  <Provider store={perStore}>
-    <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>,
-  // </StrictMode>,
+  <StrictMode>
+    <Provider store={perStore}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </StrictMode>,
 );

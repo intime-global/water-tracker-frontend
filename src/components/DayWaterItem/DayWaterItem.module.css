@@ -16,9 +16,11 @@
   margin: 0 auto 4px;
   cursor: pointer;
 }
+
 .empty {
-  background-color: rgb(226, 225, 225);
+  background-color: var(--backdrop-color-background);
 }
+
 .currentDay {
   box-shadow: 0 0 10px 4px rgba(64, 123, 255, 0.6);
   color: var(--secondary-color-red);
@@ -40,11 +42,13 @@
     top: -190px;
     right: 17px;
   }
+
   .dayReversedComponent {
     position: absolute;
     top: -190px;
     left: 17px;
   }
+
   .day {
     padding: 7px;
     width: 34px;
@@ -55,6 +59,7 @@
     position: relative;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .dayReversedComponent {
     left: unset;

@@ -61,7 +61,7 @@
 .time {
   font-size: 12px;
   line-height: 200%;
-  color: var(--primery-color-black);
+  color: var(--primary-color-black);
 }
 
 .subtitle {
@@ -101,11 +101,11 @@
   border-radius: 30px;
   padding: 10px;
   width: 44px;
-  box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
+  box-shadow: 0 2px 4px 0 var(--shadow-color-1);
 }
 
 .controlButton:hover {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  box-shadow: 0 4px 14px 0 var(--shadow-color-hover);
 }
 
 .iconStepP {
@@ -167,7 +167,7 @@
   padding: 8px 30px;
   width: 256px;
   height: 36px;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
@@ -180,7 +180,7 @@
 }
 
 .saveButton:hover {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  box-shadow: 0 4px 14px 0 var(--shadow-color-hover);
 }
 
 @media screen and (min-width: 768px) {

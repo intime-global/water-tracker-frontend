@@ -9,17 +9,23 @@
   /* Secondary Colors */
   --secondary-color-red: #ef5050;
   --secondary-color-orange: #ff9d43;
+  --secondary-color-grey: #8f8f8f;
   --secondary-color-blue-1: #ecf2ff;
   --secondary-color-blue-2: #d7e3ff;
   --secondary-color-blue-3: #9ebbff;
+  --secondary-color-blue-4: #dbeafe;
+  --secondary-color-blue-5: #8baeff;
 
   /* Shadow Colors*/
   --shadow-color: rgba(64, 123, 255, 0.34);
+  --shadow-color-1: rgba(64, 123, 255, 0.2);
   --shadow-color-hover: rgba(64, 123, 255, 0.54);
 
   /* Backdrop Colors */
   --backdrop-color-black: rgba(0, 0, 0, 0.8);
   --backdrop-color-loader: rgba(255, 255, 255, 0.4);
+  --backdrop-color-container: rgba(158, 187, 255, 0.12);
+  --backdrop-color-background: rgb(226, 225, 225);
 }
 
 * {

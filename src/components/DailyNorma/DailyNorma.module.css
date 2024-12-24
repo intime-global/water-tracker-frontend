@@ -4,7 +4,7 @@
   padding: 8px 20px;
   width: 166px;
   height: 74px;
-  box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
+  box-shadow: 0 4px 8px 0 var(--backdrop-color-container);
   background: var(--primary-color-white);
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +33,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 125%;
-  color: #8baeff;
+  color: var(--secondary-color-blue-5);
   margin-left: 12px;
   text-align: end;
   border: none;

@@ -82,7 +82,7 @@ input::placeholder {
   height: 36px;
   display: block;
   background-color: var(--primary-color-blue);
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
   border-radius: 10px;
   color: var(--primary-color-white);
   cursor: pointer;
@@ -94,7 +94,7 @@ input::placeholder {
 
 .button:hover,
 .button:focus {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  box-shadow: 0 4px 14px 0 var(--shadow-color-hover);
 }
 
 .link {

@@ -36,7 +36,7 @@
 
 .settingsBtn:hover,
 .logoutBtn:hover {
-  color: var(--secondary-orange);
+  color: var(--secondary-color-orange);
   background: none;
 }
 

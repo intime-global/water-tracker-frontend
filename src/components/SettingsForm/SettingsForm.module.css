@@ -135,7 +135,7 @@
   border: none;
   padding: 8px 30px;
   width: 256px;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
   background: var(--primary-color-blue);
   outline: none;
 
@@ -146,7 +146,7 @@
 }
 
 .submit:hover {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  box-shadow: 0 4px 14px 0 var(--shadow-color-hover);
 }
 
 .submit:active {
@@ -176,7 +176,6 @@
     font-size: 18px;
     line-height: 1.33;
   }
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -196,5 +195,4 @@
   .passwordVisibility {
     right: 2%;
   }
-
 }

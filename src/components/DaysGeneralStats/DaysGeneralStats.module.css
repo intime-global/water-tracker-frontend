@@ -1,7 +1,7 @@
 .container {
   position: absolute;
   border-radius: 10px;
-  box-shadow: 0 4px 4px 0 rgba(64, 123, 255, 0.3);
+  box-shadow: 0 4px 4px 0 var(--shadow-color);
   background-color: var(--primary-color-white);
   left: 20px;
   right: 0;
@@ -39,9 +39,11 @@
     width: 280px;
     height: 188px;
   }
+
   .subtitle {
     margin-bottom: 16px;
   }
+
   .text {
     margin-bottom: 18px;
   }
@@ -54,6 +56,7 @@
     height: 188px;
     position: static;
   }
+
   .text {
     margin-bottom: 16px;
   }

@@ -160,6 +160,7 @@ export default function DailyNormaModal({ onClose }) {
               min="0.5"
               step="0.1"
               max="15"
+              defaultValue={waterAmount / 1000}
               onChange={handleWaterChange}
               placeholder="0"
               className={css.input}

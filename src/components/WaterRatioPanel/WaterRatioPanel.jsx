@@ -1,8 +1,5 @@
 import { useSelector } from 'react-redux';
-import {
-  selectTodayWater,
-  selectWaterRate,
-} from '../../redux/water/waterSelector';
+import { selectMonthWater } from '../../redux/water/waterSelector';
 import { useState } from 'react';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import { format } from 'date-fns';
@@ -10,14 +7,16 @@ import SpriteSvg from '../../icons/sprite.svg';
 import css from './WaterRatioPanel.module.css';
 
 const WaterRatioPanel = () => {
-  const waterToday = useSelector(selectTodayWater);
-  const waterRate = useSelector(selectWaterRate);
+  const initDay = new Date().getDate();
+  const initMonth = new Date().getMonth() + 1;
+  const initYear = new Date().getFullYear();
 
-  const totalAmount = waterToday.reduce(
-    (acc, curr) => acc + curr.waterVolume,
-    0,
+  const percent = useSelector(selectMonthWater);
+
+  // Get percentage from state instead of calculating
+  const { percentage } = percent.find(
+    (o) => o.day == initDay && o.month == initMonth && o.year == initYear,
   );
-  const percentage = Math.round((totalAmount / waterRate) * 100);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [initialAmount, setInitialAmount] = useState(0);

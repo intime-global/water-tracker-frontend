@@ -76,7 +76,11 @@ export const login = createAsyncThunk(
       return response.data;
     } catch (error) {
       if (error.response?.status === 401) {
-        notifyError('Incorrect email or password');
+        if (error.response?.data?.data?.message) {
+        notifyError(error.response?.data?.data?.message);
+        } else {
+          notifyError('Incorrect email or password');
+        }
       } else {
         notifyError('Login failed');
       }

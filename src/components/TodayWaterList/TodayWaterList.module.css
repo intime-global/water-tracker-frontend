@@ -5,7 +5,6 @@
 */
 
 .todayContainer {
-  min-height: 258px;
   margin-bottom: 24px;
   flex: 1 0 auto;
 }
@@ -26,6 +25,7 @@
 .listWaters {
   overflow: auto;
   margin-bottom: 12px;
+  max-height: 200px;
 }
 
 .listWaters::-webkit-scrollbar {

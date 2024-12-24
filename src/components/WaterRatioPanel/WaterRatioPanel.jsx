@@ -11,12 +11,14 @@ const WaterRatioPanel = () => {
   const initMonth = new Date().getMonth() + 1;
   const initYear = new Date().getFullYear();
 
-  const percent = useSelector(selectMonthWater);
+  const monthStats = useSelector(selectMonthWater);
 
   // Get percentage from state instead of calculating
-  const { percentage } = percent.find(
+  const todaysStats = monthStats.find(
     (o) => o.day == initDay && o.month == initMonth && o.year == initYear,
   );
+
+  const percentage = todaysStats?.percentage || 0;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [initialAmount, setInitialAmount] = useState(0);

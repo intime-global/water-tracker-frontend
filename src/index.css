@@ -12,6 +12,7 @@
   --secondary-color-blue-1: #ecf2ff;
   --secondary-color-blue-2: #d7e3ff;
   --secondary-color-blue-3: #9ebbff;
+  --secondary-background-color: rgb(226, 225, 225);
 
   /* Shadow Colors*/
   --shadow-color: rgba(64, 123, 255, 0.34);
@@ -20,6 +21,26 @@
   /* Backdrop Colors */
   --backdrop-color-black: rgba(0, 0, 0, 0.8);
   --backdrop-color-loader: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-theme {
+  --primary-color-white: #2f2f2f;
+  --primary-color-black: #ffffff;
+  --primary-color-blue: #4a90e2;
+
+  --secondary-color-red: #ff6b6b;
+  --secondary-color-orange: #ffa84d;
+  --secondary-color-blue-1: #3e4d61;
+  --secondary-color-blue-2: #2d3b50;
+  --secondary-color-blue-3: #6c91c2;
+  --secondary-background-color: rgb(128, 125, 125);
+
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-color-hover: rgba(0, 0, 0, 0.6);
+
+  --backdrop-color-black: rgba(255, 255, 255, 0.1);
+  --backdrop-color-loader: rgba(0, 0, 0, 0.6);
+  background-color: #2f2f2f;
 }
 
 * {

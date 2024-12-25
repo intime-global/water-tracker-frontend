@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 .empty {
-  background-color: rgb(226, 225, 225);
+  background-color: var(--secondary-background-color);
 }
 .currentDay {
   box-shadow: 0 0 10px 4px rgba(64, 123, 255, 0.6);

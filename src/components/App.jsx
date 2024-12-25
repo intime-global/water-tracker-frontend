@@ -18,8 +18,12 @@ import PasswordResetPage from '../pages/PasswordResetPage/PasswordResetPage.jsx'
 
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage.jsx';
-const ConfirmEmailPage = lazy(() => import('../pages/ConfirmEmailPage/ConfirmEmailPage.jsx'));
-const GoogleRedirectHandler = lazy(() => import('../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx'))
+const ConfirmEmailPage = lazy(() =>
+  import('../pages/ConfirmEmailPage/ConfirmEmailPage.jsx'),
+);
+const GoogleRedirectHandler = lazy(() =>
+  import('../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx'),
+);
 // import GoogleRedirectHandler from '../pages/GoogleRedirectHandler/GoogleRedirectHandler.jsx';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -27,11 +31,15 @@ const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const SigninPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 const SignupPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 
+import { selectTheme } from '../redux/theme/selectors.js';
+
 function App() {
   const dispatch = useDispatch();
   // const isLoading = useSelector(selectIsLoading);
   const isRefreshing = useSelector(selectIsRefreshing);
   const accessToken = useSelector(selectAccessToken);
+
+  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     dispatch(refresh());
@@ -46,6 +54,10 @@ function App() {
     firstLogIn();
   }, [accessToken, dispatch]);
 
+  useEffect(() => {
+    document.body.className = theme === 'dark' ? 'dark-theme' : '';
+  }, [theme]);
+
   if (isRefreshing) {
     return <Loader />;
   }
@@ -58,7 +70,6 @@ function App() {
     <div>
       <ToastContainer limit={3} />
       <SharedLayout>
-
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/welcome" element={<WelcomePage />} />
@@ -77,10 +88,15 @@ function App() {
                 <RestrictedRoute component={<SignupPage />} redirectTo="/" />
               }
             />
-            <Route path="/confirm-email"
-              element={<RestrictedRoute
-                component={<ConfirmEmailPage />}
-                redirectTo='/home' />} />
+            <Route
+              path="/confirm-email"
+              element={
+                <RestrictedRoute
+                  component={<ConfirmEmailPage />}
+                  redirectTo="/home"
+                />
+              }
+            />
 
             <Route
               path="/signin"
@@ -106,12 +122,17 @@ function App() {
                 />
               }
             />
-            <Route path="/googleauth" element={<RestrictedRoute
-              component={<GoogleRedirectHandler />}
-              redirectTo='/home' />}/>
+            <Route
+              path="/googleauth"
+              element={
+                <RestrictedRoute
+                  component={<GoogleRedirectHandler />}
+                  redirectTo="/home"
+                />
+              }
+            />
 
             <Route path="*" element={<NotFoundPage />} />
-
           </Routes>
         </Suspense>
       </SharedLayout>

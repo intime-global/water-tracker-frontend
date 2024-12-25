@@ -1,199 +1,199 @@
 .modal {
-    background: white;
-    border-radius: 10px;
-    padding: 24px 12px;
-    width: 280px;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
+  background: var(--primary-color-white);
+  border-radius: 10px;
+  padding: 24px 12px;
+  width: 280px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .head {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
 .title {
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 123%;
-    color: var(--primary-color-black);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 123%;
+  color: var(--primary-color-black);
 }
 
 .closeButton {
-    background-color: transparent;
-    width: 24px;
-    height: 24px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon {
-    stroke-width: 1.5px;
-    stroke: var(--primary-color-blue);
+  stroke-width: 1.5px;
+  stroke: var(--primary-color-blue);
 }
 
 .normaList {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .normaItem {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    color: #2f2f2f;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #2f2f2f;
 }
 
 .normaSpan {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.33333;
-    color: #407bff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33333;
+  color: #407bff;
 }
 
 .explanation {
-    border: 1px solid #d7e3ff;
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.33;
-    color: #8f8f8f;
-    margin-bottom: 24px;
+  border: 1px solid #d7e3ff;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8f8f8f;
+  margin-bottom: 24px;
 }
 
 .explanationSpan {
-    color: #407bff;
+  color: #407bff;
 }
 
 .subheading {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.11;
-    color: #2f2f2f;
-    margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: #2f2f2f;
+  margin-bottom: 16px;
 }
 
 .fieldset {
-    height: 20px;
-    border: none;
-    margin-bottom: 16px;
-    padding: 0;
+  height: 20px;
+  border: none;
+  margin-bottom: 16px;
+  padding: 0;
 }
 
 .labelWom {
-    margin-right: 24px;
+  margin-right: 24px;
 }
 
 .label {
-    display: flex;
-    flex-direction: column;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    color: #2f2f2f;
-    margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #2f2f2f;
+  margin-bottom: 16px;
 }
 
 .input {
-    margin-top: 8px;
-    border: 1px solid #d7e3ff;
-    border-radius: 6px;
-    padding: 12px 10px;
-    color: #407bff;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1, 25;
+  margin-top: 8px;
+  border: 1px solid #d7e3ff;
+  border-radius: 6px;
+  padding: 12px 10px;
+  color: #407bff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1, 25;
 }
 
 .resultWrap {
-    display: flex;
-    margin-bottom: 24px;
+  display: flex;
+  margin-bottom: 24px;
 }
 
 .result {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    color: #2f2f2f;
-    width: 190px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #2f2f2f;
+  width: 190px;
 }
 
 .waterAmount {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.33;
-    color: #407bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33;
+  color: #407bff;
 }
 
 .saveButton {
-    border-radius: 10px;
-    padding: 10px 30px;
-    width: 256px;
-    height: 44px;
-    border: none;
-    box-shadow: 0 4px 8px 0 var(--shadow-color);
-    background: #407bff;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.33;
-    text-align: center;
-    color: #fff;
-    justify-self: end;
-    margin-top: 8px;
+  border-radius: 10px;
+  padding: 10px 30px;
+  width: 256px;
+  height: 44px;
+  border: none;
+  box-shadow: 0 4px 8px 0 var(--shadow-color);
+  background: #407bff;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  text-align: center;
+  color: #fff;
+  justify-self: end;
+  margin-top: 8px;
 }
 
 @media screen and (min-width: 768px) {
-    .modal {
-        padding: 32px 24px;
-        width: 704px;
-    }
+  .modal {
+    padding: 32px 24px;
+    width: 704px;
+  }
 
-    .normaList {
-        display: flex;
-        gap: 24px;
-    }
+  .normaList {
+    display: flex;
+    gap: 24px;
+  }
 
-    .result {
-        width: 342px;
-    }
+  .result {
+    width: 342px;
+  }
 
-    .saveButton {
-        width: 160px;
-    }
+  .saveButton {
+    width: 160px;
+  }
 
-    .btnWrap {
-        display: flex;
-        flex-direction: row-reverse;
-    }
+  .btnWrap {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .modal {
-        width: 592px;
-    }
+  .modal {
+    width: 592px;
+  }
 
-    .normaList {
-        display: flex;
-        gap: 24px;
-    }
+  .normaList {
+    display: flex;
+    gap: 24px;
+  }
 
-    .result {
-        width: 342px;
-    }
+  .result {
+    width: 342px;
+  }
 
-    .saveButton {
-        width: 160px;
-    }
+  .saveButton {
+    width: 160px;
+  }
 
-    .btnWrap {
-        display: flex;
-        flex-direction: row-reverse;
-    }
+  .btnWrap {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 }

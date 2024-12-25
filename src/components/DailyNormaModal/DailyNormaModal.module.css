@@ -98,6 +98,10 @@
     margin-bottom: 16px;
 }
 
+.inputGender {
+margin-right: 3px;
+}
+
 .input {
     margin-top: 8px;
     border: 1px solid #d7e3ff;

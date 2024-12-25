@@ -100,7 +100,7 @@ export default function DailyNormaModal({ onClose }) {
                 onChange={() => setGender('female')}
                 checked={gender === "female"}
               />
-              For girl
+              For woman
             </label>
             <label>
               <input

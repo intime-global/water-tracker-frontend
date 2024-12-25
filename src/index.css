@@ -39,7 +39,7 @@ body.dark-theme {
   --secondary-color-blue-1: #3e4d61;
   --secondary-color-blue-2: #2d3b50;
   --secondary-color-blue-3: #6c91c2;
-  --secondary-background-color: rgb(128, 125, 125);
+  --backdrop-color-background: rgb(128, 125, 125);
 
   --shadow-color: rgba(0, 0, 0, 0.4);
   --shadow-color-hover: rgba(0, 0, 0, 0.6);

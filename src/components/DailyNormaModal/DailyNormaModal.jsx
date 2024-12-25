@@ -101,7 +101,7 @@ export default function DailyNormaModal({ onClose }) {
               />{' '}
               For woman
             </label>
-            <label>
+            <label className={css.labelWom}>
               <input
                 type="radio"
                 name="gender"

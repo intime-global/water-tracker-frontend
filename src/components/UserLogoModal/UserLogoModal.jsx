@@ -1,8 +1,9 @@
 import ModalContainer from '../ModalContainer/ModalContainer';
 import css from './UserLogoModal.module.css';
 import sprite from '../../icons/sprite.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../redux/theme/slice.js';
+import { selectTheme } from '../../redux/theme/selectors.js';
 
 const UserLogoModal = ({
   isOpen,
@@ -12,6 +13,9 @@ const UserLogoModal = ({
   dropDownMenu,
 }) => {
   const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
+  console.log(theme, 'theme');
+
   if (!isOpen) return null;
 
   const handleToggleTheme = () => {
@@ -44,7 +48,7 @@ const UserLogoModal = ({
             <use width={'16px'} height={'16px'} href={`${sprite}#switch`} />
           </svg>
           <button className={css.logoutBtn} onClick={handleToggleTheme}>
-            Theme
+            {theme === 'light' ? `Dark theme` : 'Light theme'}
           </button>
         </div>
         <div className={css.logout}>

@@ -11,7 +11,7 @@ export default function DailyNormaModal({ onClose }) {
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectIsLoading);
 
-  const [gender, setGender] = useState('female');
+  const [gender, setGender] = useState(user.gender);
   const [weight, setWeight] = useState('');
   const [activityTime, setActivityTime] = useState('');
   const [waterAmount, setWaterAmount] = useState(user.waterRate || 0);
@@ -96,9 +96,10 @@ export default function DailyNormaModal({ onClose }) {
                 type="radio"
                 name="gender"
                 value="female"
+                className={css.inputGender}
                 onChange={() => setGender('female')}
-                defaultChecked
-              />{' '}
+                checked={gender === "female"}
+              />
               For woman
             </label>
             <label className={css.labelWom}>
@@ -106,8 +107,10 @@ export default function DailyNormaModal({ onClose }) {
                 type="radio"
                 name="gender"
                 value="male"
+                className={css.inputGender}
                 onChange={() => setGender('male')}
-              />{' '}
+                checked={gender === "male"}
+              />
               For man
             </label>
           </fieldset>
@@ -115,14 +118,14 @@ export default function DailyNormaModal({ onClose }) {
           <label className={css.label}>
             Your weight in kilograms:
             <input
-              type="text"
+              type="number"
               name="weight"
               min="1"
               step="0.1"
               placeholder="0"
               className={css.input}
               value={weight}
-              onChange={(e) => setWeight(e.target.value)}
+              onChange={(e) => setWeight(e.target.value.replace(/[^0-9.]/g, ""))}
             />
           </label>
 
@@ -130,14 +133,14 @@ export default function DailyNormaModal({ onClose }) {
             The time of active participation in sports or other activities with
             a high physical. load in hours:
             <input
-              type="text"
+              type="number"
               name="activityTime"
               min="0"
               step="0.1"
               placeholder="0"
               className={css.input}
               value={activityTime}
-              onChange={(e) => setActivityTime(e.target.value)}
+              onChange={(e) => setActivityTime(e.target.value.replace(/[^0-9.]/g, ""))}
             />
           </label>
 
@@ -155,7 +158,7 @@ export default function DailyNormaModal({ onClose }) {
           </h2>
           <label className={css.label}>
             <input
-              type="text"
+              type="number"
               name="dailyIntake"
               min="0.5"
               step="0.1"

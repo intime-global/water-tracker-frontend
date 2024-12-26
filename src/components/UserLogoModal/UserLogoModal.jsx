@@ -46,7 +46,7 @@ const UserLogoModal = ({
             <use width={'16px'} height={'16px'} href={`${sprite}#switch`} />
           </svg>
           <button className={css.logoutBtn} onClick={handleToggleTheme}>
-            Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+            {theme === 'light' ? 'Dark' : 'Light'} theme
           </button>
         </div>
         <div className={css.logout}>

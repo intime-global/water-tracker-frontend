@@ -18,7 +18,7 @@
 }
 
 .empty {
-  background-color: var(--backdrop-color-background);
+  background-color: var(--secondary-background-color);
 }
 
 .currentDay {

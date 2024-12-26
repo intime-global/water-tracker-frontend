@@ -30,6 +30,7 @@
 
 .btnPrev {
   border: none;
+  background-color: transparent;
 }
 
 .iconPrev {
@@ -37,6 +38,7 @@
 }
 .btnNext {
   border: none;
+  background-color: transparent;
 }
 
 .iconNext {

@@ -24,7 +24,7 @@
 
   /* Backdrop Colors */
   --backdrop-color-black: rgba(0, 0, 0, 0.8);
-  --backdrop-color-loader: rgba(255, 255, 255, 0.4);
+  --backdrop-color-loader: rgba(226, 225, 225, 0.6);
   --backdrop-color-container: rgba(158, 187, 255, 0.12);
   --backdrop-color-background: rgb(226, 225, 225);
 }
@@ -39,6 +39,7 @@ body.dark-theme {
   --secondary-color-blue-1: #3e4d61;
   --secondary-color-blue-2: #2d3b50;
   --secondary-color-blue-3: #6c91c2;
+  --secondary-background-color: rgb(128, 125, 125);
   --backdrop-color-background: rgb(128, 125, 125);
 
   --shadow-color: rgba(0, 0, 0, 0.4);
@@ -91,14 +92,14 @@ img {
   height: auto;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
 input[type='number'],
-input[type="number"]:hover,
-input[type="number"]:focus {
+input[type='number']:hover,
+input[type='number']:focus {
   appearance: none;
   -moz-appearance: textfield;
 }

@@ -59,8 +59,8 @@ export const getWaterToday = createAsyncThunk(
   async (data, thunkApi) => {
     // Since we save month in Javascript format (from 0 to 11), we do +1 only here
     const requestParams = {
-      day: data.day,
-      month: data.month + 1,
+      day: `${data.day}`.padStart(2, '0'),
+      month: `${data.month + 1}`.padStart(2, '0'),
       year: data.year,
     };
     try {
@@ -82,7 +82,7 @@ export const getWaterMonth = createAsyncThunk(
   async (data, thunkApi) => {
     // Since we save month in Javascript format (from 0 to 11), we do +1 only here
     const requestParams = {
-      month: data.month + 1,
+      month: `${data.month + 1}`.padStart(2, '0'),
       year: data.year,
     };
     try {

@@ -19,9 +19,9 @@ const WaterRatioPanel = () => {
   );
   const waterPerDay = totalAmount / waterRate;
 
-  const percentage =
+  const percentage = Math.round((totalAmount / waterRate) * 100);
+  const displayPercent =
     waterPerDay <= 1 ? Math.round((totalAmount / waterRate) * 100) : 100;
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [initialAmount, setInitialAmount] = useState(0);
   const [initialTime, setInitalTime] = useState('');
@@ -45,7 +45,7 @@ const WaterRatioPanel = () => {
           <div className={css.progressBar}>
             <div
               className={css.filled}
-              style={{ width: `${percentage}%` }}
+              style={{ width: `${displayPercent}%` }}
             ></div>
             <div
               className={css.indicator}

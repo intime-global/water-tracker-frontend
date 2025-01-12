@@ -28,6 +28,17 @@
   max-height: 200px;
 }
 
+.noWaters {
+  overflow: auto;
+  margin-bottom: 12px;
+  max-height: 200px;
+  font-weight: 400;
+  color: var(--primary-color-blue);
+  font-size: 18px;
+  line-height: 140%;
+  font-style: italic;
+}
+
 .listWaters::-webkit-scrollbar {
   width: 2px;
   border-radius: 8px;

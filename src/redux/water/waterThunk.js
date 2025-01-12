@@ -89,10 +89,6 @@ export const getWaterMonth = createAsyncThunk(
       const response = await axiosInstance.get('/water/month', {
         params: requestParams,
       });
-
-      if (response.data.data.length === 0) {
-        notifyError(response.data.message);
-      }
       return response.data;
     } catch (error) {
       notifyError('Failed to get month water');

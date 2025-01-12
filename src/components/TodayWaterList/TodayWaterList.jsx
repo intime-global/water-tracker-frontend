@@ -53,7 +53,7 @@ export const TodayList = () => {
   return (
     <div className={css.todayContainer}>
       <h2 className={css.todayTitle}>Today</h2>
-      {waterList?.length > 0 && (
+      {waterList?.length ? (
         <ul className={css.listWaters}>
           {waterList
             .slice()
@@ -92,6 +92,8 @@ export const TodayList = () => {
               </li>
             ))}
         </ul>
+      ) : (
+        <p className={css.noWaters}>There are no notes today</p>
       )}
       <button className={css.button} type="button" onClick={openModalToAdd}>
         <span className={css.span}>+</span>
